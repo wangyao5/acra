@@ -36,3 +36,15 @@ Step by step installation of the ACRA library in an existing application project
     * Select your newly created Application class ({{{MyApplication}}})
     * In the *Permissions* tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}
   * *_THE END_* - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
+
+= Advanced Usage =
+
+== How-to use it to send a report to my own php/java/python/whateveryouwant slef-hosted script ?
+
+Just override the getFormUri() in your Application class extending CrashReportingApplication :
+
+{{{
+    public Uri getFormUri() {
+        return Uri.parse("http://myserver.com/myscript);
+    }
+}}}
