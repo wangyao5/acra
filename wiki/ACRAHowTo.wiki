@@ -24,6 +24,7 @@ Step by step installation of the ACRA library in an existing application project
   * Extend CrashReportingApplication
   * Override the abstract getFormId() method, returning a simple String containing the form Id
   * Open the android manifest editor
-  * In the Application tab, click on the Browse button next to the Name field
-  * Select your newly created Application class
+    * In the Application tab, click on the Browse button next to the Name field
+    * Select your newly created Application class
+    * In the Permissions tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}
   * THE END
