@@ -1,7 +1,7 @@
 #labels Phase-Deploy
 = Introduction =
 
-ACRA allows your application to send Crash Reports.
+ACRA allows your Android application to send Crash Reports in a Google Docs spreadsheet.
 This tutorial will guide you in installing ACRA in your application project.
 
 = Details =
