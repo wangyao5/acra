@@ -39,7 +39,7 @@ Step by step installation of the ACRA library in an existing application project
 
 = Advanced Usage =
 
-== How-to use it to send a report to my own php/java/python/whateveryouwant slef-hosted script ?
+== How-to use it to send a report to my own php/java/python/whateveryouwant slef-hosted script ? ==
 
 Just override the getFormUri() in your Application class extending CrashReportingApplication :
 
