@@ -9,20 +9,20 @@ This tutorial will guide you in installing ACRA in your application project.
 Step by step installation of the ACRA library in an existing application project:
   * Get http://acra.googlecode.com/files/ACRA-1.0.0.zip and open the archive
   * Login to your Google Docs account
-  * Import the CrashReports-template.xls contained in the archive
+  * Import the {{{CrashReports-template.xls}}} contained in the archive
   * Open the imported document
   * Rename it as you like
   * Forms / Create form
-  * Add anything in the form description just to enable the "save" button
+  * Add anything in the form description just to enable the *Save* button
   * Save the form
-  * Copy the formId displayed at the bottom of the form creation page
-  * Open your eclipse project
-  * Create a lib folder
-  * Add the ACRA jar file in the lib folder
+  * Copy the {{{formId}}} displayed in the link at the bottom of the form creation page
+  * Open your Eclipse project
+  * Create a {{{lib}}} folder
+  * Add the {{{acra-1.0.0.jar}}} file in the lib folder
   * Right-click on the jar file / add to build path
   * Create a new class in your package root
-    * Give it a name like : MyApplication, make it extend CrashReportingApplication
-    * Override the abstract getFormId() method, returning a simple String containing the form Id
+    * Give it a name like : {{{MyApplication}}}, make it extend {{{org.acra.CrashReportingApplication}}}
+    * Override the abstract {{{getFormId()}}} method, returning a simple String containing the form Id of your Google Docs form :
 
 {{{
     @Override
@@ -31,8 +31,8 @@ Step by step installation of the ACRA library in an existing application project
     }
 }}}
 
-  * Open the android manifest editor
-    * In the Application tab, click on the Browse button next to the Name field
-    * Select your newly created Application class
-    * In the Permissions tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}
-  * THE END - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
+  * Open the android manifest editor ({{{AndroidManifest.xml}}}
+    * In the *Application tab*, click on the *Browse* button next to the *Name* field
+    * Select your newly created Application class ({{{MyApplication}}})
+    * In the *Permissions* tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}
+  * *_THE END_* - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
