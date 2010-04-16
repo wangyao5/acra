@@ -1,0 +1,31 @@
+#labels Phase-Deploy
+#How to use ACRA in your Android Application
+
+= Introduction =
+
+ACRA allows your application to send Crash Reports.
+
+
+= Details =
+
+Step by step installation of the ACRA library in an existing application project:
+  * Login to your Google Docs account
+  * Import the CrashReports-template.xls
+  * Open the imported document
+  * Rename it
+  * Forms / Create form
+  * Add anything in the form description just to enable the "save" button
+  * Save the form
+  * Copy the formId displayed at the bottom of the form creation page
+  * Open your eclipse project
+  * Create a lib folder
+  * Add the ACRA jar file in the lib folder
+  * Right-click / add to build path
+  * Create a new class in your package root
+  * Give it a name like : MyApplication
+  * Extend CrashReportingApplication
+  * Override the abstract getFormId() method, returning a simple String containing the form Id
+  * Open the android manifest editor
+  * In the Application tab, click on the Browse button next to the Name field
+  * Select your newly created Application class
+  * THE END
