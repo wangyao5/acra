@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,6 +21,7 @@ import java.util.Random;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
@@ -55,7 +57,12 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
     private Thread.UncaughtExceptionHandler mDfltExceptionHandler;
     private static ErrorReporter mInstanceSingleton;
     private Context mContext;
+    private static Uri mFormUri;
 
+    public ErrorReporter(Uri formUri) {
+        mFormUri = formUri;
+    }
+    
     public void addCustomData(String Key, String Value) {
         mCustomParameters.put(Key, Value);
     }
@@ -71,10 +78,13 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
         return CustomInfo;
     }
 
-    public static ErrorReporter getInstance() {
+    public static ErrorReporter getInstance(Uri formUri) {
         if (mInstanceSingleton == null)
-            mInstanceSingleton = new ErrorReporter();
-        return mInstanceSingleton;
+            mInstanceSingleton = new ErrorReporter(formUri);
+        else {
+            mFormUri = formUri;
+        }
+        return mInstanceSingleton;    
     }
 
     public void init(Context context) {
@@ -178,7 +188,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
         }
 
         // Let the official exception handler do it's job
-        // TODO: display a developer-defined message and terminate the application 
+        // TODO: display a developer-defined message 
         mDfltExceptionHandler.uncaughtException(t, e);
     }
 
@@ -187,24 +197,17 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
      * 
      * @param context
      * @param errorContent
+     * @throws IOException 
+     * @throws UnsupportedEncodingException 
      */
-    private void sendCrashReport(Context context, Properties errorContent) {
-        try {
+    private void sendCrashReport(Context context, Properties errorContent) throws UnsupportedEncodingException, IOException {
             errorContent.put("pageNumber", "0");
             errorContent.put("backupCache", "");
             errorContent.put("submit", "Envoyer");
 
-            URL reportUrl = new URL(context
-                    .getString(R.string.CrashReport_FormUrl));
+            URL reportUrl = new URL(mFormUri.toString());
             Log.d(LOG_TAG, "Connect to " + reportUrl.toString());
             HttpUtils.doPost(errorContent, reportUrl.openConnection());
-
-        } catch (MalformedURLException e) {
-            Log.e(LOG_TAG, "Error : ", e);
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "Error : ", e);
-        }
-
     }
 
     private void saveCrashReportFile() {
