@@ -1,10 +1,8 @@
 #labels Phase-Deploy
-#How to use ACRA in your Android Application
-
 = Introduction =
 
 ACRA allows your application to send Crash Reports.
-
+This tutorial will guide you in installing ACRA in your application project.
 
 = Details =
 
