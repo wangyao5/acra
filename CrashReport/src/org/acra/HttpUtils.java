@@ -7,16 +7,15 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Properties;
 
 import android.util.Log;
 
 public class HttpUtils {
-    public static void doPost(Properties parameters,
-            URLConnection synoConn) throws UnsupportedEncodingException,
+    private static final String LOG_TAG = CrashReportingApplication.LOG_TAG;
+        public static void doPost(Properties parameters,
+            URLConnection cnx) throws UnsupportedEncodingException,
             IOException {
         // Construct data
         StringBuilder dataBfr = new StringBuilder();
@@ -30,26 +29,21 @@ public class HttpUtils {
                     URLEncoder.encode((String)parameters.get(key), "UTF-8"));
         }
         // POST data
-        synoConn.setDoOutput(true);
-        OutputStreamWriter wr = new OutputStreamWriter(synoConn
+        cnx.setDoOutput(true);
+        OutputStreamWriter wr = new OutputStreamWriter(cnx
                 .getOutputStream());
         wr.write(dataBfr.toString());
         wr.flush();
         wr.close();
-        StringBuffer response = new StringBuffer();
         
-        BufferedReader rd = new BufferedReader(new InputStreamReader(synoConn
+        BufferedReader rd = new BufferedReader(new InputStreamReader(cnx
                 .getInputStream()));
         
         String line;
         while ((line = rd.readLine()) != null) {
-            Log.i("CrashReport", line);
-            response.append(line);
+            Log.d(LOG_TAG, line);
         }
         rd.close();
-
-        String strResponse = response.toString();
-
     }
 
 

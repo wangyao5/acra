@@ -4,6 +4,7 @@ import android.app.Application;
 import android.net.Uri;
 
 public abstract class CrashReportingApplication extends Application {
+    protected static final String LOG_TAG = "CrashReport";
 
     /* (non-Javadoc)
      * @see android.app.Application#onCreate()

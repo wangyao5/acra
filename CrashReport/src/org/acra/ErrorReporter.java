@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,7 +26,7 @@ import android.os.StatFs;
 import android.util.Log;
 
 public class ErrorReporter implements Thread.UncaughtExceptionHandler {
-    private static final String LOG_TAG = "CrashReport";
+    private static final String LOG_TAG = CrashReportingApplication.LOG_TAG;
     private static final int MAX_SEND_REPORTS = 5;
     private static final String VERSION_NAME_KEY = "entry.0.single";
     private static final String PACKAGE_NAME_KEY = "entry.1.single";
