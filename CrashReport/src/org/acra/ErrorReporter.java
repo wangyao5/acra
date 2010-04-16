@@ -17,8 +17,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 
-import org.acra.R;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -54,9 +52,9 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
     Properties mCrashProperties = new Properties();
     Map<String, String> mCustomParameters = new HashMap<String, String>();
 
-    private Thread.UncaughtExceptionHandler mPreviousHandler;
+    private Thread.UncaughtExceptionHandler mDfltExceptionHandler;
     private static ErrorReporter mInstanceSingleton;
-    private Context mCurContext;
+    private Context mContext;
 
     public void addCustomData(String Key, String Value) {
         mCustomParameters.put(Key, Value);
@@ -80,9 +78,9 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
     }
 
     public void init(Context context) {
-        mPreviousHandler = Thread.getDefaultUncaughtExceptionHandler();
+        mDfltExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
-        mCurContext = context;
+        mContext = context;
     }
 
     public static long getAvailableInternalMemorySize() {
@@ -149,7 +147,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
      * .Thread, java.lang.Throwable)
      */
     public void uncaughtException(Thread t, Throwable e) {
-        retrieveCrashData(mCurContext);
+        retrieveCrashData(mContext);
         // TODO: add a field in the googledoc form for the crash date.
         // Date CurDate = new Date();
         // Report += "Error Report collected on : " + CurDate.toString();
@@ -171,13 +169,17 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
         mCrashProperties.put(STACK_TRACE_KEY, result.toString());
         printWriter.close();
 
-        // The crash report will be posted on the next launch
-        saveCrashReportFile();
-
-        // TODO: test crash report posting right here
+       
+        try {
+            sendCrashReport(mContext, mCrashProperties);
+        } catch (Exception anyException) {
+            // The crash report will be posted on the next launch
+            saveCrashReportFile();
+        }
 
         // Let the official exception handler do it's job
-        mPreviousHandler.uncaughtException(t, e);
+        // TODO: display a developer-defined message and terminate the application 
+        mDfltExceptionHandler.uncaughtException(t, e);
     }
 
     /**
@@ -210,7 +212,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
             Random generator = new Random();
             int random = generator.nextInt(99999);
             String FileName = "stack-" + random + ".stacktrace";
-            FileOutputStream trace = mCurContext.openFileOutput(FileName,
+            FileOutputStream trace = mContext.openFileOutput(FileName,
                     Context.MODE_PRIVATE);
             mCrashProperties.save(trace, "");
             trace.close();
