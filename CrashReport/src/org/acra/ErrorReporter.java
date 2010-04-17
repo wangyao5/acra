@@ -58,8 +58,10 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
     private Context mContext;
     private static Uri mFormUri;
 
-    public ErrorReporter(Uri formUri) {
-        mFormUri = formUri;
+    public ErrorReporter() {
+    }
+    public void setFormUri( Uri formUri) {
+    	mFormUri = formUri;
     }
     
     public void addCustomData(String Key, String Value) {
@@ -77,12 +79,9 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
         return CustomInfo;
     }
 
-    public static ErrorReporter getInstance(Uri formUri) {
+    public static ErrorReporter getInstance() {
         if (mInstanceSingleton == null)
-            mInstanceSingleton = new ErrorReporter(formUri);
-        else {
-            mFormUri = formUri;
-        }
+            mInstanceSingleton = new ErrorReporter();
         return mInstanceSingleton;    
     }
 

@@ -12,9 +12,10 @@ public abstract class CrashReportingApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ErrorReporter crashReporter = new ErrorReporter(getFormUri());
-        crashReporter.init(getApplicationContext());
-        crashReporter.checkAndSendReports(getApplicationContext());
+        //ErrorReporter crashReporter = new ErrorReporter(getFormUri());
+        ErrorReporter.getInstance().setFormUri( getFormUri() );
+        ErrorReporter.getInstance().init(getApplicationContext());
+        ErrorReporter.getInstance().checkAndSendReports(getApplicationContext());
     }
 
     public Uri getFormUri() {
