@@ -45,7 +45,7 @@ Just override the getFormUri() in your Application class extending CrashReportin
 
 {{{
     public Uri getFormUri() {
-        return Uri.parse("http://myserver.com/myscript);
+        return Uri.parse("http://myserver.com/myscript");
     }
 }}}
 
