@@ -37,6 +37,8 @@ Step by step installation of the ACRA library in an existing application project
     * In the *Permissions* tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}
   * *_THE END_* - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
 
+*Bonus :* Google Docs spreadsheet allow to configure notifications on changes. Juste set your preferences in  : Share (Top right button) / Set notification rules
+
 = Advanced Usage =
 
 == How-to use it to send a report to my own php/java/python/whateveryouwant slef-hosted script ? ==
