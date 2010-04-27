@@ -51,4 +51,4 @@ Just override the getFormUri() in your Application class extending CrashReportin
     }
 }}}
 
-Then your script has to follow the fields mapping exposed in the [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ErrorReporter.java#31 ErrorReporter] class.
+Then your script has to follow the fields mapping exposed in the [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ErrorReporter.java#70 ErrorReporter] class.
