@@ -27,7 +27,7 @@ Step by step installation of the ACRA library in an existing application project
 {{{
     @Override
     public String getFormId() {
-        return "dGVacG0ydHVnaHNjRjVTUTEtb3FPWGc6MQ";
+        return "dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ";
     }
 }}}
 
