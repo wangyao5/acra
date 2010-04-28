@@ -7,7 +7,7 @@ This tutorial will guide you in installing ACRA in your application project.
 = Details =
 
 Step by step installation of the ACRA library in an existing application project:
-  * Get http://acra.googlecode.com/files/ACRA-1.1.0.zip and open the archive (ACRA-1.1.0/CrashReport/doc)
+  * Get http://acra.googlecode.com/files/ACRA-1.2.0.zip and open the archive (ACRA-1.2.0/CrashReport/doc)
   * Login to your Google Docs account
   * Import the {{{CrashReports-template.xls}}} contained in the archive
   * Open the imported document
@@ -18,7 +18,7 @@ Step by step installation of the ACRA library in an existing application project
   * Copy the {{{formId}}} displayed in the link at the bottom of the form creation page
   * Open your Eclipse project
   * Create a {{{lib}}} folder
-  * Add the {{{acra-1.1.0.jar}}} from the archive (ACRA-1.0.1/CrashReport/build) in the {{{lib}}} folder
+  * Add the {{{acra-1.2.0.jar}}} from the archive (ACRA-1.2.0/CrashReport/build) in the {{{lib}}} folder
   * Right-click on the jar file / add to build path
   * Create a new class in your package root
     * Give it a name like : {{{MyApplication}}}, make it extend {{{org.acra.CrashReportingApplication}}}
@@ -52,3 +52,14 @@ Just override the getFormUri() in your Application class extending CrashReportin
 }}}
 
 Then your script has to follow the fields mapping exposed in the [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ErrorReporter.java#70 ErrorReporter] class.
+
+== Can I add my own variables content in the crash report ? ==
+
+Absolutely !
+
+Simply use the following method in key places in your code :
+{{{
+        ErrorReporter.getInstance().addCustomData("myVariable", myVariable);
+}}}
+
+All your custom data (only latest values for each one) will be added in the column "custom" just before the stack trace, one key = value pair per line.
