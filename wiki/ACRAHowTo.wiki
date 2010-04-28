@@ -62,4 +62,4 @@ Simply use the following method in key places in your code :
         ErrorReporter.getInstance().addCustomData("myVariable", myVariable);
 }}}
 
-All your custom data (only latest values for each one) will be added in the column "custom" just before the stack trace, one key = value pair per line.
+All your custom data (only latest value for each one) will be added in the column "custom" just before the stack trace, one key = value pair per line.
