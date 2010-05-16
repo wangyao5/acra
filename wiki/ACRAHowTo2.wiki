@@ -57,6 +57,9 @@ http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_toast.png
   * display a status bar notification, then offering the user a dialog asking him to send the report or not, with an optional comment field you can chose to add or not.
 http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_ticker.png http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif.png http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_dialog_full.png
 
+Enabling user notification only requires you to override one method in your Application class (where you provide your formId) :
+
+
 
 
 == How-to use it to send a report to my own php/java/python/whateveryouwant self-hosted script ? ==
