@@ -59,8 +59,51 @@ http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_ticker.png h
 
 Enabling user notification only requires you to override one method in your Application class (where you provide your formId) :
 
+  * Toast notification:
+{{{
+	@Override
+    public Bundle getCrashResources() {
+        Bundle result = new Bundle();
+        result.putInt(RES_TOAST_TEXT, R.string.crash_toast_text);
+        return result;
+    }
+}}}
 
+In your strings.xml :
+{{{
+	<string name="crash_toast_text">Ooooops ! I crashed, but a report has been
+		sent to my developer to help him fix the issue !</string>
+}}}
 
+  * Status bar notification:
+{{{
+	@Override
+    public Bundle getCrashResources() {
+        Bundle result = new Bundle();
+        result.putInt(RES_NOTIF_TICKER_TEXT, R.string.crash_notif_ticker_text);
+        result.putInt(RES_NOTIF_TITLE, R.string.crash_notif_title);
+        result.putInt(RES_NOTIF_TEXT, R.string.crash_notif_text);
+        result.putInt(RES_NOTIF_ICON, android.R.drawable.stat_notify_error); // optional. default is a warning sign
+        result.putInt(RES_DIALOG_TEXT, R.string.crash_dialog_text);
+        result.putInt(RES_DIALOG_ICON, android.R.drawable.ic_dialog_info); //optional. default is a warning sign
+        result.putInt(RES_DIALOG_TITLE, R.string.crash_dialog_title); // optional. default is your application name 
+        result.putInt(RES_DIALOG_COMMENT_PROMPT, R.string.crash_dialog_comment_prompt); // optional. when defined, adds a user text field input with this text resource as a label
+        return result;
+    }
+}}}
+
+In your strings.xml:
+{{{
+	<string name="crash_notif_ticker_text">Unexpected error, please send a report...</string>
+	<string name="crash_notif_title">CrashTest has crashed...</string>
+	<string name="crash_notif_text">Please click here to help fix the issue.</string>
+		
+	<string name="crash_dialog_title">CrashTest has crashed</string>
+	<string name="crash_dialog_text">An unexpected error occurred forcing the
+		application to stop. Please help us fix this by sending us error data,
+		all you have to do is click \'OK\'.</string>
+	<string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
+}}}
 
 == How-to use it to send a report to my own php/java/python/whateveryouwant self-hosted script ? ==
 
