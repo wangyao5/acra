@@ -70,7 +70,7 @@ public Bundle getCrashResources() {
 }
 }}}
 
-In your strings.xml :
+In your {{{strings.xml}}} :
 {{{
 <string name="crash_toast_text">Ooooops ! I crashed, but a report has been sent to my developer to help him fix the issue !</string>
 }}}
@@ -93,7 +93,7 @@ public Bundle getCrashResources() {
 }
 }}}
 
-In your strings.xml:
+In your {{{strings.xml}}}:
 {{{
 <string name="crash_notif_ticker_text">Unexpected error, please send a report...</string>
 <string name="crash_notif_title">CrashTest has crashed...</string>
@@ -128,3 +128,32 @@ ErrorReporter.getInstance().addCustomData("myVariable", myVariable);
 }}}
 
 All your custom data (only latest value for each one) will be added in the column "custom" just before the stack trace, one key = value pair per line.
+
+== Can I let the user disable error reporting ? ==
+
+Yes, you can !
+
+All you have to do is add to your preferences xml file a CheckBoxPreference :
+{{{
+<CheckBoxPreference android:key="acra.disable"
+	android:title="@string/pref_disable_acra"
+	android:summaryOn="@string/pref_acra_disabled"
+	android:summaryOff="@string/pref_acra_enabled"
+	android:defaultValue="false"/>
+}}}
+
+Then add to your strings.xml files the 3 corresponding string resources.
+
+== Can I send reports for catched exceptions ? or for unexpexted application state without an exception ?==
+
+As a good programmer, your code is full of try/catch statements, and sometimes an interesting (unexpected) exception might be catched in one of these.
+
+You could also want your application to send a report without any Exception thrown, just because you know that your application is in an unexpected state.
+
+Both of these needs can be covered by this :
+
+{{{
+ErrorReporter.getInstance().handleException(catchedException);
+}}} 
+
+You can provide any caught or custom Exception, or even {{{null}}} if you don't have any to provide. 
