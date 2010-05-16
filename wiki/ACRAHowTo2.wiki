@@ -106,7 +106,7 @@ In your {{{strings.xml}}}:
 <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
 }}}
 
-== How-to use it to send a report to my own php/java/python/whateveryouwant self-hosted script ? ==
+== May I send reports to my own php/java/python/whateveryouwant self-hosted script ? ==
 
 Just override the getFormUri() in your Application class extending CrashReportingApplication :
 
@@ -146,14 +146,14 @@ Then add to your strings.xml files the 3 corresponding string resources.
 
 == Can I send reports for caught exceptions ? or for unexpected application state without any exception ?==
 
-As a good programmer, your code is full of try/catch statements, and sometimes an interesting (unexpected) exception might be catched in one of these.
+As a good programmer, your code is full of try/catch statements, and sometimes an interesting (unexpected) exception might be caught in one of these.
 
 You could also want your application to send a report without any Exception thrown, just because you know that your application is in an unexpected state.
 
 Both of these needs can be covered by this :
 
 {{{
-ErrorReporter.getInstance().handleException(catchedException);
+ErrorReporter.getInstance().handleException(caughtException);
 }}} 
 
 You can provide any caught or custom Exception, or even {{{null}}} if you don't have any to provide. 
