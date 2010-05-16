@@ -144,7 +144,7 @@ All you have to do is add to your preferences xml file a CheckBoxPreference :
 
 Then add to your strings.xml files the 3 corresponding string resources.
 
-== Can I send reports for catched exceptions ? or for unexpexted application state without an exception ?==
+== Can I send reports for caught exceptions ? or for unexpected application state without any exception ?==
 
 As a good programmer, your code is full of try/catch statements, and sometimes an interesting (unexpected) exception might be catched in one of these.
 
