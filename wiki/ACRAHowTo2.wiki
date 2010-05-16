@@ -60,6 +60,7 @@ http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_ticker.png h
 Enabling user notification only requires you to override one method in your Application class (where you provide your formId) :
 
   * Toast notification:
+
 {{{
 @Override
 public Bundle getCrashResources() {
@@ -75,6 +76,7 @@ In your strings.xml :
 }}}
 
   * Status bar notification:
+
 {{{
 @Override
 public Bundle getCrashResources() {
