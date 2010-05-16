@@ -51,7 +51,11 @@ ACRA offers all these options, and allow you to customize your application crash
 
 2 main notification modes are available:
   * display a simple Toast with your developer designed text
+http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_toast.png
   * display a status bar notification, then offering the user a dialog asking him to send the report or not, with an optional comment field you can chose to add or not.
+http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_ticker.png http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif.png http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_dialog_full.png
+
+
 
 == How-to use it to send a report to my own php/java/python/whateveryouwant self-hosted script ? ==
 
