@@ -6,7 +6,7 @@
 ACRA allows your Android application to send Crash Reports in a Google Docs spreadsheet.
 This tutorial will guide you in installing ACRA in your application project.
 
-= Details =
+= Setting-up your project =
 
 Step by step installation of the ACRA library in an existing application project:
   * Get http://acra.googlecode.com/files/acra-2.0.0-test.zip and open the archive 
