@@ -1,4 +1,6 @@
 #labels Phase-Deploy
+= This version of ACRA is in testing phase. Feel free to test it on your own projects but we would advize you not to put it on public apps until we validated it. ==
+
 <wiki:toc max_depth="2" />
 
 = Introduction =
