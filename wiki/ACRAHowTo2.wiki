@@ -113,9 +113,15 @@ In your {{{strings.xml}}}:
 In your AndroidManifest.xml
 {{{
 <application ...>
+
+    ....
+
     <activity android:name="org.acra.CrashReportDialog"
         android:theme="@android:style/Theme.Dialog"
         android:launchMode="singleInstance" />
+
+    ....
+
 </application>
 }}}
 
