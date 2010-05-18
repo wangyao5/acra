@@ -110,7 +110,7 @@ In your {{{strings.xml}}}:
 <string name="crash_dialog_ok_toast">Thank you !</string>
 }}}
 
-In your AndroidManifest.xml
+In your {{{AndroidManifest.xml}}}
 {{{
 <application ...>
 
