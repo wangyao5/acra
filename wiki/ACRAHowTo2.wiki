@@ -110,6 +110,15 @@ In your {{{strings.xml}}}:
 <string name="crash_dialog_ok_toast">Thank you !</string>
 }}}
 
+In your AndroidManifest.xml
+{{{
+<application ...>
+    <activity android:name="org.acra.CrashReportDialog"
+        android:theme="@android:style/Theme.Dialog"
+        android:launchMode="singleInstance" />
+</application>
+}}}
+
 == May I send reports to my own php/java/python/whateveryouwant self-hosted script ? ==
 
 Just override the getFormUri() in your Application class extending CrashReportingApplication :
