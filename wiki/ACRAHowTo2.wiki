@@ -1,6 +1,4 @@
 #labels Phase-Deploy
-= This version of ACRA is in testing phase. Feel free to test it on your own projects but we would advise you not to put it on public apps until we validate it. ==
-
 <wiki:toc max_depth="2" />
 
 = Introduction =
@@ -11,9 +9,9 @@ This tutorial will guide you in installing ACRA in your application project.
 = Setting-up your project =
 
 Step by step installation of the ACRA library in an existing application project:
-  * Get http://acra.googlecode.com/files/acra-2.0.3-test.zip and open the archive 
+  * Get http://acra.googlecode.com/files/acra-2.0.3.zip and open the archive 
   * Login to your Google Docs account
-  * Import the {{{CrashReports-template.csv}}} contained in the archive (acra-2.0.3-test/CrashReport/doc)
+  * Import the {{{CrashReports-template.csv}}} contained in the archive (acra-2.0.3/CrashReport/doc)
   * Open the imported document
   * Rename it as you like
   * In the menu, click on Forms / Create form
@@ -22,7 +20,7 @@ Step by step installation of the ACRA library in an existing application project
   * Copy the {{{formId}}} displayed in the link at the bottom of the form creation page
   * Open your Eclipse project
   * Create a {{{lib}}} folder
-  * Add the {{{acra-2.0.3-test.jar}}} from the archive (acra-2.0.3-test/CrashReport/build) in the {{{lib}}} folder
+  * Add the {{{acra-2.0.3.jar}}} from the archive (acra-2.0.3/CrashReport/build) in the {{{lib}}} folder
   * Right-click on the jar file / add to build path
   * Create a new class in your package root
     * Give it a name like : {{{MyApplication}}}, make it extend {{{org.acra.CrashReportingApplication}}}
