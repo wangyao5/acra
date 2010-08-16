@@ -23,8 +23,8 @@ Step by step installation of the ACRA library in an existing application project
   * Add the {{{acra-2.0.3.jar}}} from the archive (acra-2.0.3/CrashReport/build) in the {{{lib}}} folder
   * Right-click on the jar file / add to build path
   * Create a new class in your package root
-    * Give it a name like : {{{MyApplication}}}, make it extend {{{org.acra.CrashReportingApplication}}}
-    * Override the abstract {{{getFormId()}}} method, returning a simple String containing the form Id of your Google Docs form :
+    * Give it a name like: {{{MyApplication}}}, make it extend {{{org.acra.CrashReportingApplication}}}
+    * Override the abstract {{{getFormId()}}} method, returning a simple String containing the form Id of your Google Docs form:
 
 {{{
     @Override
@@ -35,8 +35,17 @@ Step by step installation of the ACRA library in an existing application project
 
   * Open the android manifest editor ({{{AndroidManifest.xml}}}
     * In the *Application tab*, click on the *Browse* button next to the *Name* field
-    * Select your newly created Application class ({{{MyApplication}}})
-    * In the *Permissions* tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}
+    * Select your newly created Application class ({{{MyApplication}}}).
+    This adds an {{{android:name}}} attribute to your {{{application}}} element like this (put the full name with package if the application class package is not the same as manifest root element declared pakage):
+{{{
+<application android:icon="@drawable/icon" android:label="@string/app_name"
+                android:name="MyApplication">
+}}}
+    * In the *Permissions* tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}.
+    This adds the following element as a child of the {{{manifest}}} element:
+{{{
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+}}}
   * *_THE END_* - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
 
 *Bonus :* Google Docs spreadsheet allow to configure notifications on changes. Juste set your preferences in  : Share (Top right button) / Set notification rules and get notified by mail when reports are sent !
