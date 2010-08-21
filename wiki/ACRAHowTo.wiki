@@ -125,7 +125,9 @@ In your {{{AndroidManifest.xml}}}
 
     <activity android:name="org.acra.CrashReportDialog"
         android:theme="@android:style/Theme.Dialog"
-        android:launchMode="singleInstance" />
+        android:launchMode="singleInstance"
+        android:excludeFromRecents="true"
+        android:finishOnTaskLaunch="true" />
 
     ....
 
