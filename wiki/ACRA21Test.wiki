@@ -12,15 +12,14 @@ Please test it and report any issue so we can try to go out of the testing phase
 What has to be tested ?
 
   * Status Bar Notification / Dialog
-    * Relaunching crashed app from home key recent app shortcut should not display
-crash report dialog again (Issue 6). You will need to update your manifest to add two attributes to your CrashReportDialog Activity declaration ({{{excludeFromRecents and finishOnTaskLaunch}}}):
-{{{    
+    * Relaunching crashed app from home key recent app shortcut should not display crash report dialog again (Issue 6). You will need to update your manifest to add two attributes to your CrashReportDialog Activity declaration ({{{excludeFromRecents and finishOnTaskLaunch}}}):
+    {{{    
     <activity android:name="org.acra.CrashReportDialog"
         android:theme="@android:style/Theme.Dialog"
         android:launchMode="singleInstance"
         android:excludeFromRecents="true"
         android:finishOnTaskLaunch="true" />
-}}}
+    }}}
 
   * Pending on-demand silent notifications (Issue 7). When using ACRA with Toast or Notification mode, sending a silent report with ErrorReporter.handleSilentException() could result to a user notification if the silent report could not be sent immediately. There was nothing stored indicating that it was silent so they were processed like any other crash report. This should now be fixed in ACRA 2.1. 
 
