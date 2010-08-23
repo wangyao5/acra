@@ -13,7 +13,7 @@ What has to be tested ?
 
   * Status Bar Notification / Dialog
     * Relaunching crashed app from home key recent app shortcut should not display
-crash report dialog again (Issue 6). You will need to update your manifest to add two attributes to your CrashReportDialog Activity declaration ({{{excludeFromRecents and finishOnTaskLaunch}}}:
+crash report dialog again (Issue 6). You will need to update your manifest to add two attributes to your CrashReportDialog Activity declaration ({{{excludeFromRecents and finishOnTaskLaunch}}}):
     {{{    <activity android:name="org.acra.CrashReportDialog"
         android:theme="@android:style/Theme.Dialog"
         android:launchMode="singleInstance"
