@@ -3,7 +3,7 @@
 
 = Introduction =
 
-A new version of the ACRA library has to be tested. It includes bugfixes for the Status Bar Notification user interaction mode and on demand silent reports, plus a couple of new API features regarding library activation in applications preferences.
+[http://code.google.com/p/acra/downloads/detail?name=acra-2.1.0-test.jar A new version] of the ACRA library has to be tested. It includes bugfixes for the Status Bar Notification user interaction mode and on demand silent reports, plus a couple of new API features regarding library activation in applications preferences.
 
 Please test it and [http://code.google.com/p/acra/issues/list report any issue] so we can try to go out of the testing phase with a clean new version of the library in a couple of weeks.
 
