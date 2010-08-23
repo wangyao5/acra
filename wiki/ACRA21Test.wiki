@@ -26,3 +26,10 @@ What has to be tested ?
   * Provide a way to override the preferences name for storing 'acra.disable' (Issue 4). You can now override {{{CrashReportingApplication.getACRASharedPreferences()}}} in your {{{Application}}} class and return any SharedPreferences object. ACRA will listen to changes on these {{{SharedPreferences}}} to detect user enabling/disabling crash reports in your preferences screen. If you don't override the method, the {{{Application}}} default {{{SharedPreferences}}} are used.
 
   * Provide a way to let the developers chose to make users *check* a preference *to enable* crash reports (requested in a comment of Issue 4) instead of *checking to disable*. You can now alternatively use the preference name '{{{acra.enable}}}'. It has the opposite effect of '{{{acra.disable}}}'. 
+
+= Feedback =
+Please add new issues to the [http://code.google.com/p/acra/issues/list issue tracker] to allow proper management of any problem with the new library.
+
+Comments on this page are also welcome if you tested the library and everything was ok (a few details about what you did test would be nice too).
+
+Thank you for your help !
