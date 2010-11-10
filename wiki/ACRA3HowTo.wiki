@@ -5,7 +5,7 @@
 
 This is a new version of the ACRAHowTo document updated to showcase the new ACRA installation and configuration process that will be introduced in ACRA v3.
 
-The main goal of this new version is to avoid the need of subclassing an ACRA-specific android Application class. This previous requirement was preventing developers to use both ACRA and other rich-featured libs/frameworks like GreenDroid, RoboGuice, Droid-Fu and others.
+The main goal of this new version is to avoid the need of subclassing an ACRA-specific android Application class. This previous requirement was preventing developers to use both ACRA and other rich-featured libs/frameworks like [https://github.com/cyrilmottier/GreenDroid GreenDroid], [http://code.google.com/p/roboguice/ RoboGuice], [https://github.com/kaeppler/droid-fu Droid-Fu] and others.
 
 This goal has been achieved by moving the configuration of ACRA to a new ACRA-specific annotation @ReportsCrashes.
 
