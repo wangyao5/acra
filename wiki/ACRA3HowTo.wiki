@@ -9,7 +9,7 @@ The main goal of this new version is to avoid the need of subclassing an ACRA-sp
 
 This goal has been achieved by moving the configuration of ACRA to a new ACRA-specific annotation @ReportsCrashes.
 
-ACRA v3 implementation is mostly completed, just need real internal tests before publishing a public test release.
+ACRA v3 implementation is mostly completed, just need real internal tests before publishing a public test release. Source is committed to the trunk.
 
 = Introduction =
 
