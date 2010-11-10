@@ -1,4 +1,4 @@
-#labels Phase-Deploy,Featured
+#labels Phase-Test
 <wiki:toc max_depth="2" />
 
 = Preamble =
@@ -190,8 +190,8 @@ Or if you prefer to allow your user to check the box to enable reporting:
 {{{
 <CheckBoxPreference android:key="acra.enabled"
 	android:title="@string/pref_disable_acra"
-	android:summaryOn="@string/pref_acra_disabled"
-	android:summaryOff="@string/pref_acra_enabled"
+	android:summaryOn="@string/pref_acra_enabled"
+	android:summaryOff="@string/pref_acra_disabled"
 	android:defaultValue="true"/>
 }}}
 
