@@ -21,13 +21,13 @@ This tutorial will guide you in installing ACRA in your application project.
 Step by step installation of the ACRA library in an existing application project:
   * Get http://acra.googlecode.com/files/acra-3.X.Y.zip and open the archive 
   * Login to your Google Docs account
-  * Import the {{{CrashReports-template.csv}}} contained in the archive (acra-3.X.Y/CrashReport/doc)
+  * Import the {{{CrashReports-template.csv}}} contained in the archive (acra-3.X.Y/CrashReport/doc), with conversion enabled
   * Open the imported document
   * Rename it as you like
   * In the menu, click on Forms / Create form
   * Add anything in the form description just to enable the *Save* button
   * Save the form
-  * Copy the {{{formId}}} displayed in the link at the bottom of the form creation page
+  * Copy the {{{formkey}}} displayed in the link at the bottom of the form creation page
   * Open your Eclipse project
   * Create a {{{lib}}} folder
   * Add the {{{acra-3.X.Y.jar}}} from the archive (acra-3.X.Y/CrashReport/build) in the {{{lib}}} folder
@@ -37,7 +37,7 @@ Step by step installation of the ACRA library in an existing application project
     * Above the declaration of the {{{MyApplication}}} class, add the @ReportsCrashes annotation with your Google Docs form Id as a parameter 
 
 {{{
-    @ReportsCrashes(formId = "dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ") 
+    @ReportsCrashes(formKey = "dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ") 
     public class MyApplication extends Application {
     }
 }}}
@@ -88,7 +88,7 @@ Enabling user notification only requires you to add parameters to the @ReportsCr
   * Toast notification:
 
 {{{
-@ReportsCrashes(formId="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
+@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
 				mode = ReportingInteractionMode.TOAST,
 				resToastText = R.string.crash_toast_text)
 public class MyApplication extends Application {
@@ -103,7 +103,7 @@ In your {{{strings.xml}}} :
   * Status bar notification:
 
 {{{
-@ReportsCrashes(formId="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
+@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
 				mode = ReportingInteractionMode.NOTIFICATION,
 				resNotifTickerText = R.string.crash_notif_ticker_text,
 				resNotifTitle = R.string.crash_notif_title,
@@ -154,7 +154,7 @@ In your {{{AndroidManifest.xml}}}
 Just use the formUri parameter of the @ReportsCrashes annotation in your Application class :
 
 {{{
-@ReportsCrashes(formId="", // will not be used
+@ReportsCrashes(formKey="", // will not be used
 				formUri="http://yourserver.com/yourscript",
 				mode = ReportingInteractionMode.TOAST,
 				resToastText = R.string.crash_toast_text)
