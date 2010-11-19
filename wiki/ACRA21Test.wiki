@@ -1,5 +1,5 @@
 #summary Fixes and features to be tested in acra-2.1-test
-#labels Featured,Phase-QA
+#labels Deprecated,Phase-QA
 
 = Introduction =
 
