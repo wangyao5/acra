@@ -19,9 +19,9 @@ This tutorial will guide you in installing ACRA in your application project.
 = Setting-up your project =
 
 Step by step installation of the ACRA library in an existing application project:
-  * Get http://acra.googlecode.com/files/acra-3.X.Y.zip and open the archive 
+  * Get http://acra.googlecode.com/files/acra-3.0.0.zip and open the archive 
   * Login to your Google Docs account
-  * Import the {{{CrashReports-template.csv}}} contained in the archive (acra-3.X.Y/CrashReport/doc), with conversion enabled
+  * Import the {{{CrashReports-template.csv}}} contained in the archive (acra-3.0.0/CrashReport/doc), with conversion enabled
   * Open the imported document
   * Rename it as you like
   * In the menu, click on Forms / Create form
@@ -30,7 +30,7 @@ Step by step installation of the ACRA library in an existing application project
   * Copy the {{{formkey}}} displayed in the link at the bottom of the form creation page
   * Open your Eclipse project
   * Create a {{{lib}}} folder
-  * Add the {{{acra-3.X.Y.jar}}} from the archive (acra-3.X.Y/CrashReport/build) in the {{{lib}}} folder
+  * Add the {{{acra-3.0.0.jar}}} from the archive (acra-3.0.0/CrashReport/build) in the {{{lib}}} folder
   * Right-click on the jar file / add to build path
   * Create a new class in your package root
     * Give it a name like: {{{MyApplication}}}, make it extend {{{android.app.Application}}}
