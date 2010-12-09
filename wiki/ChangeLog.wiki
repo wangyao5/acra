@@ -1,3 +1,9 @@
+Trunk:
+  * Fixed: handleSilentException() was sending all pending reports. Now sends only pending silent reports. (Issue 16)
+  * Fixed: when several pending reports are present with both silent and non-silent reports, silent reports were sent first. Now send in chronological order.
+  * Fixed: ACRA was logging errors in logcat some specifically caught exceptions which are caused on purpose by ACRA for some android backward compatibility tests.  
+  * Fixed performance issues (Issue 19) in report data collection for 1.X android devices (change of Properties storage method only for these android versions). Overall Report data collection time lowered from more than 4 seconds (8 for 1.X devices) to 1-2 seconds (emulator times).
+  * Fixed: unwanted Toast notification on application start for Silent reports
 
 ACRA-3.0.0
   * Fixed an issue on the SharedPreferences listener which could lead to user preferences changes for reports activation state not being applied before a full application restart.
