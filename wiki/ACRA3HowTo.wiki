@@ -196,11 +196,11 @@ Or if you prefer to allow your user to check the box to enable reporting:
 	android:defaultValue="true"/>
 }}}
 
-Then add to your strings.xml files the 3 corresponding string resources.
+Then add to your {{{strings.xml}} files the 3 corresponding string resources.
 
-If you SharedPreferences are not the application default SharedPreferences, you can provide ACRA with your own SharedPreferences name using the following @ReportsCrashes parameters:
-  * sharedPreferencesName: Name of the SharedPreferences that will host the acra.enable or acra.disable preference.
-  * sharedPreferencesMode: The mode that you need for the SharedPreference file creation: Context#MODE_PRIVATE, Context#MODE_WORLD_READABLE or Context#MODE_WORLD_WRITEABLE. 
+If your {{{SharedPreferences}}} are not the application default {{{SharedPreferences}}}, you can provide ACRA with your own {{{SharedPreferences}}} name using the following {{{@ReportsCrashes}}} parameters:
+  * {{{sharedPreferencesName}}}: Name of the {{{SharedPreferences}}} that will host the {{{acra.enable}}} or {{{acra.disable}}} preference.
+  * {{{sharedPreferencesMode}}}: The mode that you need for the {{{SharedPreference}}} file creation: {{{Context.MODE_PRIVATE}}}, {{{Context.MODE_WORLD_READABLE}}} or {{{Context.MODE_WORLD_WRITEABLE}}}. 
 
 == Can I send reports for caught exceptions ? or for unexpected application state without any exception ?==
 
