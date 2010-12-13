@@ -1,9 +1,8 @@
-Trunk:
+ACRA-3.1.0-RC1:
   * Changed: (Issue 15) deprecated addCustomData(), use putCustomData() instead.
   * New: (Issue 15) added getCustomData() and removeCustomData()
   * Fixed: associate user comment from dialog to the latest non silent report instead of latest report.
   * New: (Issue 20) added methods to delete pending silent or non silent reports.
-
   * Fixed: handleSilentException() was sending all pending reports. Now sends only pending silent reports. (Issue 16)
   * Fixed: when several pending reports are present with both silent and non-silent reports, silent reports were sent first. Now send in chronological order.
   * Fixed: ACRA was logging errors in logcat some specifically caught exceptions which are caused on purpose by ACRA for some android backward compatibility tests.  
