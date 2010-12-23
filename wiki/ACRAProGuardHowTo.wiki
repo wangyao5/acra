@@ -18,15 +18,15 @@ http://code.google.com/p/acra/wiki/ACRA3HowTo/
 
 = Details =
 
-!ProGuard is a tool that shrinks, optimizes and obfuscates your code and is included when you create a new Android project in Eclipse.  In order to use !ProGuard with ACRA you will need to enable !ProGuard by making a change to your default.properties file and by making a few small changes to your !ProGuard configuration file (proguard.cfg).
+!ProGuard is a tool that shrinks, optimizes and obfuscates your code and is included when you create a new Android project in Eclipse.  In order to use !ProGuard with ACRA you will need to enable !ProGuard by making a change to your *_default.properties_* file and by making a few small changes to your !ProGuard configuration file (*_proguard.cfg_*).
 
-First, in order to enable !ProGuard, add the following line to your default.properties file which is normally located in the root of your project:
+First, in order to enable !ProGuard, add the following line to your *_default.properties_* file which is normally located in the root of your project:
 
 {{{
 proguard.config=proguard.cfg
 }}}
 
-Next, you will need to make a few changes to your proguard.cfg file.  The default proguard.cfg has the follow entries at the time of this writing:
+Next, you will need to make a few changes to your *_proguard.cfg_* file.  The default *_proguard.cfg_* has the follow entries at the time of this writing:
 
 {{{
 -optimizationpasses 5
@@ -59,9 +59,9 @@ Next, you will need to make a few changes to your proguard.cfg file.  The defaul
 }
 }}}
 
-If you are not using the default proguard.cfg you will need to note your differences from the default when applying changes noted below.  Also, please be aware that any customizations not in the default proguard.cfg may cause side effects that are outside the scope of this document.  The settings below were tested and do work but please verify they work with your application. 
+If you are not using the default *_proguard.cfg_* you will need to note your differences from the default when applying changes noted below.  Also, please be aware that any customizations not in the default *_proguard.cfg_* may cause side effects that are outside the scope of this document.  The settings below were tested and do work but please verify they work with your application. 
 
-Add the following to your proguard.cfg file (each entry is commented):
+Add the following to your *_proguard.cfg_* file (each entry is commented):
 
 {{{
 #ACRA specifics
