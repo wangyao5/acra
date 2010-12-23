@@ -124,7 +124,7 @@ If ACRA is working properly, you should see the results populated in your Google
 12-22 10:54:21.153: DEBUG/ACRA(25633): <title>Thanks!</title>
 }}}
 
-If the LogCat output stops after the "Connect to `http://spreadsheets.google.com/formResponse?formkey="your form key here"...`" line then most likely your emulator or device is unable to reach the Internet.
+If the !LogCat output stops after the "Connect to `http://spreadsheets.google.com/formResponse?formkey="your form key here"...`" line then most likely your emulator or device is unable to reach the Internet.
 
 *Remember to remove your crash code when you are done testing!*
 
