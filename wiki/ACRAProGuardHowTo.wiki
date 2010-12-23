@@ -108,7 +108,7 @@ String sCrashString = null;
 Log.e("MyApp", sCrashString.toString() );
 }}}
 
-If ACRA is working properly, you should see the results populated in your Google document that you created.  It should give you a stack trace with the file name and the line number where the crash happened.  Also, you should see something like this in your 'LogCat' viewer (assuming you haven't stripped out logging):
+If ACRA is working properly, you should see the results populated in your Google document that you created.  It should give you a stack trace with the file name and the line number where the crash happened.  Also, you should see something like this in your '!LogCat' viewer (assuming you haven't stripped out logging):
 
 {{{
 12-22 10:54:20.533: DEBUG/ACRA(25633): Retrieve application default SharedPreferences.
