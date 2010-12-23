@@ -1,0 +1,131 @@
+#labels Featured
+= Using ACRA with ProGuard =
+
+= Introduction =
+
+This Wiki will show you how to use ACRA with ProGuard enabled.  It does not try to explain all the details of using ProGuard as there are many other good resources for that including:
+
+http://proguard.sourceforge.net/index.html/
+
+http://developer.android.com/guide/developing/tools/proguard.html/
+
+http://android-developers.blogspot.com/2010/09/proguard-android-and-licensing-server.html/
+
+It also assumes you have ACRA installed in your project and setup correctly.  If you don't have ACRA setup please read the 'how to' first:
+
+http://code.google.com/p/acra/wiki/ACRA3HowTo/
+
+
+= Details =
+
+ProGuard is a tool that shrinks, optimizes and obfuscates your code and is included when you create a new Android project in Eclipse.  In order to use ProGuard with ACRA you will need to enable ProGuard by making a change to your default.properties file and by making a few small changes to your ProGuard configuration file (proguard.cfg).
+
+First, in order to enable ProGuard, add the following line to your default.properties file which is normally located in the root of your project:
+
+{{{
+proguard.config=proguard.cfg
+}}}
+
+Next, you will need to make a few changes to your proguard.cfg file.  The default proguard.cfg has the follow entries at the time of this writing:
+
+{{{
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class com.android.vending.licensing.ILicensingService
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+}}}
+
+If you are not using the default proguard.cfg you will need to note your differences from the default when applying changes noted below.  Also, please be aware that any customizations not in the default proguard.cfg may cause side effects that are outside the scope of this document.  The settings below were tested and do work but please verify they work with your application. 
+
+Add the following to your proguard.cfg file (each entry is commented):
+
+{{{
+#ACRA specifics
+# we need line numbers in our stack traces otherwise they are pretty useless
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+
+# ACRA needs "annotations" so add this... 
+-keepattributes *Annotation*
+
+# keep this class so that logging will show 'ACRA' and not a obfuscated name like 'a'.
+# Note: if you are removing log messages elsewhere in this file then this isn't necessary
+-keep class org.acra.ACRA {
+	*;
+}
+
+# keep this around for some enums that ACRA needs
+-keep class org.acra.ReportingInteractionMode {
+   *;
+}
+
+# keep this otherwise it is removed by ProGuard
+-keep public class org.acra.ErrorReporter
+{
+public void addCustomData(java.lang.String,java.lang.String);
+}
+
+# keep this otherwise it is removed by ProGuard
+-keep public class org.acra.ErrorReporter
+{
+public org.acra.ErrorReporter$ReportsSenderWorker handleSilentException(java.lang.Throwable);
+}
+}}}
+
+= Testing ACRA with ProGuard =
+
+ProGuard is only enabled in release builds of an Android Project.  'Release builds' are created when you create a .APK file using `<File><Export><Export Android Application><...>` in Eclipse.  So, in order to test if ProGuard and ACRA are working correctly you will need to make a release build and install it on either an Android emulator or an Android device.  Also note, ACRA may not be able to reach the Internet on an emulator so you may need to test on a real device to see the captured crash information in your Google document.
+
+Next, although you don't necessarily have to do this, it might be a good idea to put code in your application that causes an 'un-caught crash' which is outside of any try/catch blocks you have (temporarily of course.)  Since ProGuard may remove 'un-needed code', make sure your crash logic is complex enough where it won't be stripped out by the ProGuard optimizer.  For example:
+
+{{{
+// cause a crash...
+String sCrashString = null;
+Log.e("MyApp", sCrashString.toString() );
+}}}
+
+If ACRA is working properly, you should see the results populated in your Google document that you created.  It should give you a stack trace with the file name and the line number where the crash happened.  Also, you should see something like this in your 'LogCat' viewer (assuming you haven't stripped out logging):
+
+{{{
+12-22 10:54:20.533: DEBUG/ACRA(25633): Retrieve application default SharedPreferences.
+12-22 10:54:20.533: DEBUG/ACRA(25633): Set OnSharedPreferenceChangeListener.
+12-22 10:54:20.533: DEBUG/ACRA(25633): ACRA is enabled for com.yourdoman.yourapp, intializing...
+12-22 10:54:20.553: DEBUG/ACRA(25633): Looking for error files in /data/data/com.yourdomain.yourapp/files
+12-22 10:54:20.583: DEBUG/ACRA(25633): Writing crash report file.
+12-22 10:54:20.603: DEBUG/ACRA(25633): Looking for error files in /data/data/com.yourdomain.yourapp/files
+12-22 10:54:20.613: DEBUG/ACRA(25633): Connect to http://spreadsheets.google.com/formResponse?formkey="your form key here" &amp;ifq
+12-22 10:54:20.843: DEBUG/ACRA(25633): Posting crash report data
+12-22 10:54:20.843: DEBUG/ACRA(25633): Reading response
+12-22 10:54:21.153: DEBUG/ACRA(25633): <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+12-22 10:54:21.153: DEBUG/ACRA(25633): <title>Thanks!</title>
+}}}
+
+If the LogCat output stops after the "Connect to `http://spreadsheets.google.com/formResponse?formkey="your form key here"...`" line then most likely your emulator or device is unable to reach the Internet.
+
+*Remember to remove your crash code when you are done testing!*
+
+Happy debugging.
