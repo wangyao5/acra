@@ -5,15 +5,15 @@
 
 This Wiki will show you how to use ACRA with !ProGuard enabled.  It does not try to explain all the details of using !ProGuard as there are many other good resources for that including:
 
-http://proguard.sourceforge.net/index.html/
+http://proguard.sourceforge.net/index.html
 
 http://developer.android.com/guide/developing/tools/proguard.html
 
-http://android-developers.blogspot.com/2010/09/proguard-android-and-licensing-server.html/
+http://android-developers.blogspot.com/2010/09/proguard-android-and-licensing-server.html
 
 It also assumes you have ACRA installed in your project and setup correctly.  If you don't have ACRA setup please read the 'how to' first:
 
-http://code.google.com/p/acra/wiki/ACRA3HowTo/
+http://code.google.com/p/acra/wiki/ACRA3HowTo
 
 
 = Details =
