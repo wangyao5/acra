@@ -1,5 +1,5 @@
 #labels Featured
-= Using ACRA with ProGuard =
+= Using ACRA with !ProGuard =
 
 = Introduction =
 
