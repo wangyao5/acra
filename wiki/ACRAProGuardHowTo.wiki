@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This Wiki will show you how to use ACRA with ProGuard enabled.  It does not try to explain all the details of using ProGuard as there are many other good resources for that including:
+This Wiki will show you how to use ACRA with !ProGuard enabled.  It does not try to explain all the details of using !ProGuard as there are many other good resources for that including:
 
 http://proguard.sourceforge.net/index.html/
 
@@ -18,9 +18,9 @@ http://code.google.com/p/acra/wiki/ACRA3HowTo/
 
 = Details =
 
-ProGuard is a tool that shrinks, optimizes and obfuscates your code and is included when you create a new Android project in Eclipse.  In order to use ProGuard with ACRA you will need to enable ProGuard by making a change to your default.properties file and by making a few small changes to your ProGuard configuration file (proguard.cfg).
+!ProGuard is a tool that shrinks, optimizes and obfuscates your code and is included when you create a new Android project in Eclipse.  In order to use !ProGuard with ACRA you will need to enable !ProGuard by making a change to your default.properties file and by making a few small changes to your !ProGuard configuration file (proguard.cfg).
 
-First, in order to enable ProGuard, add the following line to your default.properties file which is normally located in the root of your project:
+First, in order to enable !ProGuard, add the following line to your default.properties file which is normally located in the root of your project:
 
 {{{
 proguard.config=proguard.cfg
@@ -96,11 +96,11 @@ public org.acra.ErrorReporter$ReportsSenderWorker handleSilentException(java.lan
 }
 }}}
 
-= Testing ACRA with ProGuard =
+= Testing ACRA with !ProGuard =
 
-ProGuard is only enabled in release builds of an Android Project.  'Release builds' are created when you create a .APK file using `<File><Export><Export Android Application><...>` in Eclipse.  So, in order to test if ProGuard and ACRA are working correctly you will need to make a release build and install it on either an Android emulator or an Android device.  Also note, ACRA may not be able to reach the Internet on an emulator so you may need to test on a real device to see the captured crash information in your Google document.
+!ProGuard is only enabled in release builds of an Android Project.  'Release builds' are created when you create a .APK file using `<File><Export><Export Android Application><...>` in Eclipse.  So, in order to test if !ProGuard and ACRA are working correctly you will need to make a release build and install it on either an Android emulator or an Android device.  Also note, ACRA may not be able to reach the Internet on an emulator so you may need to test on a real device to see the captured crash information in your Google document.
 
-Next, although you don't necessarily have to do this, it might be a good idea to put code in your application that causes an 'un-caught crash' which is outside of any try/catch blocks you have (temporarily of course.)  Since ProGuard may remove 'un-needed code', make sure your crash logic is complex enough where it won't be stripped out by the ProGuard optimizer.  For example:
+Next, although you don't necessarily have to do this, it might be a good idea to put code in your application that causes an 'un-caught crash' which is outside of any try/catch blocks you have (temporarily of course.)  Since !ProGuard may remove 'un-needed code', make sure your crash logic is complex enough where it won't be stripped out by the !ProGuard optimizer.  For example:
 
 {{{
 // cause a crash...
