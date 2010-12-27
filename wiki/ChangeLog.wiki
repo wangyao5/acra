@@ -2,6 +2,7 @@ TRUNK:
   * Changed: eliminated an old Bundle which was used to pass configuration items between various classes. Replaced this with a direct exposition of the ReportsCrashes configuration annotation. This should save some (not much) memory.
   * New: If the application is granted the READ_LOGS permission, reports data include a logcat extract and DropBoxManager events (system tags + developer additional tags).
 
+ACRA-3.1.0: (no changes from 3.1.0-RC1)
 ACRA-3.1.0-RC1:
   * Changed: (Issue 15) deprecated addCustomData(), use putCustomData() instead.
   * New: (Issue 15) added getCustomData() and removeCustomData()
