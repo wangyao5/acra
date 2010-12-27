@@ -29,7 +29,6 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,7 +36,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TreeSet;
 
-import android.Manifest.permission;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -50,6 +48,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Looper;
 import android.os.StatFs;
@@ -152,8 +151,6 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
     private static final String DISPLAY_KEY = "entry.24.single";
     private static final String USER_COMMENT_KEY = "entry.25.single";
     private static final String USER_CRASH_DATE_KEY = "entry.26.single";
-    private static final String LOGCAT_KEY = "entry.27.single";
-    private static final String DROPBOX_KEY = "entry.28.single";
 
     // This is where we collect crash data
     private Properties mCrashProperties = new Properties();
@@ -189,7 +186,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
     private ReportingInteractionMode mReportingInteractionMode = ReportingInteractionMode.SILENT;
 
     // Bundle containing resources to be used in UI elements.
-//    private Bundle mCrashResources = new Bundle();
+    private Bundle mCrashResources = new Bundle();
 
     // The Url we have to post the reports to.
     private static Uri mFormUri;
@@ -351,26 +348,12 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
      */
     private void retrieveCrashData(Context context) {
         try {
-            PackageManager pm = context.getPackageManager();
-
-            // Collect DropBox and logcat
-            if (pm != null) {
-                if (pm.checkPermission(permission.READ_LOGS, context.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
-                    Log.i(ACRA.LOG_TAG, "READ_LOGS granted! ACRA will include LogCat and DropBox data.");
-                    mCrashProperties.put(LOGCAT_KEY, LogCatCollector.collectLogCat((ArrayList<String>[]) null)
-                            .toString());
-                    mCrashProperties.put(DROPBOX_KEY,
-                            DropBoxCollector.read(mContext, ACRA.getConfig().additionalDropBoxTags()));
-                } else {
-                    Log.i(ACRA.LOG_TAG, "READ_LOGS not allowed. ACRA will not include LogCat and DropBox data.");
-                }
-            }
-
             // Device Configuration when crashing
             mCrashProperties.put(INITIAL_CONFIGURATION_KEY, mInitialConfiguration);
             Configuration crashConf = context.getResources().getConfiguration();
             mCrashProperties.put(CRASH_CONFIGURATION_KEY, ConfigurationInspector.toString(crashConf));
 
+            PackageManager pm = context.getPackageManager();
             PackageInfo pi;
             pi = pm.getPackageInfo(context.getPackageName(), 0);
             if (pi != null) {
@@ -450,9 +433,6 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
      * .Thread, java.lang.Throwable)
      */
     public void uncaughtException(Thread t, Throwable e) {
-        Log.e(ACRA.LOG_TAG,
-                "ACRA caught a " + e.getClass().getSimpleName() + " exception for " + mContext.getPackageName()
-                        + ". Building report.");
         // Generate and send crash report
         ReportsSenderWorker worker = handleException(e);
 
@@ -536,7 +516,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
                 @Override
                 public void run() {
                     Looper.prepare();
-                    Toast.makeText(mContext, ACRA.getConfig().resToastText(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, mCrashResources.getInt(ACRA.RES_TOAST_TEXT), Toast.LENGTH_LONG).show();
                     Looper.loop();
                 }
 
@@ -620,14 +600,18 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Default notification icon is the warning symbol
-        int icon = ACRA.getConfig().resNotifIcon();
+        int icon = android.R.drawable.stat_notify_error;
+        if (mCrashResources.containsKey(ACRA.RES_NOTIF_ICON)) {
+            // Use a developer defined icon if available
+            icon = mCrashResources.getInt(ACRA.RES_NOTIF_ICON);
+        }
 
-        CharSequence tickerText = mContext.getText(ACRA.getConfig().resNotifTickerText());
+        CharSequence tickerText = mContext.getText(mCrashResources.getInt(ACRA.RES_NOTIF_TICKER_TEXT));
         long when = System.currentTimeMillis();
         Notification notification = new Notification(icon, tickerText, when);
 
-        CharSequence contentTitle = mContext.getText(ACRA.getConfig().resNotifTitle());
-        CharSequence contentText = mContext.getText(ACRA.getConfig().resNotifText());
+        CharSequence contentTitle = mContext.getText(mCrashResources.getInt(ACRA.RES_NOTIF_TITLE));
+        CharSequence contentText = mContext.getText(mCrashResources.getInt(ACRA.RES_NOTIF_TEXT));
 
         Intent notificationIntent = new Intent(mContext, CrashReportDialog.class);
         notificationIntent.putExtra(EXTRA_REPORT_FILE_NAME, reportFileName);
@@ -820,7 +804,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
                 if (mReportingInteractionMode == ReportingInteractionMode.TOAST && !onlySilentReports) {
                     // Display the Toast in TOAST mode only if there are
                     // non-silent reports.
-                    Toast.makeText(mContext, ACRA.getConfig().resToastText(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, mCrashResources.getInt(ACRA.RES_TOAST_TEXT), Toast.LENGTH_LONG).show();
                 }
 
                 new ReportsSenderWorker().start();
@@ -888,6 +872,15 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
     }
 
     /**
+     * Provide the UI resources necessary for user interaction.
+     * 
+     * @param crashResources
+     */
+    void setCrashResources(Bundle crashResources) {
+        mCrashResources = crashResources;
+    }
+
+    /**
      * Disable ACRA : sets this Thread's {@link UncaughtExceptionHandler} back
      * to the system default.
      */
@@ -939,7 +932,6 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
         } catch (IllegalAccessException e) {
             apiLevel = Integer.parseInt(Build.VERSION.SDK);
         }
-
         return apiLevel;
     }
 }

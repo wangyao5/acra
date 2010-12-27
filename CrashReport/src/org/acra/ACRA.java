@@ -21,6 +21,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -80,6 +81,7 @@ public class ACRA {
      * the notification+dialog mode is not used.
      */
     static final String RES_TOAST_TEXT = "RES_TOAST_TEXT";
+
     /**
      * This is the identifier (value = 666) use for the status bar notification
      * issued when crashes occur.
@@ -100,7 +102,8 @@ public class ACRA {
     public static final String PREF_ENABLE_ACRA = "acra.enable";
 
     private static Application mApplication;
-    static ReportsCrashes mReportsCrashes;
+    private static ReportsCrashes mReportsCrashes;
+    private static Bundle mCrashResources;
     private static OnSharedPreferenceChangeListener mPrefListener;
 
     /**
@@ -176,12 +179,14 @@ public class ACRA {
      * @throws ACRAConfigurationException
      */
     private static void initAcra() throws ACRAConfigurationException {
-        checkCrashResources();
+        initCrashResources();
         Log.d(LOG_TAG, "ACRA is enabled for " + mApplication.getPackageName() + ", intializing...");
         // Initialize ErrorReporter with all required data
         ErrorReporter errorReporter = ErrorReporter.getInstance();
         errorReporter.setFormUri(getFormUri());
         errorReporter.setReportingInteractionMode(mReportsCrashes.mode());
+
+        errorReporter.setCrashResources(getCrashResources());
 
         // Activate the ErrorReporter
         errorReporter.init(mApplication.getApplicationContext());
@@ -191,22 +196,38 @@ public class ACRA {
         errorReporter.checkReportsOnApplicationStart();
     }
 
-    static void checkCrashResources() throws ACRAConfigurationException {
+    static void initCrashResources() throws ACRAConfigurationException {
+        mCrashResources = new Bundle();
         switch (mReportsCrashes.mode()) {
         case TOAST:
             if (mReportsCrashes.resToastText() == 0) {
                 throw new ACRAConfigurationException(
                         "TOAST mode: you have to define the resToastText parameter in your application @ReportsCrashes() annotation.");
             }
+            mCrashResources.putInt(RES_TOAST_TEXT, mReportsCrashes.resToastText());
             break;
         case NOTIFICATION:
-            if (mReportsCrashes.resNotifTickerText() == 0 || mReportsCrashes.resNotifTitle() == 0
-                    || mReportsCrashes.resNotifText() == 0 || mReportsCrashes.resDialogText() == 0) {
+            if (mReportsCrashes.resNotifTickerText() != 0 && mReportsCrashes.resNotifTitle() != 0
+                    && mReportsCrashes.resNotifText() != 0 && mReportsCrashes.resDialogText() != 0) {
+                mCrashResources.putInt(RES_NOTIF_TICKER_TEXT, mReportsCrashes.resNotifTickerText());
+                mCrashResources.putInt(RES_NOTIF_TITLE, mReportsCrashes.resNotifTitle());
+                mCrashResources.putInt(RES_NOTIF_TEXT, mReportsCrashes.resNotifText());
+                mCrashResources.putInt(RES_DIALOG_TEXT, mReportsCrashes.resDialogText());
+                mCrashResources.putInt(RES_NOTIF_ICON, mReportsCrashes.resNotifIcon());
+                mCrashResources.putInt(RES_DIALOG_ICON, mReportsCrashes.resDialogIcon());
+                mCrashResources.putInt(RES_DIALOG_TITLE, mReportsCrashes.resDialogTitle());
+                mCrashResources.putInt(RES_DIALOG_COMMENT_PROMPT, mReportsCrashes.resDialogCommentPrompt());
+                mCrashResources.putInt(RES_DIALOG_OK_TOAST, mReportsCrashes.resDialogOkToast());
+            } else {
                 throw new ACRAConfigurationException(
                         "NOTIFICATION mode: you have to define at least the resNotifTickerText, resNotifTitle, resNotifText, resDialogText parameters in your application @ReportsCrashes() annotation.");
             }
             break;
         }
+    }
+
+    static Bundle getCrashResources() {
+        return mCrashResources;
     }
 
     private static Uri getFormUri() {
@@ -231,10 +252,6 @@ public class ACRA {
             Log.d(ACRA.LOG_TAG, "Retrieve application default SharedPreferences.");
             return PreferenceManager.getDefaultSharedPreferences(mApplication);
         }
-    }
-
-    static ReportsCrashes getConfig() {
-        return mReportsCrashes;
     }
 
 }
