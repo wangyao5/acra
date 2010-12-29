@@ -1,0 +1,3 @@
+  * [ACRA3HowTo Include ACRA in your application]
+  * [ACRAProGuardHowTo Configure ProGuard for ACRA]
+  * [ChangeLog Latest changes]
