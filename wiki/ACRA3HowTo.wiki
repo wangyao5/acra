@@ -23,7 +23,7 @@ Step by step installation of the ACRA library in an existing application project
   * Rename it as you like
   * In the menu, click on Forms / Create form
   * Add anything in the form description just to enable the *Save* button
-    * If you are using a private Google Apps domain, make sure to uncheck the option "Require My Domain sign-in to view this form."
+    * If you are using a private Google Apps domain, make sure to uncheck the option "Require yourdomain.com sign-in to view this form."
   * Save the form
   * Copy the {{{formkey}}} displayed in the link at the bottom of the form creation page
   * Open your Eclipse project
