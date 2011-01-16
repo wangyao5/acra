@@ -1,4 +1,5 @@
 TRUNK:
+  * New: Added a DumpSysCollector to retrieve the output of "adb shell dumpsys meminfo <pid>"
   * Changed: deleteNonSilentReports() changed to deleteNonApprovedReports(): now deletes reports which are neither silent nor approved.
   * New: added a new 'approved' status to reports which were approved by the user to be sent through the NOTIFICATION mode Dialog. This should allow to avoid issuing a new notification for reports which are still pending because network was not available.
   * Changed: rewrote a part of the reports sending logic to dissociate user comments storage from the global reports sending loop.
