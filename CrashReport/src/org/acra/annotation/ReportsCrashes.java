@@ -30,8 +30,8 @@ import android.preference.PreferenceManager;
 /**
  * Provide configuration elemets to the
  * {@link ACRA#init(android.app.Application)} method. The only mandatory
- * configuration item is the {@link #formKey()} parameter which is the Id of
- * your Google Documents form which will receive reports.
+ * configuration item is the {@link #formKey()} parameter which is the Id of your
+ * Google Documents form which will receive reports.
  * 
  * @author Kevin Gaudin
  * 
@@ -143,51 +143,9 @@ public @interface ReportsCrashes {
      * If using a custom {@link ReportsCrashes#sharedPreferencesName()}, pass
      * here the mode that you need for the SharedPreference file creation:
      * {@link Context#MODE_PRIVATE}, {@link Context#MODE_WORLD_READABLE} or
-     * {@link Context#MODE_WORLD_WRITEABLE}. Default is
-     * {@link Context#MODE_PRIVATE}.
+     * {@link Context#MODE_WORLD_WRITEABLE}. Default is {@link Context#MODE_PRIVATE}.
      * 
      * @see Context#getSharedPreferences(String, int)
      */
     int sharedPreferencesMode() default Context.MODE_PRIVATE;
-
-    /**
-     * You can provide here a list of tags that will be fetched when collecting
-     * DropBox entries.
-     */
-    String[] additionalDropBoxTags() default {};
-
-    /**
-     * How many minutes will be looked back when collecting events from
-     * DropBoxManager.
-     */
-    int dropboxCollectionMinutes() default 5;
-
-    /**
-     * <p>
-     * Arguments to be passed to the logcat command line. Default is { "-t",
-     * "200", "-v", "time" } for:
-     * </p>
-     * 
-     * <pre>
-     * logcat -t 200 -v time
-     * </pre>
-     * 
-     * <p>
-     * Do not include -b arguments for buffer selection, use
-     * {@link #includeEventsLogcat()} and {@link #includeRadioLogcat()} to
-     * activate alternative logcat buffers reporting. They will use the same
-     * other arguments as those provided here.
-     * </p>
-     * 
-     * <p>
-     * See <a href=
-     * "http://developer.android.com/intl/fr/guide/developing/tools/adb.html#logcatoptions"
-     * >Listing of logcat Command Options</a>.
-     * </p>
-     */
-    String[] logcatArguments() default { "-t", "200", "-v", "time" };
-
-    boolean includeRadioLogcat() default false;
-
-    boolean includeEventsLogcat() default false;
 }

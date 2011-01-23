@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.acra.util;
+package org.acra;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +35,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
-import org.acra.ACRA;
 import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 
 import android.util.Log;
@@ -43,7 +42,7 @@ import android.util.Log;
 /**
  * Helper class to send POST data over HTTP/HTTPS.
  */
-public class HttpUtils {
+class HttpUtils {
     private static final String LOG_TAG = ACRA.LOG_TAG;
 
     private static final TrustManager[] TRUST_MANAGER = { new NaiveTrustManager() };
@@ -62,7 +61,7 @@ public class HttpUtils {
      * @throws KeyManagementException
      * @throws NoSuchAlgorithmException
      */
-    public static void doPost(Map<?, ?> parameters, URL url)
+    static void doPost(Map<?, ?> parameters, URL url)
             throws UnsupportedEncodingException, IOException,
             KeyManagementException, NoSuchAlgorithmException {
 
