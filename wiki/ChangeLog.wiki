@@ -1,4 +1,8 @@
 TRUNK:
+  * Replaced usage of Properties with a specific reimplementation based on Harmony Properties source code:
+    * specialization for handling ReportField keys - this is to future exposition of crash report data to ReportSender development
+    * get rid of the stupid date comment in store() which leads to 2 seconds wait
+  * Created a ReportField enum to list all crash data fields. Will be used in ReportSenders
   * Changed: Added an abstraction layer for Report Senders.
   * New: Added a DumpSysCollector to retrieve the output of "adb shell dumpsys meminfo <pid>"
   * Changed: deleteNonSilentReports() changed to deleteNonApprovedReports(): now deletes reports which are neither silent nor approved.
