@@ -1,4 +1,6 @@
 TRUNK:
+  * New: added 2 parameters (formUriBasicAuthLogin and formUriBasicAuthPassword) to allow BASIC http authentication when using the formUri parameter.
+  * Fixed: Issue 31 - in some rare cases, Context.getFilesDir() can return null (this has been filed in android issues: http://code.google.com/p/android/issues/detail?id=8886). ACRA will now log a Warning and won't throw a NPE.
   * Replaced usage of Properties with a specific reimplementation based on Harmony Properties source code:
     * specialization for handling ReportField keys - this is to future exposition of crash report data to ReportSender development
     * get rid of the stupid date comment in store() which leads to 2 seconds wait
