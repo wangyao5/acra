@@ -1,4 +1,5 @@
 TRUNK:
+  * New: as requested in Issue 29, first draft of an Email report sender. TODO: rewrite the logic for activating the sender (the mailTo conf item alone should be enough), tweak the mail content (attachment? zipped?)
   * New: added 2 parameters (formUriBasicAuthLogin and formUriBasicAuthPassword) to allow BASIC http authentication when using the formUri parameter.
   * Fixed: Issue 31 - in some rare cases, Context.getFilesDir() can return null (this has been filed in android issues: http://code.google.com/p/android/issues/detail?id=8886). ACRA will now log a Warning and won't throw a NPE.
   * Replaced usage of Properties with a specific reimplementation based on Harmony Properties source code:
