@@ -1,4 +1,7 @@
 TRUNK:
+  * Changed: default behavior in NOTIFICATION mode when notif has been ignored: on next application start do not respawn the notification and delete non approved reports. A config item has been added to enable the old behaviour back.
+  * Changed: renamed some report field names which could be confusing (related to android build)
+  * New: added a Toast before collecting crash data
   * New: added 2 fields in reports: application version code (some devs don't always update version name) and phone device ID (IMEI). The latest is retrieved only if permission.READ_PHONE_STATE is granted. This is useful in enterprise apps.
   * New: added a new configuration field for providing the set of fields which should be included in the mail body. 
   * New: as requested in Issue 29, first draft of an Email report sender.
@@ -9,7 +12,7 @@ TRUNK:
     * get rid of the stupid date comment in store() which leads to 2 seconds wait
   * Created a ReportField enum to list all crash data fields. Will be used in ReportSenders
   * Changed: Added an abstraction layer for Report Senders.
-  * New: Added a DumpSysCollector to retrieve the output of "adb shell dumpsys meminfo <pid>"
+  * New: Added a DumpSysCollector to retrieve the output of "adb shell dumpsys meminfo &lt;pid&gt;"
   * Changed: deleteNonSilentReports() changed to deleteNonApprovedReports(): now deletes reports which are neither silent nor approved.
   * New: added a new 'approved' status to reports which were approved by the user to be sent through the NOTIFICATION mode Dialog. This should allow to avoid issuing a new notification for reports which are still pending because network was not available.
   * Changed: rewrote a part of the reports sending logic to dissociate user comments storage from the global reports sending loop.
