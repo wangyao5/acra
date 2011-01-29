@@ -1,4 +1,5 @@
 TRUNK:
+  * New: added 2 fields in reports: application version code (some devs don't always update version name) and phone device ID (IMEI). The latest is retrieved only if permission.READ_PHONE_STATE is granted. This is useful in enterprise apps.
   * New: added a new configuration field for providing the set of fields which should be included in the mail body. 
   * New: as requested in Issue 29, first draft of an Email report sender.
   * New: added 2 parameters (formUriBasicAuthLogin and formUriBasicAuthPassword) to allow BASIC http authentication when using the formUri parameter.
