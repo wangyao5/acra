@@ -1,8 +1,8 @@
 TODO:
   * Add SharedProperties for:
-  	- include system logs (may contain private data) - should be mandatory!
-  	- include user email
-  	- always accept sending reports (=> user choice to switch from NOTIFICATION to TOAST!)
+  	* include system logs (may contain private data) - should be mandatory!
+  	* include user email
+  	* always accept sending reports (=> user choice to switch from NOTIFICATION to TOAST!)
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
 
 TRUNK:
