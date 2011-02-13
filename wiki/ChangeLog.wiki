@@ -1,11 +1,12 @@
 TODO:
-  * Add SharedProperties for:
-  	* include system logs (may contain private data) - should be mandatory!
-  	* include user email
-  	* always accept sending reports (=> user choice to switch from NOTIFICATION to TOAST!)
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
 
 TRUNK:
+  * New: Added SharedPreferences items for:
+  	* include system logs (may contain private data)
+  	* include Device ID (IMEI) (this a private identifier)
+  	* include user email (the user inputs his email address in the preference field)
+  	* always accept sending reports
   * Changed: default behavior in NOTIFICATION mode when notif has been ignored: on next application start do not respawn the notification and delete non approved reports. A config item has been added to enable the old behaviour back.
   * Changed: renamed some report field names which could be confusing (related to android build)
   * New: added a Toast before collecting crash data
