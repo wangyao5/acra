@@ -2,6 +2,7 @@ TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
 
 TRUNK:
+  * Fixed: possible NPE when enabling/disabling ACRA with SharedPreferences.
   * New: Added SharedPreferences items for:
   	* include system logs (may contain private data)
   	* include Device ID (IMEI) (this a private identifier)
