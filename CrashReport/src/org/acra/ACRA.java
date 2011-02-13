@@ -117,7 +117,7 @@ public class ACRA {
 
             SharedPreferences prefs = getACRASharedPreferences();
             Log.d(ACRA.LOG_TAG, "Set OnSharedPreferenceChangeListener.");
-            // We HAVE to keep a reference otrherwise the listener could be
+            // We HAVE to keep a reference otherwise the listener could be
             // garbage collected:
             // http://stackoverflow.com/questions/2542938/sharedpreferences-onsharedpreferencechangelistener-not-being-called-consistently/3104265#3104265
             mPrefListener = new OnSharedPreferenceChangeListener() {
@@ -147,7 +147,6 @@ public class ACRA {
                 }
             };
 
-            prefs.registerOnSharedPreferenceChangeListener(mPrefListener);
             // If the application default shared preferences contains true for
             // the key "acra.disable", do not activate ACRA. Also checks the
             // alternative opposite setting "acra.enable" if "acra.disable" is
@@ -170,6 +169,10 @@ public class ACRA {
                 }
             }
 
+            // This listener has to be set after initAcra is called to avoid a
+            // NPE in ErrorReporter.disable() because
+            // the context could be null at this moment.
+            prefs.registerOnSharedPreferenceChangeListener(mPrefListener);
         }
     }
 
