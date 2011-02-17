@@ -498,7 +498,14 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
         if (reportingInteractionMode == null) {
             reportingInteractionMode = mReportingInteractionMode;
         } else {
-            sendOnlySilentReports = true;
+            // An interaction mode has been provided. If ACRA has been
+            // initialized with a non SILENT mode and this mode is overridden
+            // with SILENT, then we have to send only reports which have been
+            // explicitly declared as silent via handleSilentException().
+            if (reportingInteractionMode == ReportingInteractionMode.SILENT
+                    && mReportingInteractionMode != ReportingInteractionMode.SILENT) {
+                sendOnlySilentReports = true;
+            }
         }
 
         if (e == null) {
@@ -890,7 +897,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
      * to the system default.
      */
     public void disable() {
-        if(mContext != null) {
+        if (mContext != null) {
             Log.d(ACRA.LOG_TAG, "ACRA is disabled for " + mContext.getPackageName());
         } else {
             Log.d(ACRA.LOG_TAG, "ACRA is disabled.");
