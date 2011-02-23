@@ -35,6 +35,9 @@ Step by step installation of the ACRA library in an existing application project
     * Above the declaration of the {{{MyApplication}}} class, add the @ReportsCrashes annotation with your Google Docs form Id as a parameter 
 
 {{{
+    import org.acra.*;
+    import org.acra.annotation.*;
+
     @ReportsCrashes(formKey = "dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ") 
     public class MyApplication extends Application {
     }
