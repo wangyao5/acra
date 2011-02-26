@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.acra.util;
+package org.acra;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,6 +26,7 @@ import java.net.URLEncoder;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -34,8 +35,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
-import org.acra.ACRA;
-import org.acra.annotation.ReportsCrashes;
 import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 
 import android.util.Log;
@@ -43,7 +42,7 @@ import android.util.Log;
 /**
  * Helper class to send POST data over HTTP/HTTPS.
  */
-public class HttpUtils {
+class HttpUtils {
     private static final String LOG_TAG = ACRA.LOG_TAG;
 
     private static final TrustManager[] TRUST_MANAGER = { new NaiveTrustManager() };
@@ -62,60 +61,48 @@ public class HttpUtils {
      * @throws KeyManagementException
      * @throws NoSuchAlgorithmException
      */
-    public static void doPost(Map<?, ?> parameters, URL url, String login, String password)
-            throws UnsupportedEncodingException, IOException, KeyManagementException, NoSuchAlgorithmException {
+    static void doPost(Map<?, ?> parameters, URL url)
+            throws UnsupportedEncodingException, IOException,
+            KeyManagementException, NoSuchAlgorithmException {
 
-        URLConnection cnx = getConnection(url);
+            URLConnection cnx = getConnection(url);
 
-        // Construct data
-        StringBuilder dataBfr = new StringBuilder();
-        for (Object key : parameters.keySet()) {
-            if (dataBfr.length() != 0) {
-                dataBfr.append('&');
+            // Construct data
+            StringBuilder dataBfr = new StringBuilder();
+            Iterator<?> iKeys = parameters.keySet().iterator();
+            while (iKeys.hasNext()) {
+                if (dataBfr.length() != 0) {
+                    dataBfr.append('&');
+                }
+                String key = (String) iKeys.next();
+                dataBfr.append(URLEncoder.encode(key, "UTF-8")).append('=')
+                        .append(
+                                URLEncoder.encode((String) parameters.get(key),
+                                        "UTF-8"));
             }
-            Object value = parameters.get(key);
-            if (value == null) {
-                value = "";
-            }
-            dataBfr.append(URLEncoder.encode(key.toString(), "UTF-8")).append('=')
-                    .append(URLEncoder.encode(value.toString(), "UTF-8"));
-        }
+            // POST data
+            cnx.setDoOutput(true);
 
-        // Add BASIC auth credentials if available
-        if (!isNull(login) || !isNull(password)) {
-            String userPassword = (login != null ? login : "") + ":" + (password != null ? password : "");
-            String encodedAuth = Base64.encodeToString(userPassword.getBytes(), Base64.DEFAULT);
-            cnx.setRequestProperty("Authorization", "Basic " + encodedAuth);
-        }
-        // POST data
-        cnx.setDoOutput(true);
-        
-        OutputStreamWriter wr = new OutputStreamWriter(cnx.getOutputStream());
-        Log.d(LOG_TAG, "Posting crash report data");
-        wr.write(dataBfr.toString());
-        wr.flush();
-        wr.close();
+            OutputStreamWriter wr = new OutputStreamWriter(cnx
+                    .getOutputStream());
+            Log.d(LOG_TAG, "Posting crash report data");
+            wr.write(dataBfr.toString());
+            wr.flush();
+            wr.close();
 
-        Log.d(LOG_TAG, "Reading response");
-        BufferedReader rd = new BufferedReader(new InputStreamReader(cnx.getInputStream()));
+            Log.d(LOG_TAG, "Reading response");
+            BufferedReader rd = new BufferedReader(new InputStreamReader(cnx
+                    .getInputStream()));
 
-        String line;
-        int linecount = 0;
-        try {
+            String line;
+            int linecount = 0;
             while ((line = rd.readLine()) != null) {
                 linecount++;
-                if (linecount <= 10) {
+                if(linecount <= 2) {
                     Log.d(LOG_TAG, line);
                 }
             }
-        } catch (Exception e) {
-            Log.i(LOG_TAG, "Ignoring exception while reading result", e);
-        }
-        rd.close();
-    }
-
-    private static boolean isNull(String aString) {
-        return aString == null || aString == ReportsCrashes.NULL_VALUE;
+            rd.close();
     }
 
     /**
@@ -129,8 +116,8 @@ public class HttpUtils {
      * @throws NoSuchAlgorithmException
      * @throws KeyManagementException
      */
-    private static URLConnection getConnection(URL url) throws IOException, NoSuchAlgorithmException,
-            KeyManagementException {
+    private static URLConnection getConnection(URL url) throws IOException,
+            NoSuchAlgorithmException, KeyManagementException {
         URLConnection conn = url.openConnection();
         if (conn instanceof HttpsURLConnection) {
             // Trust all certificates

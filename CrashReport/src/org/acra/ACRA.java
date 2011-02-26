@@ -16,15 +16,12 @@
 package org.acra;
 
 import org.acra.annotation.ReportsCrashes;
-import org.acra.sender.EmailIntentSender;
-import org.acra.sender.GoogleFormSender;
-import org.acra.sender.HttpPostSender;
 
-import android.Manifest.permission;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -39,7 +36,7 @@ import android.util.Log;
  * 
  */
 public class ACRA {
-    public static final String LOG_TAG = ACRA.class.getSimpleName();
+    protected static final String LOG_TAG = ACRA.class.getSimpleName();
 
     /**
      * Bundle key for the icon in the status bar notification.
@@ -84,6 +81,7 @@ public class ACRA {
      * the notification+dialog mode is not used.
      */
     static final String RES_TOAST_TEXT = "RES_TOAST_TEXT";
+
     /**
      * This is the identifier (value = 666) use for the status bar notification
      * issued when crashes occur.
@@ -103,45 +101,14 @@ public class ACRA {
      */
     public static final String PREF_ENABLE_ACRA = "acra.enable";
 
-    /**
-     * The key of the SharedPreference allowing the user to disable sending
-     * content of logcat/dropbox. System logs collection is also dependent of
-     * the READ_LOGS permission.
-     */
-    public static final String PREF_ENABLE_SYSTEM_LOGS = "acra.syslog.enable";
-
-    /**
-     * The key of the SharedPreference allowing the user to disable sending his
-     * device id. Device ID collection is also dependent of the READ_PHONE_STATE
-     * permission.
-     */
-    public static final String PREF_ENABLE_DEVICE_ID = "acra.deviceid.enable";
-
-    /**
-     * The key of the SharedPreference allowing the user to always include his
-     * email address.
-     */
-    public static final String PREF_USER_EMAIL_ADDRESS = "acra.user.email";
-
-    /**
-     * The key of the SharedPreference allowing the user to automatically accept
-     * sending reports.
-     */
-    public static final String PREF_ALWAYS_ACCEPT = "acra.alwaysaccept";
-
     private static Application mApplication;
     private static ReportsCrashes mReportsCrashes;
+    private static Bundle mCrashResources;
     private static OnSharedPreferenceChangeListener mPrefListener;
 
     /**
-     * <p>
-     * Initialize ACRA for a given Application. The call to this method should
-     * be placed as soon as possible in the {@link Application#onCreate()}
-     * method.
-     * </p>
      * 
      * @param app
-     *            Your Application class.
      */
     public static void init(Application app) {
         mApplication = app;
@@ -215,62 +182,46 @@ public class ACRA {
      * @throws ACRAConfigurationException
      */
     private static void initAcra() throws ACRAConfigurationException {
-        checkCrashResources();
+        initCrashResources();
         Log.d(LOG_TAG, "ACRA is enabled for " + mApplication.getPackageName() + ", intializing...");
-
         // Initialize ErrorReporter with all required data
         ErrorReporter errorReporter = ErrorReporter.getInstance();
+        errorReporter.setFormUri(getFormUri());
         errorReporter.setReportingInteractionMode(mReportsCrashes.mode());
 
-        if (!"".equals(mReportsCrashes.mailTo())) {
-            Log.w(LOG_TAG, mApplication.getPackageName() + " reports will be sent by email (if accepted by user).");
-            errorReporter.addReportSender(new EmailIntentSender(mApplication));
-        } else {
-            // Check for Internet permission, if not granted fallback to email
-            // report
-            PackageManager pm = mApplication.getPackageManager();
-            if (pm != null) {
-                if (pm.checkPermission(permission.INTERNET, mApplication.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
-
-                    // If formUri is set, instantiate a sender for a generic
-                    // HTTP POST form
-                    if (mReportsCrashes.formUri() != null && !"".equals(mReportsCrashes.formUri())) {
-                        errorReporter.addReportSender(new HttpPostSender(mReportsCrashes.formUri(), null));
-                    } else {
-                        // The default behavior is to us the formKey for a
-                        // Google Docs Form.
-                        if (mReportsCrashes.formKey() != null && !"".equals(mReportsCrashes.formKey().trim())) {
-                            errorReporter.addReportSender(new GoogleFormSender(mReportsCrashes.formKey()));
-                        }
-                    }
-                } else {
-                    Log.e(LOG_TAG,
-                            mApplication.getPackageName()
-                                    + " should be granted permission "
-                                    + permission.INTERNET
-                                    + " if you want your crash reports to be sent. If you don't want to add this permission to your application you can also enable sending reports by email. If this is your will then provide your email address in @ReportsCrashes(mailTo=\"your.account@domain.com\"");
-                }
-            }
-        }
+        errorReporter.setCrashResources(getCrashResources());
 
         // Activate the ErrorReporter
         errorReporter.init(mApplication.getApplicationContext());
 
         // Check for pending reports
+
         errorReporter.checkReportsOnApplicationStart();
     }
 
-    static void checkCrashResources() throws ACRAConfigurationException {
+    static void initCrashResources() throws ACRAConfigurationException {
+        mCrashResources = new Bundle();
         switch (mReportsCrashes.mode()) {
         case TOAST:
             if (mReportsCrashes.resToastText() == 0) {
                 throw new ACRAConfigurationException(
                         "TOAST mode: you have to define the resToastText parameter in your application @ReportsCrashes() annotation.");
             }
+            mCrashResources.putInt(RES_TOAST_TEXT, mReportsCrashes.resToastText());
             break;
         case NOTIFICATION:
-            if (mReportsCrashes.resNotifTickerText() == 0 || mReportsCrashes.resNotifTitle() == 0
-                    || mReportsCrashes.resNotifText() == 0 || mReportsCrashes.resDialogText() == 0) {
+            if (mReportsCrashes.resNotifTickerText() != 0 && mReportsCrashes.resNotifTitle() != 0
+                    && mReportsCrashes.resNotifText() != 0 && mReportsCrashes.resDialogText() != 0) {
+                mCrashResources.putInt(RES_NOTIF_TICKER_TEXT, mReportsCrashes.resNotifTickerText());
+                mCrashResources.putInt(RES_NOTIF_TITLE, mReportsCrashes.resNotifTitle());
+                mCrashResources.putInt(RES_NOTIF_TEXT, mReportsCrashes.resNotifText());
+                mCrashResources.putInt(RES_DIALOG_TEXT, mReportsCrashes.resDialogText());
+                mCrashResources.putInt(RES_NOTIF_ICON, mReportsCrashes.resNotifIcon());
+                mCrashResources.putInt(RES_DIALOG_ICON, mReportsCrashes.resDialogIcon());
+                mCrashResources.putInt(RES_DIALOG_TITLE, mReportsCrashes.resDialogTitle());
+                mCrashResources.putInt(RES_DIALOG_COMMENT_PROMPT, mReportsCrashes.resDialogCommentPrompt());
+                mCrashResources.putInt(RES_DIALOG_OK_TOAST, mReportsCrashes.resDialogOkToast());
+            } else {
                 throw new ACRAConfigurationException(
                         "NOTIFICATION mode: you have to define at least the resNotifTickerText, resNotifTitle, resNotifText, resDialogText parameters in your application @ReportsCrashes() annotation.");
             }
@@ -278,14 +229,22 @@ public class ACRA {
         }
     }
 
+    static Bundle getCrashResources() {
+        return mCrashResources;
+    }
+
+    private static Uri getFormUri() {
+
+        return mReportsCrashes.formUri().equals("") ? Uri.parse("http://spreadsheets.google.com/formResponse?formkey="
+                + mReportsCrashes.formKey() + "&amp;ifq") : Uri.parse(mReportsCrashes.formUri());
+    }
+
     /**
-     * Retrieves the {@link SharedPreferences} instance where user adjustable
-     * settings for ACRA are stored. Default are the Application default
-     * SharedPreferences, but you can provide another SharedPreferences name
-     * with {@link ReportsCrashes#sharedPreferencesName()}.
+     * Override this method if you need to store "acra.disable" or "acra.enable"
+     * in a different SharedPrefence than the application's default.
      * 
-     * @return The Shared Preferences where ACRA will retrieve its user
-     *         adjustable setting.
+     * @return The Shared Preferences where ACRA will check the value of the
+     *         setting which disables/enables it's action.
      */
     public static SharedPreferences getACRASharedPreferences() {
         if (!"".equals(mReportsCrashes.sharedPreferencesName())) {
@@ -296,14 +255,6 @@ public class ACRA {
             Log.d(ACRA.LOG_TAG, "Retrieve application default SharedPreferences.");
             return PreferenceManager.getDefaultSharedPreferences(mApplication);
         }
-    }
-
-    /**
-     * Provides the configuration annotation instance.
-     * @return ACRA {@link ReportsCrashes} configuration instance.
-     */
-    public static ReportsCrashes getConfig() {
-        return mReportsCrashes;
     }
 
 }

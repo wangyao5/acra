@@ -22,17 +22,14 @@ import org.acra.annotation.ReportsCrashes;
 
 import android.app.Application;
 
-@ReportsCrashes(formKey = "dFpaTk5GZ1phemI4c0hwMkxYZWh0M1E6MQ",
+@ReportsCrashes(formKey = "dEhXSldocldoUDBzR25jM2dtSGo2QXc6MQ",
         mode = ReportingInteractionMode.NOTIFICATION,
         resToastText = R.string.crash_toast_text,
         resNotifTickerText = R.string.crash_notif_ticker_text,
         resNotifTitle = R.string.crash_notif_title,
         resNotifText = R.string.crash_notif_text,
         resDialogText = R.string.crash_dialog_text,
-        resDialogCommentPrompt = R.string.crash_dialog_comment_prompt,
-        additionalDropBoxTags = { "titi", "tata", "toto"},
-        includeEventsLogcat = true,
-        includeRadioLogcat = true)
+        resDialogCommentPrompt = R.string.crash_dialog_comment_prompt)
 public class CrashTest extends Application {
 
     /*
@@ -43,15 +40,7 @@ public class CrashTest extends Application {
     @Override
     public void onCreate() {
         ACRA.init(this);
-        addDropBoxEvents();
         super.onCreate();
-    }
-
-    private void addDropBoxEvents() {
-//        DropBoxManager dbm = (DropBoxManager) getSystemService(DROPBOX_SERVICE);
-//        dbm.addText("toto", "gabü");
-//        dbm.addText("tata", "zhô");
-//        dbm.addText("titi", "meuh");
     }
 
 }
