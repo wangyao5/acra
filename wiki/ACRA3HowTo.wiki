@@ -26,9 +26,6 @@ Step by step installation of the ACRA library in an existing application project
     * If you are using a private Google Apps domain, make sure to uncheck the option "Require yourdomain.com sign-in to view this form."
   * Save the form
   * Copy the {{{formkey}}} displayed in the link at the bottom of the form creation page
-  * Default cells alignment is bottom left... select all cells and chose top left alignment:
-https://docs.google.com/uc?id=0B9J0DEDzWLEjMGU2YjBkMDItMzA5Zi00YzZiLWI0MDYtM2M5YmJlMjZhZWVk&export=download&hl=fr&align.png
-
   * Open your Eclipse project
   * Create a {{{lib}}} folder
   * Add the {{{acra-3.1.1.jar}}} from the archive (acra-3.1.1/CrashReport/build) in the {{{lib}}} folder
@@ -70,6 +67,9 @@ https://docs.google.com/uc?id=0B9J0DEDzWLEjMGU2YjBkMDItMzA5Zi00YzZiLWI0MDYtM2M5Y
   * *_THE END_* - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
 
 *Bonus :* Google Docs spreadsheet allow to configure notifications on changes. Juste set your preferences in  : Share (Top right button) / Set notification rules and get notified by mail when reports are sent !
+
+Spreadsheet default cells alignment is bottom left... select all cells and choose top left alignment:
+https://docs.google.com/uc?id=0B9J0DEDzWLEjMGU2YjBkMDItMzA5Zi00YzZiLWI0MDYtM2M5YmJlMjZhZWVk&export=download&hl=fr&align.png
 
 = Advanced Usage =
 
