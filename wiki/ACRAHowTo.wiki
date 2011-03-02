@@ -1,6 +1,8 @@
 #labels Phase-Deploy,Deprecated
 <wiki:toc max_depth="2" />
 
+*This document is deprecated. It is related to ACRA v2.0.3 which is not supported anymore. Please use ACRA3HowTo.*
+
 = Introduction =
 
 ACRA allows your Android application to send Crash Reports in a Google Docs spreadsheet.
