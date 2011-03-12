@@ -2,6 +2,7 @@ TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
 
 TRUNK:
+  * Fixed: in NOTIFICATION mode, user comments could be attached to wrong reports.
   * Fixed: in SILENT mode, only explicit SILENT exceptions (cast with handleSilentException) were sent on application crash. Standard exception were sent on application restart.
   * Fixed: possible NPE when enabling/disabling ACRA with SharedPreferences.
   * New: Added SharedPreferences items for:
