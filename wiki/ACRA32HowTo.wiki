@@ -1,5 +1,5 @@
-#labels Phase-Deploy, Beta
-<wiki:toc max_depth="2" />
+#labels Phase-Deploy,Beta
+<wiki:toc max_depth="3" />
 
 = THIS DOCUMENT IS A WORK IN PROGRESS FOR THE 3.2 RELEASE =
 
