@@ -1,0 +1,242 @@
+#labels Phase-Deploy, Beta
+<wiki:toc max_depth="2" />
+
+= THIS DOCUMENT IS A WORK IN PROGRESS FOR THE 3.2 RELEASE =
+
+= Introduction =
+
+ACRA allows your Android application to send Crash Reports to various destinations:
+  * a Google Docs spreadsheet (default and original behavior)
+  * an email (new in 3.2)
+  * your own server-side HTTP POST script (parameter names changed in 3.2)
+  * any other possible destination by implementing your own report sender (new in 3.2)
+   
+This tutorial will guide you through installing ACRA in your application project.
+
+= Setting-up your project =
+
+Step by step installation of the ACRA library in an existing application project, with the simplest settings:
+  * Get http://acra.googlecode.com/files/acra-3.2.0.zip and open the archive 
+  * Login to your Google Docs account
+  * Import the {{{CrashReports-template.csv}}} contained in the archive (acra-3.2.0/CrashReport/doc), with conversion enabled
+  * Open the imported document
+  * Rename it as you like
+  * In the menu, click on Forms / Create form
+  * Add anything in the form description just to enable the *Save* button
+    * If you are using a private Google Apps domain, make sure to *uncheck* the option "Require yourdomain.com sign-in to view this form."
+  * Save the form
+  * Copy the {{{formkey}}} value displayed in the link at the bottom of the form creation page
+  * Open your Eclipse project
+  * Create a {{{lib}}} folder
+  * Add the {{{acra-3.2.0.jar}}} from the archive (acra-3.2.0/CrashReport/build) in the {{{lib}}} folder
+  * Right-click on the jar file / add to build path
+  * Create a new class in your package root
+    * Give it a name like: {{{MyApplication}}}, make it extend {{{android.app.Application}}}
+    * Above the declaration of the {{{MyApplication}}} class, add the @ReportsCrashes annotation with your Google Docs form Id as a parameter 
+
+{{{
+    @ReportsCrashes(formKey = "dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ") 
+    public class MyApplication extends Application {
+    }
+}}}
+    * In the {{{MyApplication}}} class, override the onCreate() method to add the ACRA init statement
+{{{
+    @Override
+    public void onCreate() {
+    	// The following line triggers the initialization of ACRA
+        ACRA.init(this);
+        super.onCreate();
+    }
+}}}
+  * Open the android manifest editor ({{{AndroidManifest.xml}}}
+    * In the *Application tab*, click on the *Browse* button next to the *Name* field
+    * Select your newly created Application class ({{{MyApplication}}}).
+    This adds an {{{android:name}}} attribute to your {{{application}}} element like this (put the full name with package if the application class package is not the same as manifest root element declared pakage):
+{{{
+<application android:icon="@drawable/icon" android:label="@string/app_name"
+                android:name="MyApplication">
+}}}
+    * In the *Permissions* tab, add a *Uses Permission* object with value {{{android.permission.INTERNET}}}.
+    This adds the following element as a child of the {{{manifest}}} element:
+{{{
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+}}}
+  * *_THE END_* - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
+
+*Bonus :* Google Docs spreadsheet allow to configure notifications on changes. Juste set your preferences in  : Share (Top right button) / Set notification rules and get notified by mail when reports are sent !
+
+= Advanced Usage =
+
+== User notification ==
+
+The default behavior of ACRA is to send crash reports silently. From the application user point of view, the application has crashed with the usual "Force Close" dialog, and that's all.
+
+As a developer, you might prefer notifying your users that a crash report has been sent, or even ask him the authorization so send one... and why not ask him to describe what he was doing during the crash...
+
+ACRA offers all these options, and allow you to customize your application crash reporting notifications.
+
+2 main notification modes are available:
+  * display a simple Toast with your developer designed text
+http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_toast.png
+  * display a status bar notification, then offering the user a dialog asking him to send the report or not, with an optional comment field you can chose to add or not.
+http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_ticker.png http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif.png http://acra.googlecode.com/svn/trunk/CrashReport/doc/captures/notif_dialog_full.png
+
+Enabling user notification only requires you to add parameters to the @ReportsCrashes annotation :
+
+  * Toast notification:
+
+{{{
+@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
+				mode = ReportingInteractionMode.TOAST,
+				resToastText = R.string.crash_toast_text)
+public class MyApplication extends Application {
+...
+}}}
+
+In your {{{strings.xml}}} :
+{{{
+<string name="crash_toast_text">Ooooops ! I crashed, but a report has been sent to my developer to help him fix the issue !</string>
+}}}
+
+  * Status bar notification:
+
+{{{
+@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
+				mode = ReportingInteractionMode.NOTIFICATION,
+				resToastText = R.string.crash_toast_text, // optional, displayed as soon as the crash occurs, before collecting data which can take a few seconds
+				resNotifTickerText = R.string.crash_notif_ticker_text,
+				resNotifTitle = R.string.crash_notif_title,
+				resNotifText = R.string.crash_notif_text,
+				resNotifIcon = android.R.drawable.stat_notify_error, // optional. default is a warning sign
+				resDialogText = R.string.crash_dialog_text,
+				resDialogIcon = android.R.drawable.ic_dialog_info, //optional. default is a warning sign
+				resDialogTitle = R.string.crash_dialog_title, // optional. default is your application name
+				resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. when defined, adds a user text field input with this text resource as a label
+				resDialogOkToast = R.string.crash_dialog_ok_toast // optional. displays a Toast message when the user accepts to send a report.
+				)
+public class MyApplication extends Application {
+...
+}}}
+
+In your {{{strings.xml}}}:
+{{{
+<string name="crash_toast_text">Ooooops ! I crashed, but a report has been sent to my developer to help him fix the issue !</string>
+<string name="crash_notif_ticker_text">Unexpected error, please send a report...</string>
+<string name="crash_notif_title">CrashTest has crashed...</string>
+<string name="crash_notif_text">Please click here to help fix the issue.</string>
+	
+<string name="crash_dialog_title">CrashTest has crashed</string>
+<string name="crash_dialog_text">An unexpected error occurred forcing the
+	application to stop. Please help us fix this by sending us error data,
+	all you have to do is click \'OK\'.</string>
+<string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
+<string name="crash_dialog_ok_toast">Thank you !</string>
+}}}
+
+In your {{{AndroidManifest.xml}}}
+{{{
+<application ...>
+
+    ....
+
+    <activity android:name="org.acra.CrashReportDialog"
+        android:theme="@android:style/Theme.Dialog"
+        android:launchMode="singleInstance"
+        android:excludeFromRecents="true"
+        android:finishOnTaskLaunch="true" />
+
+    ....
+
+</application>
+}}}
+
+== Reports destination ==
+
+The default destination for reports is a Google Docs Form, storing data in a Google Docs Spreadsheet. This storage has some great advantages:
+  * Use Google infrastructure: can you get a faster, more reliable free hosting anywhere else ?
+  * You can share the spreadsheet with your whole dev team, with people setting their own notification preferences
+  * You can easily compile stats using Google APIs. See http://zegoggl.es/2011/01/analysing-android-error-reports-using-the-google-visualisation-api.html for an example.
+
+The only known limitation is that a Google Spreadsheet can't contain more than 400 000 cells. With ACRA 3.2 it lets you receive 11 428 crash reports in one spreadsheet... but you are allowed to delete old reports at any time!
+
+The following sections detail the other possible destinations for your crash reports: custom script, email, or any other destination you can imagine (if you implement the sender). And you can even send reports to multiple destinations.
+
+=== Sending reports to your own php/java/python/whateveryouwant self-hosted script ===
+
+Just use the formUri parameter of the @ReportsCrashes annotation in your Application class :
+
+{{{
+@ReportsCrashes(formKey="", // will not be used
+				formUri="http://yourserver.com/yourscript",
+				formUriBasicAuthLogin="yourlogin", // optional
+				formUriBasicAuthPassword="y0uRpa$$w0rd", // optional
+				mode = ReportingInteractionMode.TOAST,
+				resToastText = R.string.crash_toast_text)
+public class MyApplication extends Application {
+...
+}}}
+
+The formUri can be over HTTPS (even with self signed certificates) and can require a BASIC HTTP authentication (pass your login and password with {{{formUriBasicAuthLogin}}} and {{{formUriBasicAuthPassword}}}).
+
+Your script will receive report fields as POST parameters named like the [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ReportField.java {{{ReportField}}}] enum values.
+
+== Can I add my own variables content in the crash report ? ==
+
+Absolutely !
+
+Simply use the following method in key places in your code :
+{{{
+ErrorReporter.getInstance().putCustomData("myVariable", myVariable);
+}}}
+
+All your custom data (only latest value for each one) will be added in the column "custom" just before the stack trace, one key = value pair per line.
+
+You can also use {{{getCustomData("myVariable")}}} and {{{removeCustomData("myVariable")}}} to get/remove data from the custom data map.
+
+== Can I let the user disable error reporting ? ==
+
+Yes, you can !
+
+All you have to do is add to your preferences xml file a CheckBoxPreference :
+{{{
+<CheckBoxPreference android:key="acra.disable"
+	android:title="@string/pref_disable_acra"
+	android:summaryOn="@string/pref_acra_disabled"
+	android:summaryOff="@string/pref_acra_enabled"
+	android:defaultValue="false"/>
+}}}
+
+Or if you prefer to allow your user to check the box to enable reporting:
+{{{
+<CheckBoxPreference android:key="acra.enable"
+	android:title="@string/pref_disable_acra"
+	android:summaryOn="@string/pref_acra_enabled"
+	android:summaryOff="@string/pref_acra_disabled"
+	android:defaultValue="true"/>
+}}}
+
+Then add to your {{{strings.xml}}} files the 3 corresponding string resources.
+
+If your {{{SharedPreferences}}} are not the application default {{{SharedPreferences}}}, you can provide ACRA with your own {{{SharedPreferences}}} name using the following {{{@ReportsCrashes}}} parameters:
+  * {{{sharedPreferencesName}}}: Name of the {{{SharedPreferences}}} that will host the {{{acra.enable}}} or {{{acra.disable}}} preference.
+  * {{{sharedPreferencesMode}}}: The mode that you need for the {{{SharedPreference}}} file creation: {{{Context.MODE_PRIVATE}}}, {{{Context.MODE_WORLD_READABLE}}} or {{{Context.MODE_WORLD_WRITEABLE}}}. 
+
+== Can I send reports for caught exceptions ? or for unexpected application state without any exception ?==
+
+As a good programmer, your code is full of try/catch statements, and sometimes an interesting (unexpected) exception might be caught in one of these.
+
+You could also want your application to send a report without any Exception thrown, just because you know that your application is in an unexpected state.
+
+Both of these needs can be covered by this :
+
+{{{
+ErrorReporter.getInstance().handleException(caughtException);
+}}} 
+
+You can provide any caught or custom Exception, or even {{{null}}} if you don't have any to provide.
+
+If you need to add silent trace reports whatever notification mode you configured for your application, you can also use:
+
+{{{
+ErrorReporter.getInstance().handleSilentException(caughtException);
+}}} 
