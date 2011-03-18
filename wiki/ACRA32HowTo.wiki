@@ -180,6 +180,14 @@ The formUri can be over HTTPS (even with self signed certificates) and can requi
 
 Your script will receive report fields as POST parameters named like the [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ReportField.java {{{ReportField}}}] enum values.
 
+=== Sending reports by email ===
+
+TO BE DOCUMENTED
+
+=== Implementing your own sender ===
+
+TO BE DOCUMENTED
+
 == Can I add my own variables content in the crash report ? ==
 
 Absolutely !
