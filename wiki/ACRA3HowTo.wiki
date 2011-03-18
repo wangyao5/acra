@@ -167,7 +167,7 @@ public class MyApplication extends Application {
 ...
 }}}
 
-Then your script has to follow the fields mapping exposed in the [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ErrorReporter.java#70 ErrorReporter] class.
+Then your script has to follow the fields mapping exposed in the [http://code.google.com/p/acra/source/browse/tags/REL-3_1_1/CrashReport/src/org/acra/ErrorReporter.java#70 ErrorReporter] class.
 
 == Can I add my own variables content in the crash report ? ==
 
