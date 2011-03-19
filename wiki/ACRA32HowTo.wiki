@@ -196,7 +196,7 @@ public class MyApplication extends Application {
 ...
 }}}
 
-Including a full report cold be quite difficult due to the data size. Default fields included in email reports are:
+Including a full report could be quite difficult due to the data size. Default fields included in email reports are:
 
   * ReportField.USER_COMMENT
   * ReportField.ANDROID_VERSION
@@ -265,9 +265,9 @@ For advanced usage, there is a full set of available methods to manage the list 
   * removeReportSenders(Class): removes all active instances of a specific ReportSender implementation
   * removeAllReportSenders(): clears the list of active ReportSenders
 
-== Can I add my own variables content in the crash report ? ==
+== Adding your own variables content in crash reports ==
 
-Absolutely !
+To help you track some specific issue, you can add custom data to reports.
 
 Simply use the following method in key places in your code :
 {{{
@@ -277,6 +277,36 @@ ErrorReporter.getInstance().putCustomData("myVariable", myVariable);
 All your custom data (only latest value for each one) will be added in the column "custom" just before the stack trace, one key = value pair per line.
 
 You can also use {{{getCustomData("myVariable")}}} and {{{removeCustomData("myVariable")}}} to get/remove data from the custom data map.
+
+== Adding logcat extract to reports ==
+
+You can enable adding a [http://developer.android.com/intl/fr/guide/developing/tools/adb.html#logcat logcat] extract to your reports by simply adding the {{{READ_LOGS}}} permission:
+{{{
+<manifest ...>
+    ...
+    <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+</manifest>
+}}}
+
+The default behavior is to include the result of the following command:
+{{{
+    adb logcat -t 200 -v time
+}}}
+
+This results to 200 lines of logcat with date, invocation time, priority/tag, and PID of the originating process.
+
+If this is not what you want, you can change this with your own command line using the {{{logcatArguments}}} in the {{{@ReportsCrashes}}} annotation. For example, if you prefer using:
+{{{
+    adb logcat -t 100 -v long ActivityManager:I MyApp:D *:S
+}}}
+then add this to you {@ReportsCrashes} config:
+{{{
+    logcatArguments = { "-t", "100", "-v", "long", "ActivityManager:I", "MyApp:D", "*:S" }
+}}}
+As you can see, you just have to split your command line arguments to a String array on each white space.
+
+Note for experts: even if the "-t XXX" argument is only available since android 2.2, you can use it safely as ACRA emulates it for older devices.
+  
 
 == Can I let the user disable error reporting ? ==
 
