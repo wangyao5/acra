@@ -166,10 +166,10 @@ The following sections detail the other possible destinations for your crash rep
 Just use the formUri parameter of the @ReportsCrashes annotation in your Application class :
 
 {{{
-@ReportsCrashes(formKey="", // will not be used
-				formUri="http://yourserver.com/yourscript",
-				formUriBasicAuthLogin="yourlogin", // optional
-				formUriBasicAuthPassword="y0uRpa$$w0rd", // optional
+@ReportsCrashes(formKey = "", // will not be used
+				formUri = "http://yourserver.com/yourscript",
+				formUriBasicAuthLogin = "yourlogin", // optional
+				formUriBasicAuthPassword = "y0uRpa$$w0rd", // optional
 				mode = ReportingInteractionMode.TOAST,
 				resToastText = R.string.crash_toast_text)
 public class MyApplication extends Application {
@@ -182,7 +182,21 @@ Your script will receive report fields as POST parameters named like the [http:/
 
 === Sending reports by email ===
 
-TO BE DOCUMENTED
+For some applications, sending reports to a Google Docs Form is not or other Http based solutions is not an option. The problem is that they require the INTERNET permission.
+For pure offline applications, users might even be frightened to grant this permission and can be suspicious about the real goal of the app or the developer.
+
+To get crash reports without granting INTERNET permission, you can use the mailTo setting from @ReportsCrashes:
+
+{{{
+@ReportsCrashes(formKey = "", // will not be used
+				mailTo = "reports@yourdomain.com",
+				mode = ReportingInteractionMode.TOAST,
+				resToastText = R.string.crash_toast_text)
+public class MyApplication extends Application {
+...
+}}}
+  
+TODO: check behavior with 3 modes : SILENT, TOAST, NOTIFICATION
 
 === Implementing your own sender ===
 
