@@ -195,12 +195,75 @@ To get crash reports without granting INTERNET permission, you can use the mailT
 public class MyApplication extends Application {
 ...
 }}}
-  
-TODO: check behavior with 3 modes : SILENT, TOAST, NOTIFICATION
+
+Including a full report cold be quite difficult due to the data size. Default fields included in email reports are:
+
+  * ReportField.USER_COMMENT
+  * ReportField.ANDROID_VERSION
+  * ReportField.APP_VERSION_NAME
+  * ReportField.BRAND
+  * ReportField.PHONE_MODEL
+  * ReportField.CUSTOM_DATA
+  * ReportField.STACK_TRACE 
+
+You can override the report fields list using the {{{mailReportFields}}} option int the @ReportsCrashes annotation: 
+
+{{{
+@ReportsCrashes(formKey = "", // will not be used
+				mailTo = "reports@yourdomain.com",
+				mailReportFields = { ReportField.APP_VERSION, ReportField.ANDROID_VERSION, ReportField.PHONE_MODEL, ReportField.CUSTOM_DATA, ReportField.STACK_TRACE, ReportField.LOGCAT },				
+				mode = ReportingInteractionMode.TOAST,
+				resToastText = R.string.crash_toast_text)
+public class MyApplication extends Application {
+...
+}}}
+
+Emails are sent with an {{{ACTION_SEND}}}. This means that these steps are required for the application user before any report is sent:
+  * pick preferred email client (if no default app set)
+  * review & send the email
 
 === Implementing your own sender ===
 
-TO BE DOCUMENTED
+Since ACRA v3.2, you can implement your own report sender:
+
+{{{
+public class YourOwnSender implements ReportSender {
+
+	public YourOwnSender(... your params ...){
+		// initialize your sender with needed parameters
+	}
+
+    @Override
+    public void send(CrashReportData report) throws ReportSenderException {
+    	// Iterate over the CrashReportData instance and do whatever
+    	// you need with each pair of ReportField key / String value
+	}
+}
+}}}
+
+Three {{{ReportSender}}} implementations are already available:
+  * [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/sender/GoogleFormSender.java GoogleFormSender]: (ACRA's default) send reports to a Google Form through HTTP POST requests with specific parameters naming.
+  * [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/sender/HttpPostSender.java HttpPostSender]: send reports to an HTTP POST server-side component located at a configurable URI.
+  * [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/sender/EmailIntentSender.java EmailIntentSender]: keeps only a selected set of fields and puts them in an Intent to be send by another application. 
+
+Once your sender created, you have to declare it to ACRA. This is done in your {{{Application}}} class, in the {{{onCreate()}}} method, right after the ACRA.init() call:
+
+{{{
+    @Override
+    public void onCreate() {
+        ACRA.init(this);
+        YourOwnSender yourSender = new YourOwnSender(whatever, parameters, needed);
+        ErrorReporter.getInstance().setReportSender(yourSender);
+        super.onCreate();
+    }
+}}}
+
+For advanced usage, there is a full set of available methods to manage the list of active ReportSenders:
+  * setReportSender(ReportSender): sets a new sender as the single active sender
+  * addReportSender(ReportSender): adds a new sender to the list of active senders, without removing all previous active senders
+  * removeReportSender(ReportSender): removes a specific instance of a sender
+  * removeReportSenders(Class): removes all active instances of a specific ReportSender implementation
+  * removeAllReportSenders(): clears the list of active ReportSenders
 
 == Can I add my own variables content in the crash report ? ==
 
