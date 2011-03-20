@@ -10,6 +10,10 @@ ACRA allows your Android application to send Crash Reports to various destinatio
   * an email (new in 3.2)
   * your own server-side HTTP POST script (parameter names changed in 3.2)
   * any other possible destination by implementing your own report sender (new in 3.2)
+
+When a crash occurs, you can choose and configure 3 different ways of interacting with the user:
+  * Silent (default): ACRA actions are not visible. The crash report is sent and then the default android crash system does its job (Force Close dialog)
+  * Toast: When the crash occurs, ACRA displays a [http://developer.android.com/intl/fr/guide/topics/ui/notifiers/toasts.html toas]...
    
 This tutorial will guide you through installing ACRA in your application project.
 
