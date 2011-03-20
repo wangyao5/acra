@@ -178,7 +178,7 @@ public class MyApplication extends Application {
 
 The formUri can be over HTTPS (even with self signed certificates) and can require a BASIC HTTP authentication (pass your login and password with {{{formUriBasicAuthLogin}}} and {{{formUriBasicAuthPassword}}}).
 
-Your script will receive report fields as POST parameters named like the [http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ReportField.java {{{ReportField}}}] enum values.
+Your script will receive report fields as POST parameters named like the {{{[http://code.google.com/p/acra/source/browse/trunk/CrashReport/src/org/acra/ReportField.java ReportField]}}} enum values.
 
 === Sending reports by email ===
 
@@ -218,9 +218,9 @@ public class MyApplication extends Application {
 ...
 }}}
 
-Emails are sent with an {{{ACTION_SEND}}}. This means that these steps are required for the application user before any report is sent:
+Emails are sent with an {{{ACTION_SEND}}} intent. This means that the following steps are required for the application user before any report is sent:
   * pick preferred email client (if no default app set)
-  * review & send the email
+  * review & actually send the email
 
 === Implementing your own sender ===
 
