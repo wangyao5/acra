@@ -311,12 +311,36 @@ As you can see, you just have to split your command line arguments to a String a
 
 Note for experts: even if the "-t XXX" argument is only available since android 2.2, you can use it safely as ACRA emulates it for older devices.
   
+In addition to the {{{main}}} default buffer, you can configure ACRA to retrieve the 2 other alternative buffers {{{event}}} and {{{radio}}}. This is done with 2 {{{@ReportsCrashes}}} configuration items {{{includeEventsLogcat}}} and {{{includeRadioLogcat}}} which take {{{boolean}}} values.
 
-== Can I let the user disable error reporting ? ==
+== Adding the Device ID to your reports ==
 
-Yes, you can !
+In some circumstances, tracking exactly which identified devices throw which report can be necessary. ACRA will include your users Device ID (IMEI for GSM and the MEID or ESN for CDMA phones) if you add the following permission to your application manifest:
 
-All you have to do is add to your preferences xml file a CheckBoxPreference :
+{{{
+<manifest ...>
+    ...
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+</manifest>
+}}}
+
+
+== Letting your users control ACRA ==
+
+Some ACRA behaviors can be configured by your application users through the use of {{{SharedPreferences}}} items:
+  * enable/disable ACRA
+  * enable/disable system logs
+  * enable/disable including DeviceID
+  * set an email address to be added to reports
+  * enable/disable auto accept reports
+
+If your {{{SharedPreferences}}} are not the application default {{{SharedPreferences}}}, you can provide ACRA with your own {{{SharedPreferences}}} name using the following {{{@ReportsCrashes}}} parameters:
+  * {{{sharedPreferencesName}}}: Name of the {{{SharedPreferences}}} that will host the {{{acra.enable}}} or {{{acra.disable}}} preference.
+  * {{{sharedPreferencesMode}}}: The mode that you need for the {{{SharedPreference}}} file creation: {{{Context.MODE_PRIVATE}}}, {{{Context.MODE_WORLD_READABLE}}} or {{{Context.MODE_WORLD_WRITEABLE}}}. 
+
+=== enable/disable ACRA ===
+
+Add to your preferences xml file a CheckBoxPreference (checking it disables ACRA) :
 {{{
 <CheckBoxPreference android:key="acra.disable"
     android:title="@string/pref_disable_acra"
@@ -325,7 +349,7 @@ All you have to do is add to your preferences xml file a CheckBoxPreference :
     android:defaultValue="false"/>
 }}}
 
-Or if you prefer to allow your user to check the box to enable reporting:
+Or if you prefer the opposite (checking it to enable ACRA):
 {{{
 <CheckBoxPreference android:key="acra.enable"
     android:title="@string/pref_disable_acra"
@@ -336,11 +360,63 @@ Or if you prefer to allow your user to check the box to enable reporting:
 
 Then add to your {{{strings.xml}}} files the 3 corresponding string resources.
 
-If your {{{SharedPreferences}}} are not the application default {{{SharedPreferences}}}, you can provide ACRA with your own {{{SharedPreferences}}} name using the following {{{@ReportsCrashes}}} parameters:
-  * {{{sharedPreferencesName}}}: Name of the {{{SharedPreferences}}} that will host the {{{acra.enable}}} or {{{acra.disable}}} preference.
-  * {{{sharedPreferencesMode}}}: The mode that you need for the {{{SharedPreference}}} file creation: {{{Context.MODE_PRIVATE}}}, {{{Context.MODE_WORLD_READABLE}}} or {{{Context.MODE_WORLD_WRITEABLE}}}. 
+=== Enable/disable system logs ===
 
-== Can I send reports for caught exceptions ? or for unexpected application state without any exception ?==
+Including logcat extracts in reports is a great tool for developers, but it can lead to privacy issues as some other applications might log private data like user account names, opened URLs, calendar events...
+
+Giving your users a way to control the inclusion of logcat data make them understand that you care about their privacy. This can be done with the inclusion of the following {{{CheckBoxPreference}}}:
+
+{{{
+ <CheckBoxPreference android:key="acra.syslog.enable"
+    android:summaryOn="@string/pref_acra_syslog_enabled"
+    android:summaryOff="@string/pref_acra_syslog_disabled"
+    android:title="@string/pref_acra_syslog"
+    android:defaultValue="true"/>
+}}}
+
+Of course you have to define the matching strings in your {{{strings.xml}}} files.
+
+=== Enable/disable including DeviceID ===
+
+If you added the {{{READ_PHONE_STATE}}} permission to your application but
+want to let your user be able to disable the inclusion of their Device ID in
+crash reports, you can include the following {{{CheckBoxPreference}}}:
+
+{{{
+ <CheckBoxPreference android:key="acra.deviceid.enable"
+    android:title="@string/pref_acra_deviceid"
+    android:summaryOn="@string/pref_acra_deviceid_enabled"
+    android:summaryOff="@string/pref_acra_deviceid_disabled" 
+    android:defaultValue="true"/>
+}}}
+
+Don't forget to add the required strings in your {{{strings.xml}}} files.
+
+=== Set an email address to be added to reports ===
+
+Some users might be willing to help debugging your app. You can ask them
+to input an email address that will be included in every report to allow you
+contact them:  
+
+{{{
+ <EditTextPreference android:key="acra.user.email"
+    android:title="@string/pref_acra_user_email"
+    android:summary="@string/pref_acra_user_email_summary"/>
+}}}
+
+=== Enable/disable auto accept reports ===
+
+While in NOTIFICATION mode, you can allow your users to choose to auto-accept sending all reports. This is like letting them switch from NOTIFICATION mode to TOAST mode.
+
+{{{
+ <CheckBoxPreference android:key="acra.alwaysaccept"
+    android:title="@string/pref_acra_alwaysaccept"
+    android:summaryOn="@string/pref_acra_alwaysaccept_enabled"
+    android:summaryOff="@string/pref_acra_alwaysaccept_disabled"
+    android:defaultValue="false"/>
+}}}
+
+== Sending reports for caught exceptions or for unexpected application state without any exception ==
 
 As a good programmer, your code is full of try/catch statements, and sometimes an interesting (unexpected) exception might be caught in one of these.
 
