@@ -34,7 +34,7 @@ _This procedure is merely a [http://code.google.com/p/maven-googlecode-plugin/wi
 
 = Releasing =
 
-To create a new release, simply enter the following commands, after replacing <release-ver> (e.g. *3.1.1*) and <next-dev-ver> (e.g *3.2*).
+To create a new release, simply enter the following commands, after replacing `<release-ver>` (e.g. *3.1.1*) and `<next-dev-ver>` (e.g *3.2*).
 {{{
 mvn release:prepare --batch-mode -DdevelopmentVersion=<next-dev-ver>-SNAPSHOT -DreleaseVersion=<release-ver> -Dtag=acra-<release-ver>
 # To cancel the release after prepare, you may use "mvn release:rollback".
