@@ -30,7 +30,7 @@ enable-auto-props = yes
 *.ptpl = svn:eol-style=native;svn:mime-type=text/plain
 }}}
 
-If you are using Eclipse/Subversive, go to menu Window/Preferences/Team/SVN/Properties Configuration/Automatic Properties, remove all existing items and import [http://code.google.com/p/acra/wiki/files/svn-mimetypes.conf this file]. 
+If you are using Eclipse/Subversive, go to menu Window/Preferences/Team/SVN/Properties Configuration/Automatic Properties, remove all existing items and import [http://acra.googlecode.com/svn/wiki/files/svn-mimetypes.conf this file]. 
 
 _This procedure is merely a [http://code.google.com/p/maven-googlecode-plugin/wiki/MavenSiteDeployOnSVN copy & paste]._
 
