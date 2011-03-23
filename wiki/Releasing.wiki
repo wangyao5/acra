@@ -1,0 +1,33 @@
+#summary This page describes how to create a new ACRA release.
+
+_The procedure described below currently only work on the branch maven_build._
+
+= Introduction =
+
+This page is addressed at ACRA developers. It documents the steps that should be followed when creating a new ACRA release.
+
+= Needed software and configuration =
+
+* Install [http://maven.apache.org/download.html Maven]
+* Configure [http://subversion.apache.org Subversion] to automatically add the file mime types as svn properties (used when uploading the Javadoc). To do so, edit ~/.subversion/config and add the following properties:
+{{{
+enable-auto-props = yes
+
+### Section for configuring automatic properties.
+[auto-props]
+*.png = svn:mime-type=image/png
+*.jpg = svn:mime-type=image/jpeg
+*.gif = svn:mime-type=application/octet-stream
+*.xml = svn:eol-style=native;svn:mime-type=text/xml
+*.css = svn:eol-style=native;svn:mime-type=text/css
+*.js = svn:eol-style=native;svn:mime-type=text/javascript
+*.sql = svn:eol-style=native;svn:mime-type=text/plain
+*.txt = svn:eol-style=native;svn:mime-type=text/plain
+*.html = svn:eol-style=native;svn:mime-type=text/html
+*.properties = svn:eol-style=native;svn:mime-type=text/plain
+*.php = svn:eol-style=native;svn:mime-type=text/plain
+*.tpl = svn:eol-style=native;svn:mime-type=text/html
+*.ptpl = svn:eol-style=native;svn:mime-type=text/plain
+}}}
+
+= Releasing =
