@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.acra</groupId>
+  <artifactId>acra</artifactId>
+  <versioning>
+    <versions>
+      <version>3.2.1-MVN_TEST-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20110323011526</lastUpdated>
+  </versioning>
+</metadata>
