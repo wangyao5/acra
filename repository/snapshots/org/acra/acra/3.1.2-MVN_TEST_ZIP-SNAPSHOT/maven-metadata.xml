@@ -32,6 +32,11 @@
         <value>3.1.2-MVN_TEST_ZIP-20110323.113519-1</value>
         <updated>20110323113519</updated>
       </snapshotVersion>
+      <snapshotVersion>
+        <extension>zip</extension>
+        <value>3.1.2-MVN_TEST_ZIP-20110323.113519-1</value>
+        <updated>20110323113519</updated>
+      </snapshotVersion>
     </snapshotVersions>
   </versioning>
 </metadata>
