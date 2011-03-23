@@ -50,7 +50,7 @@ And that's all!
 
 = Checking after release =
 
-  * The release should be available in the releases [http://acra.googlecode.com/svn/repository/releases/org/acra/acra/ Maven repository].
+  * The release should be available in the *releases* Maven [http://acra.googlecode.com/svn/repository/releases/org/acra/acra/ repository].
   * The Javadoc should be available on [http://acra.googlecode.com/svn/javadoc the svn].
   * Don't forget to *update* the various wiki pages.
 
@@ -63,4 +63,4 @@ To do so, enter the following command :
 mvn clean deploy
 }}}
 
-The snapshot should be available in the in the snapshots [http://acra.googlecode.com/svn/repository/snapshots/org/acra/acra/ Maven repository].
+The snapshot should be available in the in the *snapshots* Maven [http://acra.googlecode.com/svn/repository/snapshots/org/acra/acra/ repository].
