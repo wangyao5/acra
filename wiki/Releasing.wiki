@@ -8,8 +8,8 @@ This page is addressed at ACRA developers. It documents the steps that should be
 
 = Needed software and configuration =
 
-* Install [http://maven.apache.org/download.html Maven]
-* Configure [http://subversion.apache.org Subversion] to automatically add the file mime types as svn properties (used when uploading the Javadoc). To do so, edit ~/.subversion/config and add the following properties:
+  * Install [http://maven.apache.org/download.html Maven]
+  * Configure [http://subversion.apache.org Subversion] to automatically add the file mime types as svn properties (used when uploading the Javadoc). To do so, edit ~/.subversion/config and add the following properties:
 {{{
 enable-auto-props = yes
 
@@ -30,4 +30,20 @@ enable-auto-props = yes
 *.ptpl = svn:eol-style=native;svn:mime-type=text/plain
 }}}
 
+_This procedure is merely a [http://code.google.com/p/maven-googlecode-plugin/wiki/MavenSiteDeployOnSVN copy & paste]._
+
 = Releasing =
+
+To create a new release, simply enter the following commands, after replacing <release-ver> (e.g. *3.1.1*) and <next-dev-ver> (e.g *3.2*).
+{{{
+mvn release:prepare --batch-mode -DdevelopmentVersion=<next-dev-ver>-SNAPSHOT -DreleaseVersion=<release-ver> -Dtag=acra-<release-ver>
+# To cancel the release after prepare, you may use "mvn release:rollback".
+mvn release:perform
+svn checkout https://acra.googlecode.com/svn/javadoc
+cp -r target/apidocs javadoc/<release-ver>
+cd javadoc
+svn add <release-ver>
+svn commit -m "Uploading Javadocs for version <release-ver>"
+}}}
+
+And that's all!
