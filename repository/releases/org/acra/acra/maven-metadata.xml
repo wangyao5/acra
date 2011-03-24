@@ -3,12 +3,13 @@
   <groupId>org.acra</groupId>
   <artifactId>acra</artifactId>
   <versioning>
-    <release>3.2.0-MVN_TEST</release>
+    <release>3.1.2-MVN_TEST_ZIP</release>
     <versions>
       <version>3.1.1-MVN_TEST_ZIP</version>
       <version>3.1.1-maven-test</version>
       <version>3.2.0-MVN_TEST</version>
+      <version>3.1.2-MVN_TEST_ZIP</version>
     </versions>
-    <lastUpdated>20110323102059</lastUpdated>
+    <lastUpdated>20110324000052</lastUpdated>
   </versioning>
 </metadata>
