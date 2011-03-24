@@ -1,7 +1,5 @@
 #summary This page describes how to create a new ACRA release.
 
-_The procedure described below currently only works for the branch maven_build._
-
 = Introduction =
 
 This page is addressed at ACRA developers. It documents the steps that should be followed when creating a new ACRA release.
