@@ -54,6 +54,7 @@ And that's all!
 
   * The release should be available in the *releases* Maven [http://acra.googlecode.com/svn/repository/releases/org/acra/acra/ repository].
   * The Javadoc should be available on [http://acra.googlecode.com/svn/javadoc the svn].
+  * Update the version numbers (snapshot + release) in the [Maven] wiki page
   * Don't forget to *update* the various wiki pages.
 
 = Deploying a snapshot =
