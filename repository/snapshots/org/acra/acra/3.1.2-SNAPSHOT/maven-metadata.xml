@@ -32,6 +32,11 @@
         <value>3.1.2-20110324.130928-1</value>
         <updated>20110324130928</updated>
       </snapshotVersion>
+      <snapshotVersion>
+        <extension>zip</extension>
+        <value>3.1.2-20110324.130928-1</value>
+        <updated>20110324130928</updated>
+      </snapshotVersion>
     </snapshotVersions>
   </versioning>
 </metadata>
