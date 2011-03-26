@@ -256,7 +256,7 @@ Note for experts: even if the "-t XXX" argument is only available since android 
   
 In addition to the {{{main}}} default buffer, you can configure ACRA to retrieve the 2 other alternative buffers {{{event}}} and {{{radio}}}. This is done with 2 {{{@ReportsCrashes}}} configuration items {{{includeEventsLogcat}}} and {{{includeRadioLogcat}}} which take {{{boolean}}} values.
 
-== Adding DropBoxManager events to your reports ==
+== Adding !DropBoxManager events to your reports ==
 
 [http://developer.android.com/intl/fr/reference/android/os/DropBoxManager.html DropBoxManager] has been introduced in android API level 8 (2.2 - FroYo). This is a new logging system focused on persisting long chunks of text or data for debugging purposes. There is a [http://stackoverflow.com/questions/4434192/dropboxmanager-use-cases Q&A on StackOverflow] explaining the usage of this system.
 
