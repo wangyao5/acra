@@ -67,7 +67,7 @@ Step by step installation of the ACRA library in an existing application project
 }}}
   * *_THE END_* - next time your application crashes, it adds a line to your Google Docs spreadsheet :-).
 
-*Bonus :* Google Docs spreadsheet allow to configure notifications on changes. Juste set your preferences in  : Share (Top right button) / Set notification rules and get notified by mail when reports are sent !
+*Bonus :* Google Docs spreadsheet allow to configure notifications on changes. Just set your preferences in  : Share (Top right button) / Set notification rules and get notified by mail when reports are sent !
 
 Spreadsheet default cells alignment is bottom left... select all cells and choose top left alignment:
 https://docs.google.com/uc?id=0B9J0DEDzWLEjMGU2YjBkMDItMzA5Zi00YzZiLWI0MDYtM2M5YmJlMjZhZWVk&export=download&hl=fr&align.png
