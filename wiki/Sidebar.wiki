@@ -5,4 +5,4 @@
     * [Maven Use ACRA with Maven projects]
     
   * Building ACRA
-    * [Releasing]
+    * [Releasing Releasing]
