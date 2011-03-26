@@ -2,6 +2,9 @@ TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
 
 TRUNK:
+  * New: added an includeDropBox configuration item with default value to false. This is to avoid any performance issue due to DropBox events collection for people who don't need them.
+  * Changed: removed debugging log event when examining SharedPreference update.
+  * New: ACRA project has been mavenized: building and releasing is now handled with maven. See [Releasing] and [Maven] pages for details. 
   * Fixed: Issue 42 - prevent ACRA 3.2 from crashing because of pending reports from previous ACRA versions.
   * Fixed: in NOTIFICATION mode, user comments could be attached to wrong reports.
   * Fixed: in SILENT mode, only explicit SILENT exceptions (cast with handleSilentException) were sent on application crash. Standard exception were sent on application restart.
