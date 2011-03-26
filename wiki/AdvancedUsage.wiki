@@ -256,6 +256,9 @@ Note for experts: even if the "-t XXX" argument is only available since android 
   
 In addition to the {{{main}}} default buffer, you can configure ACRA to retrieve the 2 other alternative buffers {{{event}}} and {{{radio}}}. This is done with 2 {{{@ReportsCrashes}}} configuration items {{{includeEventsLogcat}}} and {{{includeRadioLogcat}}} which take {{{boolean}}} values.
 
+  _*Note: System logs may contain private data logged by other applications like user email address, calendar events, contacts data...
+  You should consider [#Enable/disable_system_logs adding a user preference item to let your user choose to include system logs or not].*_  
+
 == Adding !DropBoxManager events to your reports ==
 
 [http://developer.android.com/intl/fr/reference/android/os/DropBoxManager.html DropBoxManager] has been introduced in android API level 8 (2.2 - FroYo). This is a new logging system focused on persisting long chunks of text or data for debugging purposes. There is a [http://stackoverflow.com/questions/4434192/dropboxmanager-use-cases Q&A on StackOverflow] explaining the usage of this system.
@@ -298,6 +301,8 @@ In some circumstances, tracking exactly which identified devices throw which rep
 </manifest>
 }}}
 
+  _*Note: This unique device ID is considered as private data as it could let you track users behaviors...
+  You should consider [#Enable/disable_including_DeviceID adding a user preference item to let your user choose to include this device id or not].*_  
 
 = Letting your users control ACRA =
 
