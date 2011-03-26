@@ -38,7 +38,7 @@ Step by step installation of the ACRA library in an existing application project
   * Create a {{{lib}}} folder
   * Add the {{{acra-3.2.0.jar}}} from the archive (acra-3.2.0/CrashReport/build) in the {{{lib}}} folder
   * Right-click on the jar file / add to build path
-  * Create a new class in your package root
+  * Create a new class in your package root _If your app already contains an Application subclass, add ACRA to this class._
     * Give it a name like: {{{MyApplication}}}, make it extend {{{android.app.Application}}}
     * Above the declaration of the {{{MyApplication}}} class, add the @ReportsCrashes annotation with your Google Docs form Id as a parameter 
 
