@@ -1,3 +1,4 @@
+#summary Testing integration of PlantUML schemas in wiki pages.
 = PlantUML integration test =
 
 *THIS IS A TEST*

@@ -1,3 +1,4 @@
+#summary Configure ProGuard to work with ACRA.
 #labels Featured
 = Using ACRA with !ProGuard =
 

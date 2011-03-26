@@ -1,3 +1,4 @@
+#summary How to install ACRA 3.1 in your Android application.
 #labels Phase-Deploy,Featured
 <wiki:toc max_depth="2" />
 

@@ -1,3 +1,4 @@
+#summary How to install ACRA 3.2 in your Android application.
 #labels Phase-Deploy,Beta
 <wiki:toc max_depth="3" />
 
@@ -312,6 +313,37 @@ As you can see, you just have to split your command line arguments to a String a
 Note for experts: even if the "-t XXX" argument is only available since android 2.2, you can use it safely as ACRA emulates it for older devices.
   
 In addition to the {{{main}}} default buffer, you can configure ACRA to retrieve the 2 other alternative buffers {{{event}}} and {{{radio}}}. This is done with 2 {{{@ReportsCrashes}}} configuration items {{{includeEventsLogcat}}} and {{{includeRadioLogcat}}} which take {{{boolean}}} values.
+
+== Adding DropBoxManager items to your reports ==
+
+[http://developer.android.com/intl/fr/reference/android/os/DropBoxManager.html DropBoxManager] has been introduced in android API level 8 (2.2 - FroYo). This is a new logging system focused on persisting long chunks of text or data for debugging purposes. There is a [http://stackoverflow.com/questions/4434192/dropboxmanager-use-cases Q&A on StackOverflow] explaining the usage of this system.
+
+A list of !DropBox tags has been built by searching for {{{DropBoxManager}}} usage in android source code. All these tagged events are retrieved by default:
+  * system_app_anr
+  * system_app_wtf
+  * system_app_crash
+  * system_server_anr
+  * system_server_wtf
+  * system_server_crash
+  * BATTERY_DISCHARGE_INFO
+  * SYSTEM_RECOVERY_LOG
+  * SYSTEM_BOOT
+  * SYSTEM_LAST_KMSG
+  * APANIC_CONSOLE
+  * APANIC_THREADS
+  * SYSTEM_RESTART
+  * SYSTEM_TOMBSTONE
+  * data_app_strictmode
+  
+You can add your own dropbox tags using {{{@ReportsCrashes.additionalDropBoxTags()}}}, and set the max age in minutes for events to be retrieved using {{{@ReportsCrashes.dropboxCollectionMinutes()}}}. 
+{{{
+@ReportsCrashes { formKey="xxxxxxxxxxxx",
+    ...
+    includeDropBox = true, // default is false + requires READ_LOGS permission
+    additionalDropBoxTags = {"your_own_tag", "another_additional_tag"},
+    dropboxCollectionMinutes = 10 // default is 5
+    ...
+}}}
 
 == Adding the Device ID to your reports ==
 

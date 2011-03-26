@@ -1,3 +1,4 @@
+#summary How to install ACRA 2.X in your Android application.
 #labels Phase-Deploy,Deprecated
 <wiki:toc max_depth="2" />
 
