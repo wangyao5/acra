@@ -1,4 +1,4 @@
-#summary How to install ACRA 3.2 in your Android application.
+#summary How to install ACRA 3.2 in your Android application project.
 #labels Phase-Deploy,Beta
 <wiki:toc max_depth="3" />
 
@@ -14,7 +14,8 @@ ACRA allows your Android application to send Crash Reports to various destinatio
 
 When a crash occurs, you can choose and configure 3 different ways of interacting with the user:
   * Silent (default): ACRA actions are not visible. The crash report is sent and then the default android crash system does its job (Force Close dialog)
-  * Toast: When the crash occurs, ACRA displays a [http://developer.android.com/intl/fr/guide/topics/ui/notifiers/toasts.html toas]...
+  * Toast: When the crash occurs, ACRA displays a [http://developer.android.com/intl/fr/guide/topics/ui/notifiers/toasts.html toast] and simultaneously sends the report.
+  * Notification: An optional toast is displayed on application crash, but the report is not sent immediately. A status bar notification is published warning the user that he should send a report. When selected, the notification displays a dialog asking for the authorization to send the report, with an optional user comment.
    
 This tutorial will guide you through installing ACRA in your application project.
 
