@@ -1,8 +1,4 @@
-  * Using ACRA
-    * [ACRA3HowTo Include ACRA in your application]
-    * [ACRAProGuardHowTo Configure ProGuard for ACRA]
-    * [ChangeLog Latest changes]
-    * [Maven Use ACRA with Maven projects]
-    
-  * Building ACRA
-    * [Releasing Releasing]
+  * [ACRA3HowTo Include ACRA in your application]
+  * [ACRAProGuardHowTo Configure ProGuard for ACRA]
+  * [ChangeLog Latest changes]
+  * [Maven Use ACRA with Maven projects]
