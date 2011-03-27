@@ -140,22 +140,26 @@ Here is a description of all fields contained in ACRA's reports. Most of them ar
 === logcat ===
 
   Logcat default extract.
-  *Requires READ_LOGS permission.*
+  
+  _*Requires READ_LOGS permission.*_
 
 === eventslog ===
 
   Logcat eventslog extract.
-  *Requires READ_LOGS permission.*
+  
+  _*Requires READ_LOGS permission.*_
 
 === radiolog ===
 
   Logcat radio extract.
-  *Requires READ_LOGS permission.*
+  
+  _*Requires READ_LOGS permission.*_
 
 === device_id ===
 
   Device unique ID (IMEI).
-  *Requires READ_PHONE_STATE permission.*
+  
+  _*Requires READ_PHONE_STATE permission.*_
 
 === user_email ===
 
