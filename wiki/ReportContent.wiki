@@ -274,8 +274,8 @@ Death Recipients:        1
 }}}
 
     Analysis of these data require a high knowledge of internal system
-    memory handling. You can get some clues in [http://stackoverflow.com/questions/2298208/how-to-discover-memory-usage-of-my-application-in-android/2299813#2299813 this StackOverflow answer
-    from Dianne Hackborn].
+    memory handling. You can get some clues in
+    [http://stackoverflow.com/questions/2298208/how-to-discover-memory-usage-of-my-application-in-android/2299813#2299813 this StackOverflow answer from Dianne Hackborn].
 
 === dropbox ===
 
