@@ -194,7 +194,7 @@ userSetLocale=false
   you can see here that the "seq" field has been increased from 117 to120.
   This means that 3 configuration changes occurred between the
   Application start and the crash. You can also see that the orientation
-  changed from LANDSCAPE to PORTRAIT. There could be lots of issues
+  changed from PORTRAIT to LANDSCAPE. There could be lots of issues
   regarding orientation (and other configuration) changes handling, so
   if you don't understand how a bug happens, having a look at this values
   can help you understand what the user did with his device.
