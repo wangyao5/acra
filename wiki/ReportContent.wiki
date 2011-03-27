@@ -191,8 +191,8 @@ userSetLocale=false
 }}}
 
   As an example of how this field combined with [#initial_configuration initial_configuration] can help you debug your application,
-  you can see here that the "seq" field has been increased from 117 to
-  120. This means that 3 configuration changes occurred between the
+  you can see here that the "seq" field has been increased from 117 to120.
+  This means that 3 configuration changes occurred between the
   Application start and the crash. You can also see that the orientation
   changed from LANDSCAPE to PORTRAIT. There could be lots of issues
   regarding orientation (and other configuration) changes handling, so
