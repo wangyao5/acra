@@ -5,35 +5,30 @@
 
 Here is a description of all fields contained in ACRA's reports. Most of them are always filled, some might require extra configuration or system permissions.
 
-app_version_code,app_version_name,package_name,file_path,phone_model,android_version,board,brand,device,build_display,fingerprint,host,id,product,tags,time,type,user,total_internal_memory,available_internal_memory,custom,stack_trace,initial_configuration,crash_configuration,display,user_comment,user_crash_date,dumpsys_meminfo,dropbox,logcat,eventslog,radiolog,device_id,user_email
+,android_version,board,brand,device,build_display,fingerprint,host,id,product,tags,time,type,user,total_internal_memory,available_internal_memory,custom,stack_trace,initial_configuration,crash_configuration,display,user_comment,user_crash_date,dumpsys_meminfo,dropbox,logcat,eventslog,radiolog,device_id,user_email
 
 
 === app_version_code ===
 
   Application version code. This is the incremental integer version code
   used to differentiate versions on the android market. {@see PackageInfo#versionCode}
+
+=== app_version_name ===
   
-    /**
-     * 
-     */
-    APP_VERSION_CODE,
-    /**
-     * Application version name. {@see PackageInfo#versionName}
-     */
-    APP_VERSION_NAME,
-    /**
-     * Application package name. {@see Context#getPackageName()}
-     */
-    PACKAGE_NAME,
-    /**
-     * Base path of the application's private file folder. {@see
-     * Context#getFilesDir()}
-     */
-    FILE_PATH,
-    /**
-     * Device model name. {@see Build#MODEL}
-     */
-    PHONE_MODEL,
+  Application version name. {@see PackageInfo#versionName}
+  
+=== package_name ===
+
+  Application package name. {@see Context#getPackageName()}
+
+=== file_path ===
+
+  Base path of the application's private file folder. {@see Context#getFilesDir()}
+
+=== phone_model ===
+
+  Device model name. {@see Build#MODEL}
+
     /**
      * Device android version name. {@see VERSION#RELEASE}
      */
