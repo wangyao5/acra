@@ -8,12 +8,11 @@ Here is a description of all fields contained in ACRA's reports. Most of them ar
 app_version_code,app_version_name,package_name,file_path,phone_model,android_version,board,brand,device,build_display,fingerprint,host,id,product,tags,time,type,user,total_internal_memory,available_internal_memory,custom,stack_trace,initial_configuration,crash_configuration,display,user_comment,user_crash_date,dumpsys_meminfo,dropbox,logcat,eventslog,radiolog,device_id,user_email
 
 
-<dl>
-  <dt>app_version_code</dt>
-  <dd>Application version code. This is the incremental integer version code
-     use to differentiate versions on the android market. {@see
-     PackageInfo#versionCode}</dd>
-</dl>
+=== app_version_code ===
+
+  Application version code. This is the incremental integer version code
+  used to differentiate versions on the android market. {@see PackageInfo#versionCode}
+  
     /**
      * 
      */
