@@ -81,6 +81,8 @@ https://docs.google.com/uc?id=0B9J0DEDzWLEjMGU2YjBkMDItMzA5Zi00YzZiLWI0MDYtM2M5Y
 
 = Is that all? =
 
+First of all, you shoukd read ReportContent for an explanation of the data collected by ACRA.
+
 ACRA is designed to work with the simplest possible setup. But there are lots of configurable items, all described in the [AdvancedUsage Advanced Usage Guide]:
   * *[AdvancedUsage#User_Interaction User interaction mode]*: 
     * *SILENT (default)*: with the basic setup, ACRA sends reports silently, without warning your users, and lets the system display the native Force Close dialog (which may include Android Market Send Report button on android 2.1+ devices... if your app has been downloaded from the market).
