@@ -134,6 +134,7 @@ Here is a description of all fields contained in ACRA's reports. Most of them ar
 === dropbox ===
 
   Content of the android.os.DropBoxManager (introduced in API level 8).
+  
   _*Requires READ_LOGS permission.*_
 
 === logcat ===
