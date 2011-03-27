@@ -3,6 +3,7 @@
 TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
   * Add an APPLICATION_START_DATE field
+  * Add an includeDropBoxSystemTags config option
 
 TRUNK:
   * New: added an includeDropBox configuration item with default value to false. This is to avoid any performance issue due to DropBox events collection for people who don't need them.
