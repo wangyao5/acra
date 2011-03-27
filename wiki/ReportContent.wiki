@@ -8,39 +8,57 @@ Here is a description of all fields contained in ACRA's reports. Most of them ar
 === app_version_code ===
 
   Application version code. This is the incremental integer version code
-  used to differentiate versions on the android market. {@see PackageInfo#versionCode}
+  used to differentiate versions on the android market.
+  
+  See [http://developer.android.com/reference/android/content/pm/PackageInfo.html#versionCode PackageInfo.versionCode].
 
 === app_version_name ===
   
-  Application version name. {@see PackageInfo#versionName}
+  Application version name.
+  
+  See [http://developer.android.com/reference/android/content/pm/PackageInfo.html#versionName PackageInfo.versionName].
   
 === package_name ===
 
-  Application package name. {@see Context#getPackageName()}
+  Application package name.
+  
+  See [http://developer.android.com/reference/android/content/Context.html#getPackageName() Context.getPackageName()].
 
 === file_path ===
 
-  Base path of the application's private file folder. {@see Context#getFilesDir()}
+  Base path of the application's private file folder.
+  
+  See http://developer.android.com/reference/android/content/Context.html#getFilesDir() Context.getFilesDir()].
 
 === phone_model ===
 
-  Device model name. {@see Build#MODEL}
+  Device model name.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#MODEL Build.MODEL].
 
 === android_version ===
 
-  Device android version name. {@see VERSION#RELEASE}
+  Device android version name. 
+  
+  See [http://developer.android.com/reference/android/os/Build.VERSION.html#RELEASE Build.VERSION.RELEASE]
 
 === board ===
 
-  Android build board. {@see Build#BOARD}
+  Android build board. 
+  
+  See [http://developer.android.com/reference/android/os/Build.html#BOARD Build.BOARD].
 
 === brand ===
 
-  Device brand (manufacturer or carrier). {@see Build#BRAND}
+  Device brand (manufacturer or carrier).
+  
+  See [http://developer.android.com/reference/android/os/Build.html#BRAND Build.BRAND].
 
 === device ===
 
-  Device industrial design name. {@see Build#DEVICE}
+  Device industrial design name.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#DEVICE Build.DEVICE].
 
 === build_display ===
 
@@ -56,39 +74,56 @@ Here is a description of all fields contained in ACRA's reports. Most of them ar
      * FRF91 (HTC/T Mobile Uk)
      * ChevyNo1 -> Simply Stunning v2.0.2 ESE53 [3/9/2010] (Custom ROM)
      * ...
-   {@see Build#DISPLAY}
+   
+   See [http://developer.android.com/reference/android/os/Build.html#DISPLAY Build.DISPLAY].
 
 === fingerprint ===
 
-  Android build fingerprint (unique id). {@see Build#FINGERPRINT}
+  Android build fingerprint (unique id). 
+  
+  See [http://developer.android.com/reference/android/os/Build.html#FINGERPRINT Build.FINGERPRINT].
 
 === host ===
 
-  Android build host. {@see Build#HOST}
+  Android build host.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#HOST Build.HOST].
   
 === id ===
 
-  Android build Id. {@see Build#ID}
+  Android build Id.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#ID Build.ID].
 
 === product ===
 
-  Device overall product code. {@see Build#PRODUCT}
+  Device overall product code.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#PRODUCT Build.PRODUCT].
 
 === tags ===
 
-  Tags associated to the android build. {@see Build#TAGS}
+  Tags associated to the android build.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#TAGS Build#TAGS]
 
 === time ===
 
-  Android build time. {@see Build#TIME}
+  Android build time.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#TIME Build.TIME]
 
 === type ===
 
-  Android type of build ("user", "eng"...). {@see Build#TYPE}
+  Android type of build ("user", "eng"...).
+  
+  See [http://developer.android.com/reference/android/os/Build.html#TYPE Build.TYPE].
 
 === user ===
 
-  Android build user. {@see Build#USER}
+  Android build user.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#USER Build#USER].
 
 === total_internal_memory ===
 
@@ -109,15 +144,61 @@ Here is a description of all fields contained in ACRA's reports. Most of them ar
 
 === initial_configuration ===
 
-  {@link Configuration} fields state on the application start. {@see Configuration}
+  [http://developer.android.com/intl/fr/reference/android/content/res/Configuration.html Configuration] fields state on the application start.
+  
+  Example:
+  
+{{{
+locale=fr_FR
+hardKeyboardHidden=HARDKEYBOARDHIDDEN_YES
+keyboard=KEYBOARD_NOKEYS
+keyboardHidden=KEYBOARDHIDDEN_NO
+fontScale=1.0
+mcc=208
+mnc=10
+navigation=NAVIGATION_TRACKBALL
+navigationHidden=NAVIGATIONHIDDEN_NO
+orientation=ORIENTATION_PORTRAIT
+screenLayout=SCREENLAYOUT_SIZE_NORMAL+SCREENLAYOUT_LONG_YES
+seq=117
+touchscreen=TOUCHSCREEN_FINGER
+uiMode=UI_MODE_TYPE_NORMAL+UI_MODE_NIGHT_NO
+userSetLocale=false
+}}}
 
 === crash_configuration ===
 
-  {@link Configuration} fields state on the application crash. {@see Configuration}
+  [http://developer.android.com/intl/fr/reference/android/content/res/Configuration.html Configuration] fields state on the application crash.
+
+  Example :
+  
+{{{
+locale=fr_FR
+hardKeyboardHidden=HARDKEYBOARDHIDDEN_YES
+keyboard=KEYBOARD_NOKEYS
+keyboardHidden=KEYBOARDHIDDEN_NO
+fontScale=1.0
+mcc=208
+mnc=10
+navigation=NAVIGATION_TRACKBALL
+navigationHidden=NAVIGATIONHIDDEN_NO
+orientation=ORIENTATION_LANDSCAPE
+screenLayout=SCREENLAYOUT_SIZE_NORMAL+SCREENLAYOUT_LONG_YES
+seq=120
+touchscreen=TOUCHSCREEN_FINGER
+uiMode=UI_MODE_TYPE_NORMAL+UI_MODE_NIGHT_NO
+userSetLocale=false
+}}}
+
+  As an example of how this field can help you debug your application, you can see here that the "seq" field has been increased from 117 to 119. This means that 2 configuration changes occurred between the Application start and the crash. You can also see that the orientation changed from LANDSCAPE to PORTRAIT. There could be lots of issues regarding orientation (and other configuration) changes handling, so if you don't understand how a bug happens, having a look at this values can help you understand what the user did with his device.
+  
+  Though, having seq value increased does not mean that these changes occured while your application was active. There can be lots of things happening between your application start and the crash. For example, a user can start your application and use it on day 1 without any issue, use many other applications in between, reopen your application on day 2 (which was still started but paused) and then the crash occurs. All the configuration changes that happened in between introduce a change in the seq value.  
 
 === display ===
 
-  Device display specifications. {@see WindowManager#getDefaultDisplay()}
+  Device display specifications.
+  
+  See [http://developer.android.com/reference/android/view/WindowManager.html#getDefaultDisplay() WindowManager.getDefaultDisplay()]
 
 === user_comment ===
 
