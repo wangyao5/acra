@@ -292,7 +292,7 @@ Death Recipients:        1
   
   A few details were given about the usage of the DropBox by [http://stackoverflow.com/questions/4434192/dropboxmanager-use-cases/4445105#4445105 Brad Fitzpatrick in this StackOverflow answer].
     
-  Without any ACRA additional configuration, here is the content you can retrieve after a fresh boot on a Nexus One (with android 2.3.3):
+  If [AdvancedUsage#Adding_DropBoxManager_events_to_your_reports properly configured to retrieve system tags], here is the kind of content you can retrieve after a fresh boot on a Nexus One (with android 2.3.3):
 
 {{{
 Tag: system_app_anr
