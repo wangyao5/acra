@@ -233,6 +233,10 @@ metrics.ydpi=254.0
 
   Comment added by the user in the dialog displayed in NOTIFICATION mode.
 
+=== user_app_start_date ===
+
+  User date on application start.
+
 === user_crash_date ===
 
   User date immediately after the crash occurred.

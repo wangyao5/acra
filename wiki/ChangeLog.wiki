@@ -2,13 +2,13 @@
 
 TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
-  * Add an APPLICATION_START_DATE field
   * Add a FEATURES_INFO field http://developer.android.com/reference/android/content/pm/FeatureInfo.html
   * Add a PACKAGE_STATS field http://developer.android.com/intl/fr/reference/android/content/pm/PackageStats.html
   * Add an ENVIRONMENT field for state and details about external storage http://developer.android.com/intl/fr/reference/android/os/Environment.html
   
 
 TRUNK:
+  * New: Added an USER_APP_START_DATE field
   * New: Added an includeDropBoxSystemTags config option
   * New: added an includeDropBox configuration item with default value to false. This is to avoid any performance issue due to DropBox events collection for people who don't need them.
   * Changed: removed debugging log event when examining SharedPreference update.
