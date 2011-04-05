@@ -7,6 +7,7 @@ TODO:
   
 
 TRUNK:
+  * New: Issue 46 - added an optional field for user email input in crash dialog. Retrieves and stores value from already implemented SharedPreferene. Field activation similar to user comment (provide a resourceId for its label). 
   * New: Added a DEVICE_FEATURES field http://developer.android.com/intl/fr/reference/android/content/pm/PackageManager.html#getSystemAvailableFeatures()
   * New: Added an USER_APP_START_DATE field
   * New: Added an includeDropBoxSystemTags config option
