@@ -4,7 +4,7 @@ TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
   * Add a PACKAGE_STATS field http://developer.android.com/intl/fr/reference/android/content/pm/PackageStats.html
   * Add an ENVIRONMENT field for state and details about external storage http://developer.android.com/intl/fr/reference/android/os/Environment.html
-  
+  * Add a SECURE_SETTINGS field for http://developer.android.com/reference/android/provider/Settings.Secure.html content
 
 TRUNK:
   * New: Issue 46 - added an optional field for user email input in crash dialog. Retrieves and stores value from already implemented SharedPreferene. Field activation similar to user comment (provide a resourceId for its label). 
