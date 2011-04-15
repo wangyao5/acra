@@ -7,6 +7,7 @@ TODO:
   * Add a SECURE_SETTINGS field for http://developer.android.com/reference/android/provider/Settings.Secure.html content
   * Add a SETTINGS field
   * Add an INSTALLATION_ID containing http://android-developers.blogspot.com/2011/03/identifying-app-installations.html
+  * Let's enable custom report fields selection for ALL modes, not only email
 
 TRUNK:
   * New: Issue 46 - added an optional field for user email input in crash dialog. Retrieves and stores value from already implemented SharedPreferene. Field activation similar to user comment (provide a resourceId for its label). 
