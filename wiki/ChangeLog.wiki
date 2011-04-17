@@ -6,11 +6,11 @@ TODO:
   * Add an ENVIRONMENT field for state and details about external storage http://developer.android.com/intl/fr/reference/android/os/Environment.html
   * Add a SECURE_SETTINGS field for http://developer.android.com/reference/android/provider/Settings.Secure.html content
   * Add a SETTINGS field
-  * Add an INSTALLATION_ID containing http://android-developers.blogspot.com/2011/03/identifying-app-installations.html
   * Let's enable custom report fields selection for ALL modes, not only email
   
 
 TRUNK:
+  * New: Added an INSTALLATION_ID containing http://android-developers.blogspot.com/2011/03/identifying-app-installations.html
   * New: Added a REPORT_ID field based on UUID.
   * New: All reports content can now be customized using ReportsCrashes.customReportContent. It replaces the mailReportFields that had been implemented only for mail reports before. This requires to create your own .csv and import it in GoogleCode.
   * Changed: Build data are now put together in a single column except for data about device model/manufacturer
