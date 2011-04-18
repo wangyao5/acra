@@ -2,14 +2,14 @@
 
 TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
-  * Add a PACKAGE_STATS field http://developer.android.com/intl/fr/reference/android/content/pm/PackageStats.html
-  * Add an ENVIRONMENT field for state and details about external storage http://developer.android.com/intl/fr/reference/android/os/Environment.html
   * Add a SETTINGS_SECURE field for http://developer.android.com/reference/android/provider/Settings.Secure.html content
   * Add a SETTINGS_SYSTEM field
   
 
 TRUNK:
-  * New: Added an INSTALLATION_ID containing http://android-developers.blogspot.com/2011/03/identifying-app-installations.html
+  * New: Added an ENVIRONMENT field for state and details about external storage http://developer.android.com/intl/fr/reference/android/os/Environment.html
+  * WontDo: PackageStats could be interesting but there is no public API to retrieve it.
+  * New: Added an INSTALLATION_ID field containing http://android-developers.blogspot.com/2011/03/identifying-app-installations.html
   * New: Added a REPORT_ID field based on UUID.
   * New: All reports content can now be customized using ReportsCrashes.customReportContent. It replaces the mailReportFields that had been implemented only for mail reports before. This requires to create your own .csv and import it in GoogleCode.
   * Changed: Build data are now put together in a single column except for data about device model/manufacturer
