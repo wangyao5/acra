@@ -2,11 +2,11 @@
 
 TODO:
   * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
-  * Add a SETTINGS_SECURE field for http://developer.android.com/reference/android/provider/Settings.Secure.html content
-  * Add a SETTINGS_SYSTEM field
   
 
 TRUNK:
+  * New: Added a SETTINGS_SECURE field for http://developer.android.com/reference/android/provider/Settings.Secure.html content
+  * New: Added a SETTINGS_SYSTEM field http://developer.android.com/reference/android/provider/Settings.System.html content
   * New: Added an ENVIRONMENT field for state and details about external storage http://developer.android.com/intl/fr/reference/android/os/Environment.html
   * WontDo: PackageStats could be interesting but there is no public API to retrieve it.
   * New: Added an INSTALLATION_ID field containing http://android-developers.blogspot.com/2011/03/identifying-app-installations.html
