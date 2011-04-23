@@ -5,144 +5,107 @@
 
 Here is a description of all fields contained in ACRA's reports. Most of them are always filled, some might require extra configuration or system permissions.
 
-=== app_version_code ===
+=== REPORT_ID ===
+
+  A unique identifier for this report. If you receive 2 reports with the same ID then there might be a bug in the handling of reports in ACRA...
+
+=== APP_VERSION_CODE ===
 
   Application version code. This is the incremental integer version code
   used to differentiate versions on the android market.
   
   See [http://developer.android.com/reference/android/content/pm/PackageInfo.html#versionCode PackageInfo.versionCode].
 
-=== app_version_name ===
+=== APP_VERSION_NAME ===
   
   Application version name.
   
   See [http://developer.android.com/reference/android/content/pm/PackageInfo.html#versionName PackageInfo.versionName].
   
-=== package_name ===
+=== PACKAGE_NAME ===
 
   Application package name.
   
   See [http://developer.android.com/reference/android/content/Context.html#getPackageName() Context.getPackageName()].
 
-=== file_path ===
+=== FILE_PATH ===
 
   Base path of the application's private file folder.
   
   See http://developer.android.com/reference/android/content/Context.html#getFilesDir() Context.getFilesDir()].
 
-=== phone_model ===
+=== PHONE_MODEL ===
 
   Device model name.
   
   See [http://developer.android.com/reference/android/os/Build.html#MODEL Build.MODEL].
 
-=== android_version ===
+=== ANDROID_VERSION ===
 
   Device android version name. 
   
   See [http://developer.android.com/reference/android/os/Build.VERSION.html#RELEASE Build.VERSION.RELEASE]
 
-=== board ===
+=== BUILD ===
 
-  Android build board. 
+  Android build details. Here is an example for the NexusOne with official Android 2.3.3: 
+  
+{{{
+BOARD=mahimahi
+BOOTLOADER=0.35.0017
+BRAND=google
+CPU_ABI=armeabi-v7a
+CPU_ABI2=armeabi
+DEVICE=passion
+DISPLAY=GRI40
+FINGERPRINT=google/passion/passion:2.3.3/GRI40/102588:user/release-keys
+HARDWARE=mahimahi
+HOST=android-test-1.mtv.corp.google.com
+ID=GRI40
+MANUFACTURER=HTC
+MODEL=Nexus One
+PRODUCT=passion
+RADIO=unknown
+SERIAL=HT019P801851
+TAGS=release-keys
+TIME=1297306326000
+TYPE=user
+UNKNOWN=unknown
+USER=android-build
+}}}
   
   See [http://developer.android.com/reference/android/os/Build.html#BOARD Build.BOARD].
 
-=== brand ===
+=== BRAND ===
 
   Device brand (manufacturer or carrier).
   
   See [http://developer.android.com/reference/android/os/Build.html#BRAND Build.BRAND].
 
-=== device ===
-
-  Device industrial design name.
-  
-  See [http://developer.android.com/reference/android/os/Build.html#DEVICE Build.DEVICE].
-
-=== build_display ===
-
-  Android build display ID. Content might vary. Examples found:
-     * unknown (Motorola)
-     * FRG22D (Motorola)
-     * CUPCAKE (Motorola, Samsung)
-     * FROYO.XWJJ3 (Samsung)
-     * VZW (Motorola/Verizon)
-     * Donut.V10a (LG Electronics)
-     * 1.56.651.2 (HTC/Sprint)
-     * RK-1.2.9.eng.root.20101517.173848 (Archos)
-     * FRF91 (HTC/T Mobile Uk)
-     * ChevyNo1 -> Simply Stunning v2.0.2 ESE53 [3/9/2010] (Custom ROM)
-     * ...
-   
-   See [http://developer.android.com/reference/android/os/Build.html#DISPLAY Build.DISPLAY].
-
-=== fingerprint ===
-
-  Android build fingerprint (unique id). 
-  
-  See [http://developer.android.com/reference/android/os/Build.html#FINGERPRINT Build.FINGERPRINT].
-
-=== host ===
-
-  Android build host.
-  
-  See [http://developer.android.com/reference/android/os/Build.html#HOST Build.HOST].
-  
-=== id ===
-
-  Android build Id.
-  
-  See [http://developer.android.com/reference/android/os/Build.html#ID Build.ID].
-
-=== product ===
+=== PRODUCT ===
 
   Device overall product code.
   
   See [http://developer.android.com/reference/android/os/Build.html#PRODUCT Build.PRODUCT].
 
-=== tags ===
-
-  Tags associated to the android build.
-  
-  See [http://developer.android.com/reference/android/os/Build.html#TAGS Build#TAGS]
-
-=== time ===
-
-  Android build time.
-  
-  See [http://developer.android.com/reference/android/os/Build.html#TIME Build.TIME]
-
-=== type ===
-
-  Android type of build ("user", "eng"...).
-  
-  See [http://developer.android.com/reference/android/os/Build.html#TYPE Build.TYPE].
-
-=== user ===
-
-  Android build user.
-  
-  See [http://developer.android.com/reference/android/os/Build.html#USER Build#USER].
-
-=== total_internal_memory ===
+=== TOTAL_MEM_SIZE ===
 
   Estimation of the total device memory size based on filesystem stats.
 
-=== available_internal_memory ===
+=== AVAILABLE_MEM_SIZE ===
 
   Estimation of the available device memory size based on filesystem stats.
 
-=== custom ===
+=== CUSTOM_DATA ===
 
   Contains key = value pairs defined by the application developer during
   the application execution.
 
-=== stack_trace ===
+=== STACK_TRACE ===
 
-  The Holy Stack Trace.
+  The Holy Stack Trace. Details of the exception that caused the application to crash.
 
-=== initial_configuration ===
+=== INITIAL_CONFIGURATION ===
 
   [http://developer.android.com/intl/fr/reference/android/content/res/Configuration.html Configuration] fields state on the application start.
   
@@ -166,7 +129,7 @@ uiMode=UI_MODE_TYPE_NORMAL+UI_MODE_NIGHT_NO
 userSetLocale=false
 }}}
 
-=== crash_configuration ===
+=== CRASH_CONFIGURATION ===
 
   [http://developer.android.com/intl/fr/reference/android/content/res/Configuration.html Configuration] fields state on the application crash.
 
@@ -208,7 +171,7 @@ userSetLocale=false
   All the configuration changes that happened in between introduce a
   change in the seq value.  
 
-=== display ===
+=== DISPLAY ===
 
   Device display specifications.
   
@@ -229,19 +192,19 @@ metrics.xdpi=254.0
 metrics.ydpi=254.0
 }}}
 
-=== user_comment ===
+=== USER_COMMENT ===
 
   Comment added by the user in the dialog displayed in NOTIFICATION mode.
 
-=== user_app_start_date ===
+=== USER_APP_START_DATE ===
 
   User date on application start.
 
-=== user_crash_date ===
+=== USER_CRASH_DATE ===
 
   User date immediately after the crash occurred.
 
-=== dumpsys_meminfo ===
+=== DUMPSYS_MEMINFO ===
 
   Memory state details for your application process.
   
@@ -281,7 +244,7 @@ Death Recipients:        1
     memory handling. You can get some clues in
     [http://stackoverflow.com/questions/2298208/how-to-discover-memory-usage-of-my-application-in-android/2299813#2299813 this StackOverflow answer from Dianne Hackborn].
 
-=== dropbox ===
+=== DROPBOX ===
 
   Content of the android.os.DropBoxManager (introduced in API level 8).
 
@@ -352,7 +315,7 @@ Nothing.
 
     
 
-=== logcat ===
+=== LOGCAT ===
 
   Logcat default extract.
   
@@ -365,7 +328,7 @@ Nothing.
   
   See [AdvancedUsage#Adding_logcat,_eventlog_or_radiolog_extracts_to_reports configuration details].
 
-=== eventslog ===
+=== EVENTSLOG ===
 
   Logcat eventslog extract.
   
@@ -418,7 +381,7 @@ Nothing.
 03-27 16:37:48.100 I/dvm_gc_info(  559): [8314046716718417551,-9042798587623495631,-3999331673328351193,8525718]
 }}} 
 
-=== radiolog ===
+=== RADIOLOG ===
 
   Logcat radio extract.
   
@@ -471,14 +434,189 @@ Nothing.
 03-27 16:37:44.150 D/RILJ    (  195): [0104]< SIGNAL_STRENGTH {4, 99, -1, -1, -1, -1, 0}
 }}}
 
-=== device_id ===
+=== IS_SILENT ===
+
+    True if the report has been explicitly sent silently by the developer.
+
+=== DEVICE_ID ===
 
   Device unique ID (IMEI for GSM and the MEID or ESN for CDMA phones).
   
   _*Requires READ_PHONE_STATE permission.*_
+
+  If you need to know if reports come from single or multiple users without using the READ_PHONE_STATE permission, you should use [#INSTALLATION_ID] instead.
   
   See [http://developer.android.com/reference/android/telephony/TelephonyManager.html#getDeviceId() TelephonyManager.html#getDeviceId()]
 
-=== user_email ===
+=== INSTALLATION_ID ===
+
+  Installation unique ID. This identifier allow you to track a specific
+  user application installation without using any personal data.
+  Implemented following the guidelines from the [http://android-developers.blogspot.com/2011/03/identifying-app-installations.html Android Developers Blog].
+
+=== USER_EMAIL ===
 
   User email address. Can be provided by the user in the {{{acra.user.email}}} SharedPreference field.
+
+=== DEVICE_FEATURES ===
+
+  Features declared as available on this device by the system.
+  These features are those that are used by the android market
+  to filter apps according to <uses-feature> directives from applications manifests.
+  
+  Example from a NexusOne:
+
+{{{
+android.hardware.location.network
+android.hardware.wifi
+com.google.android.feature.GOOGLE_BUILD
+android.hardware.telephony
+android.hardware.location
+android.software.sip
+android.hardware.touchscreen.multitouch
+android.hardware.sensor.compass
+android.hardware.camera
+android.hardware.bluetooth
+android.hardware.sensor.proximity
+android.software.sip.voip
+android.hardware.microphone
+android.hardware.sensor.light
+android.hardware.location.gps
+android.hardware.camera.autofocus
+android.hardware.telephony.gsm
+android.hardware.sensor.accelerometer
+android.hardware.touchscreen
+android.software.live_wallpaper
+android.hardware.camera.flash
+glEsVersion = 2.0
+}}}
+
+=== ENVIRONMENT ===
+
+  External storage state and standard directories.
+
+  Example from a NexusOne:
+  
+{{{
+getDataDirectory=/data
+getDownloadCacheDirectory=/cache
+getExternalStorageAndroidDataDir=/mnt/sdcard/Android/data
+getExternalStorageDirectory=/mnt/sdcard
+getExternalStorageState=mounted
+getRootDirectory=/system
+getSecureDataDirectory=/data
+getSystemSecureDirectory=/data/system
+isEncryptedFilesystemEnabled=false
+isExternalStorageRemovable=true
+}}}
+
+=== SETTINGS_SYSTEM ===
+
+  System settings.
+  
+  Example from Nexus One:
+  
+{{{
+ACCELEROMETER_ROTATION=1
+AIRPLANE_MODE_ON=0
+AIRPLANE_MODE_RADIOS=cell,bluetooth,wifi
+AIRPLANE_MODE_TOGGLEABLE_RADIOS=bluetooth,wifi
+ALARM_ALERT=content://media/internal/audio/media/81
+AUTO_TIME=0
+CALL_AUTO_RETRY=0
+CAR_DOCK_SOUND=/system/media/audio/ui/Dock.ogg
+CAR_UNDOCK_SOUND=/system/media/audio/ui/Undock.ogg
+DESK_DOCK_SOUND=/system/media/audio/ui/Dock.ogg
+DESK_UNDOCK_SOUND=/system/media/audio/ui/Undock.ogg
+DIM_SCREEN=1
+DOCK_SOUNDS_ENABLED=0
+DTMF_TONE_TYPE_WHEN_DIALING=0
+EMERGENCY_TONE=0
+FONT_SCALE=1.0
+HAPTIC_FEEDBACK_ENABLED=1
+HEARING_AID=0
+LOCKSCREEN_SOUNDS_ENABLED=0
+LOCK_SOUND=/system/media/audio/ui/Lock.ogg
+LOW_BATTERY_SOUND=/system/media/audio/ui/LowBattery.ogg
+MODE_RINGER=2
+MODE_RINGER_STREAMS_AFFECTED=166
+MUTE_STREAMS_AFFECTED=46
+NEXT_ALARM_FORMATTED=sam. 6:45
+NOTIFICATIONS_USE_RING_VOLUME=1
+NOTIFICATION_LIGHT_PULSE=1
+NOTIFICATION_SOUND=content://media/external/audio/media/85
+POWER_SOUNDS_ENABLED=1
+RINGTONE=content://media/internal/audio/media/11
+SCREEN_BRIGHTNESS=76
+SCREEN_BRIGHTNESS_MODE=1
+SCREEN_OFF_TIMEOUT=60000
+SHOW_WEB_SUGGESTIONS=1
+STAY_ON_WHILE_PLUGGED_IN=0
+TRANSITION_ANIMATION_SCALE=1.0
+TTY_MODE=0
+UNLOCK_SOUND=/system/media/audio/ui/Unlock.ogg
+VIBRATE_IN_SILENT=1
+VIBRATE_ON=5
+VOLUME_ALARM=5
+VOLUME_BLUETOOTH_SCO=9
+VOLUME_MUSIC=15
+VOLUME_NOTIFICATION=5
+VOLUME_RING=6
+VOLUME_SYSTEM=7
+VOLUME_VOICE=4
+WIFI_SLEEP_POLICY=2
+WIFI_USE_STATIC_IP=0
+WINDOW_ANIMATION_SCALE=1.0
+}}}
+
+=== SETTINGS_SECURE ===
+
+  Secure settings, applications can't modify them, only the user.
+  
+  Example from Nexus One:
+  
+{{{
+ADB_ENABLED=1
+ALLOWED_GEOLOCATION_ORIGINS=http://www.google.co.uk http://www.google.com
+ALLOW_MOCK_LOCATION=0
+ANDROID_ID=200142d4dfd4e641
+ASSISTED_GPS_ENABLED=1
+BACKGROUND_DATA=1
+BACKUP_ENABLED=1
+BACKUP_PROVISIONED=1
+BACKUP_TRANSPORT=com.google.android.backup/.BackupTransportService
+BLUETOOTH_ON=1
+CDMA_CELL_BROADCAST_SMS=1
+DATA_ROAMING=0
+DEFAULT_INPUT_METHOD=com.touchtype.swiftkey/.KeyboardService
+DEVICE_PROVISIONED=1
+DISABLED_SYSTEM_INPUT_METHODS=
+ENABLED_ACCESSIBILITY_SERVICES=
+ENABLED_INPUT_METHODS=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME:com.touchtype.swiftkey/.KeyboardService
+INSTALL_NON_MARKET_APPS=1
+LAST_SETUP_SHOWN=eclair_1
+LOCATION_PROVIDERS_ALLOWED=network,gps
+MOBILE_DATA=1
+MOUNT_PLAY_NOTIFICATION_SND=1
+MOUNT_UMS_AUTOSTART=0
+MOUNT_UMS_NOTIFY_ENABLED=1
+MOUNT_UMS_PROMPT=1
+NETWORK_PREFERENCE=1
+PREFERRED_CDMA_SUBSCRIPTION=1
+PREFERRED_NETWORK_MODE=0
+SEND_ACTION_APP_ERROR=1
+THROTTLE_RESET_DAY=14
+TTS_DEFAULT_COUNTRY=FRA
+TTS_DEFAULT_LANG=fra
+TTS_DEFAULT_RATE=100
+TTS_DEFAULT_SYNTH=com.svox.pico
+TTS_DEFAULT_VARIANT=
+TTS_ENABLED_PLUGINS=
+TTS_USE_DEFAULTS=0
+USB_MASS_STORAGE_ENABLED=1
+VOICE_RECOGNITION_SERVICE=com.google.android.voicesearch/.GoogleRecognitionService
+WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON=1
+WIFI_ON=0
+WIFI_SAVED_STATE=0
+WIFI_WATCHDOG_WATCH_LIST=GoogleGuest
+}}}
