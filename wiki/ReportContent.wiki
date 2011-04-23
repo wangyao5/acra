@@ -74,7 +74,7 @@ UNKNOWN=unknown
 USER=android-build
 }}}
   
-  See [http://developer.android.com/reference/android/os/Build.html#BOARD Build.BOARD].
+  See [http://developer.android.com/reference/android/os/Build.html Build].
 
 === BRAND ===
 
