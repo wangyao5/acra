@@ -462,7 +462,7 @@ Nothing.
 
   Features declared as available on this device by the system.
   These features are those that are used by the android market
-  to filter apps according to <uses-feature> directives from applications manifests.
+  to filter apps according to {{{<uses-feature>}}} directives from applications manifests.
   
   Example from a NexusOne:
 
