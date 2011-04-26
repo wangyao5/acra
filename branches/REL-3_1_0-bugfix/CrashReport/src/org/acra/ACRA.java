@@ -235,7 +235,7 @@ public class ACRA {
 
     private static Uri getFormUri() {
 
-        return mReportsCrashes.formUri().equals("") ? Uri.parse("http://spreadsheets.google.com/formResponse?formkey="
+        return mReportsCrashes.formUri().equals("") ? Uri.parse("https://spreadsheets.google.com/formResponse?formkey="
                 + mReportsCrashes.formKey() + "&amp;ifq") : Uri.parse(mReportsCrashes.formUri());
     }
 
