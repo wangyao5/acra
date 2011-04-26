@@ -51,6 +51,9 @@ TRUNK:
   * Changed: eliminated an old Bundle which was used to pass configuration items between various classes. Replaced this with a direct exposition of the ReportsCrashes configuration annotation. This should save some (not much) memory.
   * New: If the application is granted the READ_LOGS permission, reports data include a logcat extract and DropBoxManager events (system tags + developer additional tags).
 
+ACRA-3.1.2:
+  * Fixed: use https instead of http for GoogleDocs form post
+
 ACRA-3.1.1:
   * Fixed: Issue 36 - in SILENT mode, only explicit SILENT exceptions (cast with handleSilentException) were sent on application crash. Standard exception were sent on application restart.
   * Fixed: Issue 34 - possible NPE when enabling/disabling ACRA with SharedPreferences.
