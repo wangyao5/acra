@@ -652,7 +652,7 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
 
         URL reportUrl = new URL(mFormUri.toString());
         Log.d(LOG_TAG, "Connect to " + reportUrl.toString());
-        HttpUtils.doPost(errorContent, reportUrl);
+        HttpUtils.doPostHttpClient(errorContent, reportUrl);
     }
 
     /**

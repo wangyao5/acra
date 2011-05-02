@@ -257,4 +257,12 @@ public class ACRA {
         }
     }
 
+    /**
+     * Provides the configuration annotation instance.
+     * 
+     * @return ACRA {@link ReportsCrashes} configuration instance.
+     */
+    public static ReportsCrashes getConfig() {
+        return mReportsCrashes;
+    }
 }
