@@ -61,48 +61,43 @@ class HttpUtils {
      * @throws KeyManagementException
      * @throws NoSuchAlgorithmException
      */
-    static void doPost(Map<?, ?> parameters, URL url)
-            throws UnsupportedEncodingException, IOException,
+    static void doPost(Map<?, ?> parameters, URL url) throws UnsupportedEncodingException, IOException,
             KeyManagementException, NoSuchAlgorithmException {
 
-            URLConnection cnx = getConnection(url);
+        URLConnection cnx = getConnection(url);
 
-            // Construct data
-            StringBuilder dataBfr = new StringBuilder();
-            Iterator<?> iKeys = parameters.keySet().iterator();
-            while (iKeys.hasNext()) {
-                if (dataBfr.length() != 0) {
-                    dataBfr.append('&');
-                }
-                String key = (String) iKeys.next();
-                dataBfr.append(URLEncoder.encode(key, "UTF-8")).append('=')
-                        .append(
-                                URLEncoder.encode((String) parameters.get(key),
-                                        "UTF-8"));
+        // Construct data
+        StringBuilder dataBfr = new StringBuilder();
+        Iterator<?> iKeys = parameters.keySet().iterator();
+        while (iKeys.hasNext()) {
+            if (dataBfr.length() != 0) {
+                dataBfr.append('&');
             }
-            // POST data
-            cnx.setDoOutput(true);
+            String key = (String) iKeys.next();
+            dataBfr.append(URLEncoder.encode(key, "UTF-8")).append('=')
+                    .append(URLEncoder.encode((String) parameters.get(key), "UTF-8"));
+        }
+        // POST data
+        cnx.setDoOutput(true);
 
-            OutputStreamWriter wr = new OutputStreamWriter(cnx
-                    .getOutputStream());
-            Log.d(LOG_TAG, "Posting crash report data");
-            wr.write(dataBfr.toString());
-            wr.flush();
-            wr.close();
+        OutputStreamWriter wr = new OutputStreamWriter(cnx.getOutputStream());
+        Log.d(LOG_TAG, "Posting crash report data");
+        wr.write(dataBfr.toString());
+        wr.flush();
+        wr.close();
 
-            Log.d(LOG_TAG, "Reading response");
-            BufferedReader rd = new BufferedReader(new InputStreamReader(cnx
-                    .getInputStream()));
+        Log.d(LOG_TAG, "Reading response");
+        BufferedReader rd = new BufferedReader(new InputStreamReader(cnx.getInputStream()));
 
-            String line;
-            int linecount = 0;
-            while ((line = rd.readLine()) != null) {
-                linecount++;
-                if(linecount <= 2) {
-                    Log.d(LOG_TAG, line);
-                }
+        String line;
+        int linecount = 0;
+        while ((line = rd.readLine()) != null) {
+            linecount++;
+            if (linecount <= 2) {
+                Log.d(LOG_TAG, line);
             }
-            rd.close();
+        }
+        rd.close();
     }
 
     /**
@@ -116,8 +111,8 @@ class HttpUtils {
      * @throws NoSuchAlgorithmException
      * @throws KeyManagementException
      */
-    private static URLConnection getConnection(URL url) throws IOException,
-            NoSuchAlgorithmException, KeyManagementException {
+    private static URLConnection getConnection(URL url) throws IOException, NoSuchAlgorithmException,
+            KeyManagementException {
         URLConnection conn = url.openConnection();
         if (conn instanceof HttpsURLConnection) {
             // Trust all certificates
@@ -133,6 +128,23 @@ class HttpUtils {
         conn.setConnectTimeout(SOCKET_TIMEOUT);
         conn.setReadTimeout(SOCKET_TIMEOUT);
         return conn;
+    }
+
+    static void doPostHttpClient(Map<?, ?> parameters, URL url) throws UnsupportedEncodingException {
+        // Construct data
+        StringBuilder dataBfr = new StringBuilder();
+        Iterator<?> iKeys = parameters.keySet().iterator();
+        while (iKeys.hasNext()) {
+            if (dataBfr.length() != 0) {
+                dataBfr.append('&');
+            }
+            String key = (String) iKeys.next();
+            dataBfr.append(URLEncoder.encode(key, "UTF-8")).append('=')
+                    .append(URLEncoder.encode((String) parameters.get(key), "UTF-8"));
+        }
+        
+        HttpRequest req = new HttpRequest();
+        req.sendPost(url.toString(), dataBfr.toString());
     }
 
 }

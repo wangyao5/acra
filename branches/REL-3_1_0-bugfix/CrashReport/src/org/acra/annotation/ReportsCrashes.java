@@ -148,4 +148,6 @@ public @interface ReportsCrashes {
      * @see Context#getSharedPreferences(String, int)
      */
     int sharedPreferencesMode() default Context.MODE_PRIVATE;
+    
+    int socketTimeout() default 3000;
 }
