@@ -268,9 +268,10 @@ Death Recipients:        1
 === DROPBOX ===
 _^Since: 4.0 - Default: No^_
 
+_*Requires READ_LOGS permission.*_
+
   Content of the android.os.DropBoxManager (introduced in API level 8).
 
-  _*Requires READ_LOGS permission.*_
   
   The DropBoxManager is an alternative logging system which allows platform
   developers to persist data (text ot binary). There is small chance that
@@ -339,6 +340,7 @@ Nothing.
 
 === LOGCAT ===
 _^Since: 4.0 - Default: Yes^_
+
 _*Requires READ_LOGS permission.*_
 
   Logcat default extract.
@@ -352,6 +354,7 @@ _*Requires READ_LOGS permission.*_
 
 === EVENTSLOG ===
 _^Since: 4.0 - Default: No^_
+
 _*Requires READ_LOGS permission.*_
 
   Logcat eventslog extract.
@@ -405,6 +408,7 @@ _*Requires READ_LOGS permission.*_
 
 === RADIOLOG ===
 _^Since: 4.0 - Default: No^_
+
 _*Requires READ_LOGS permission.*_
 
   Logcat radio extract.
@@ -463,6 +467,7 @@ _^Since: 4.0 - Default: Yes^_
 
 === DEVICE_ID ===
 _^Since: 4.0 - Default: No^_
+
 _*Requires READ_PHONE_STATE permission.*_
 
   Device unique ID (IMEI for GSM and the MEID or ESN for CDMA phones).
