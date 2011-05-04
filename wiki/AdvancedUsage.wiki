@@ -2,7 +2,7 @@
 #labels Phase-Deploy,Beta
 <wiki:toc max_depth="3" />
 
-= THIS DOCUMENT IS A WORK IN PROGRESS FOR THE 3.2 RELEASE =
+= THIS DOCUMENT IS A WORK IN PROGRESS FOR THE 4.0 RELEASE =
 
 = Introduction =
 
@@ -100,7 +100,7 @@ The default destination for reports is a Google Docs Form, storing data in a Goo
   * You can share the spreadsheet with your whole dev team, with people setting their own notification preferences
   * You can easily compile stats using Google APIs. See http://zegoggl.es/2011/01/analysing-android-error-reports-using-the-google-visualisation-api.html for an example.
 
-The only known limitation is that a Google Spreadsheet can't contain more than 400 000 cells. With ACRA 3.2 it lets you receive 11 428 crash reports in one spreadsheet... but you are allowed to delete old reports at any time!
+The only known limitation is that a Google Spreadsheet can't contain more than 400 000 cells. With ACRA 4.0 it lets you receive 11 428 crash reports in one spreadsheet... but you are allowed to delete old reports at any time!
 
 The following sections detail the other possible destinations for your crash reports: custom script, email, or any other destination you can imagine (if you implement the sender). And you can even send reports to multiple destinations.
 
@@ -149,12 +149,12 @@ Including a full report could be quite difficult due to the data size. Default f
   * ReportField.CUSTOM_DATA
   * ReportField.STACK_TRACE 
 
-You can override the report fields list using the {{{mailReportFields}}} option int the @ReportsCrashes annotation: 
+You can override the report fields list using the {{{customReportContent}}} option in the @ReportsCrashes annotation: 
 
 {{{
 @ReportsCrashes(formKey = "", // will not be used
                 mailTo = "reports@yourdomain.com",
-                mailReportFields = { ReportField.APP_VERSION, ReportField.ANDROID_VERSION, ReportField.PHONE_MODEL, ReportField.CUSTOM_DATA, ReportField.STACK_TRACE, ReportField.LOGCAT },                
+                customReportContent = { ReportField.APP_VERSION, ReportField.ANDROID_VERSION, ReportField.PHONE_MODEL, ReportField.CUSTOM_DATA, ReportField.STACK_TRACE, ReportField.LOGCAT },                
                 mode = ReportingInteractionMode.TOAST,
                 resToastText = R.string.crash_toast_text)
 public class MyApplication extends Application {
@@ -167,7 +167,7 @@ Emails are sent with an {{{ACTION_SEND}}} intent. This means that the following 
 
 == Implementing your own sender ==
 
-Since ACRA v3.2, you can implement your own report sender:
+Since ACRA v4.0, you can implement your own report sender:
 
 {{{
 public class YourOwnSender implements ReportSender {
@@ -313,6 +313,25 @@ In some circumstances, tracking exactly which identified devices throw which rep
 
   _*Note: This unique device ID is considered as private data as it could let you track users behaviors...
   You should consider [#Enable/disable_including_DeviceID adding a user preference item to let your user choose to include this device id or not].*_  
+
+== Choosing which fields to be included in reports ==
+
+You can change the default set of fields included in your reports using `@ReportsCrashes(customReportContent = { array of ReportField })`. For example:
+
+{{{
+import static ReportField.*;
+
+@ReportsCrashes(formKey = "xxxxxxxxxxxxxxxx", 
+                customReportContent = { APP_VERSION, ANDROID_VERSION, PHONE_MODEL, CUSTOM_DATA, STACK_TRACE, LOGCAT },                
+                mode = ReportingInteractionMode.TOAST,
+                resToastText = R.string.crash_toast_text)
+public class MyApplication extends Application {
+...
+}}}
+
+Your GoogleDoc spreadsheet has to be created with the same column. One easy way to recreate it is to copy/paste the list of fields (without the array braces) in a new text file and import it in GoogleDocs.
+
+Limiting your reports to what you really want and really use can help avoiding performance issues when collecting reports data. Only fields which are set in customReportContent are actually processed. 
 
 = Letting your users control ACRA =
 
