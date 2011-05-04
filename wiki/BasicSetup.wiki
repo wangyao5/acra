@@ -98,6 +98,7 @@ ACRA is designed to work with the simplest possible setup. But there are lots of
     * [AdvancedUsage#Adding_logcat,_eventlog_or_radiolog_extracts_to_reports Add logcat, eventlog or radiolog extracts]
     * [AdvancedUsage#Adding_DropBoxManager_events_to_your_reports Add DropBoxManager events]
     * [AdvancedUsage#Adding_the_Device_Unique_ID_to_your_reports Add Device unique ID]
+    * [AdvancedUsage#Choosing_which_fields_to_be_included_in_reports Choosing which fields to be included in reports]
   * *[AdvancedUsage#Letting_your_users_control_ACRA User preferences]*: you can add to your app preferences screen some items to let users control ACRA's behavior and reports content:
     * [AdvancedUsage#Enable/disable_ACRA Enable/disable sending reports]
     * [AdvancedUsage#Enable/disable_system_logs  Enable/disable sending system logs]
