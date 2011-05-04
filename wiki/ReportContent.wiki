@@ -6,11 +6,12 @@
 Here is a description of all fields contained in ACRA's reports. Most of them are always filled, some might require extra configuration or system permissions.
 
 === REPORT_ID ===
-_^Since: 4.0 - Default: No^_
+_^Since: 4.0 - Default: Yes^_
 
   A unique identifier for this report. If you receive 2 reports with the same ID then there might be a bug in the handling of reports in ACRA...
 
 === APP_VERSION_CODE ===
+_^Since: 1.0 - Default: Yes^_
 
   Application version code. This is the incremental integer version code
   used to differentiate versions on the android market.
@@ -18,36 +19,56 @@ _^Since: 4.0 - Default: No^_
   See [http://developer.android.com/reference/android/content/pm/PackageInfo.html#versionCode PackageInfo.versionCode].
 
 === APP_VERSION_NAME ===
+_^Since: 1.0 - Default: Yes^_
   
   Application version name.
   
   See [http://developer.android.com/reference/android/content/pm/PackageInfo.html#versionName PackageInfo.versionName].
   
 === PACKAGE_NAME ===
+_^Since: 1.0 - Default: Yes^_
 
   Application package name.
   
   See [http://developer.android.com/reference/android/content/Context.html#getPackageName() Context.getPackageName()].
 
 === FILE_PATH ===
+_^Since: 1.0 - Default: Yes^_
 
   Base path of the application's private file folder.
   
   See http://developer.android.com/reference/android/content/Context.html#getFilesDir() Context.getFilesDir()].
 
 === PHONE_MODEL ===
+_^Since: 1.0 - Default: Yes^_
 
   Device model name.
   
   See [http://developer.android.com/reference/android/os/Build.html#MODEL Build.MODEL].
 
+=== BRAND ===
+_^Since: 1.0 - Default: Yes^_
+
+  Device brand (manufacturer or carrier).
+  
+  See [http://developer.android.com/reference/android/os/Build.html#BRAND Build.BRAND].
+
+=== PRODUCT ===
+_^Since: 1.0 - Default: Yes^_
+
+  Device overall product code.
+  
+  See [http://developer.android.com/reference/android/os/Build.html#PRODUCT Build.PRODUCT].
+
 === ANDROID_VERSION ===
+_^Since: 1.0 - Default: Yes^_
 
   Device android version name. 
   
   See [http://developer.android.com/reference/android/os/Build.VERSION.html#RELEASE Build.VERSION.RELEASE]
 
 === BUILD ===
+_^Since: 4.0 - Default: Yes^_
 
   Android build details. Here is an example for the NexusOne with official Android 2.3.3: 
   
@@ -77,36 +98,29 @@ USER=android-build
   
   See [http://developer.android.com/reference/android/os/Build.html Build].
 
-=== BRAND ===
-
-  Device brand (manufacturer or carrier).
-  
-  See [http://developer.android.com/reference/android/os/Build.html#BRAND Build.BRAND].
-
-=== PRODUCT ===
-
-  Device overall product code.
-  
-  See [http://developer.android.com/reference/android/os/Build.html#PRODUCT Build.PRODUCT].
-
 === TOTAL_MEM_SIZE ===
+_^Since: 1.0 - Default: Yes^_
 
   Estimation of the total device memory size based on filesystem stats.
 
 === AVAILABLE_MEM_SIZE ===
+_^Since: 1.0 - Default: Yes^_
 
   Estimation of the available device memory size based on filesystem stats.
 
 === CUSTOM_DATA ===
+_^Since: 1.0 - Default: Yes^_
 
   Contains key = value pairs defined by the application developer during
   the application execution.
 
 === STACK_TRACE ===
+_^Since: 1.0 - Default: Yes^_
 
   The Holy Stack Trace. Details of the exception that caused the application to crash.
 
 === INITIAL_CONFIGURATION ===
+_^Since: 3.0 - Default: Yes^_
 
   [http://developer.android.com/intl/fr/reference/android/content/res/Configuration.html Configuration] fields state on the application start.
   
@@ -131,6 +145,7 @@ userSetLocale=false
 }}}
 
 === CRASH_CONFIGURATION ===
+_^Since: 3.0 - Default: Yes^_
 
   [http://developer.android.com/intl/fr/reference/android/content/res/Configuration.html Configuration] fields state on the application crash.
 
@@ -173,6 +188,7 @@ userSetLocale=false
   change in the seq value.  
 
 === DISPLAY ===
+_^Since: 3.0 - Default: Yes^_
 
   Device display specifications.
   
@@ -194,18 +210,22 @@ metrics.ydpi=254.0
 }}}
 
 === USER_COMMENT ===
+_^Since: 3.0 - Default: Yes^_
 
   Comment added by the user in the dialog displayed in NOTIFICATION mode.
 
 === USER_APP_START_DATE ===
+_^Since: 4.0 - Default: Yes^_
 
   User date on application start.
 
 === USER_CRASH_DATE ===
+_^Since: 3.0 - Default: Yes^_
 
   User date immediately after the crash occurred.
 
 === DUMPSYS_MEMINFO ===
+_^Since: 4.0 - Default: Yes (?)^_
 
   Memory state details for your application process.
   
@@ -246,6 +266,7 @@ Death Recipients:        1
     [http://stackoverflow.com/questions/2298208/how-to-discover-memory-usage-of-my-application-in-android/2299813#2299813 this StackOverflow answer from Dianne Hackborn].
 
 === DROPBOX ===
+_^Since: 4.0 - Default: No^_
 
   Content of the android.os.DropBoxManager (introduced in API level 8).
 
@@ -317,11 +338,11 @@ Nothing.
     
 
 === LOGCAT ===
+_^Since: 4.0 - Default: Yes^_
+_*Requires READ_LOGS permission.*_
 
   Logcat default extract.
-  
-  _*Requires READ_LOGS permission.*_
-  
+    
   The [http://developer.android.com/intl/fr/guide/developing/tools/logcat.html logcat]
   is the Android Developer's best friend. This is where all applications
   and the system write their debug traces. Retrieving logcat events in
@@ -330,11 +351,11 @@ Nothing.
   See [AdvancedUsage#Adding_logcat,_eventlog_or_radiolog_extracts_to_reports configuration details].
 
 === EVENTSLOG ===
+_^Since: 4.0 - Default: No^_
+_*Requires READ_LOGS permission.*_
 
   Logcat eventslog extract.
-  
-  _*Requires READ_LOGS permission.*_
-  
+    
   The eventslog is a lower level logging buffer. Its content looks like this:
   
 {{{
@@ -383,12 +404,12 @@ Nothing.
 }}} 
 
 === RADIOLOG ===
+_^Since: 4.0 - Default: No^_
+_*Requires READ_LOGS permission.*_
 
   Logcat radio extract.
-  
-  _*Requires READ_LOGS permission.*_
-  
-  The third bufer managed by logcat contains radio events. It looks like this:
+    
+  The third buffer managed by logcat contains radio events. It looks like this:
 
 {{{
 03-27 16:37:28.960 D/GSM     (  195): [DSAC DEB] trySetupData with mIsPsRestricted=false
@@ -436,30 +457,34 @@ Nothing.
 }}}
 
 === IS_SILENT ===
+_^Since: 4.0 - Default: Yes^_
 
     True if the report has been explicitly sent silently by the developer.
 
 === DEVICE_ID ===
+_^Since: 4.0 - Default: No^_
+_*Requires READ_PHONE_STATE permission.*_
 
   Device unique ID (IMEI for GSM and the MEID or ESN for CDMA phones).
   
-  _*Requires READ_PHONE_STATE permission.*_
-
   If you need to know if reports come from single or multiple users without using the READ_PHONE_STATE permission, you should use [#INSTALLATION_ID] instead.
   
   See [http://developer.android.com/reference/android/telephony/TelephonyManager.html#getDeviceId() TelephonyManager.html#getDeviceId()]
 
 === INSTALLATION_ID ===
+_^Since: 4.0 - Default: Yes^_
 
   Installation unique ID. This identifier allow you to track a specific
   user application installation without using any personal data.
   Implemented following the guidelines from the [http://android-developers.blogspot.com/2011/03/identifying-app-installations.html Android Developers Blog].
 
 === USER_EMAIL ===
+_^Since: 4.0 - Default: Yes^_
 
   User email address. Can be provided by the user in the {{{acra.user.email}}} SharedPreference field.
 
 === DEVICE_FEATURES ===
+_^Since: 4.0 - Default: Yes^_
 
   Features declared as available on this device by the system.
   These features are those that are used by the android market
@@ -493,6 +518,7 @@ glEsVersion = 2.0
 }}}
 
 === ENVIRONMENT ===
+_^Since: 4.0 - Default: Yes^_
 
   External storage state and standard directories.
 
@@ -512,6 +538,7 @@ isExternalStorageRemovable=true
 }}}
 
 === SETTINGS_SYSTEM ===
+_^Since: 4.0 - Default: Yes^_
 
   System settings.
   
@@ -571,6 +598,7 @@ WINDOW_ANIMATION_SCALE=1.0
 }}}
 
 === SETTINGS_SECURE ===
+_^Since: 4.0 - Default: Yes^_
 
   Secure settings, applications can't modify them, only the user.
   
