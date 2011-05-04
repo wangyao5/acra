@@ -20,6 +20,12 @@
         <value>4.0.0-20110504.205048-1</value>
         <updated>20110504205048</updated>
       </snapshotVersion>
+      <snapshotVersion>
+        <classifier>javadoc</classifier>
+        <extension>jar</extension>
+        <value>4.0.0-20110504.205048-1</value>
+        <updated>20110504205048</updated>
+      </snapshotVersion>
     </snapshotVersions>
   </versioning>
 </metadata>
