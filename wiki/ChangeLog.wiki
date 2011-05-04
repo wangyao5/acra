@@ -1,10 +1,10 @@
 #summary Track project changes
 
 TODO:
-  * Understand why posting to custom script with BASIC AUTH always lead to a timeout on socket read whereas the same script without auth is ok.
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 TRUNK:
+  * Changed: Replaced URLConnection POST implementation with HttpClient HttpPost. Fixes timeouts with Basic Http Auth. Might fix https stability issues.
   * Changed: removed includeDropBox, includeEventsLog and includeRadioLog configuration items. This is now done by customizing reports content. Final default report template will not include these fields.
   * New: Added a SETTINGS_SECURE field for http://developer.android.com/reference/android/provider/Settings.Secure.html content
   * New: Added a SETTINGS_SYSTEM field http://developer.android.com/reference/android/provider/Settings.System.html content
