@@ -329,7 +329,7 @@ public class MyApplication extends Application {
 ...
 }}}
 
-Your GoogleDoc spreadsheet has to be created with the same column. One easy way to recreate it is to copy/paste the list of fields (without the array braces) in a new text file and import it in GoogleDocs.
+Your GoogleDoc spreadsheet has to be created with the same column. One easy way to recreate it is to copy/paste the list of fields (without the array braces) in a new text file with .csv extension and import it in GoogleDocs.
 
 Limiting your reports to what you really want and really use can help avoiding performance issues when collecting reports data. Only fields which are set in customReportContent are actually processed. 
 
