@@ -6,6 +6,7 @@
 Here is a description of all fields contained in ACRA's reports. Most of them are always filled, some might require extra configuration or system permissions.
 
 === REPORT_ID ===
+_^Since: 4.0 - Default: No^_
 
   A unique identifier for this report. If you receive 2 reports with the same ID then there might be a bug in the handling of reports in ACRA...
 
