@@ -4,6 +4,8 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 TRUNK:
+
+ACRA-4.0.0b:
   * Fixed: Prevent ACRA from sending report duplicates when sending silent reports in simultaneous threads.
   * New: Added a IS_SILENT field.
   * Changed: Replaced URLConnection POST implementation with HttpClient HttpPost. Fixes timeouts with Basic Http Auth. Might fix https stability issues.
