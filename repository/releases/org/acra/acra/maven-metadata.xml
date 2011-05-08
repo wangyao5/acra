@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.acra</groupId>
+  <artifactId>acra</artifactId>
+  <versioning>
+    <release>4.0.0b</release>
+    <versions>
+      <version>4.0.0b</version>
+    </versions>
+    <lastUpdated>20110508215807</lastUpdated>
+  </versioning>
+</metadata>
