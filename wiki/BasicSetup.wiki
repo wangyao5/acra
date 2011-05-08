@@ -4,7 +4,7 @@
 
 = Introduction =
 
-*ACRA 4.0.0b is the first Beta Release of ACRA 4. If you prefer a stable version, use ACRA 3.1.2. See ACRA3HowTo.*
+*ACRA 4.0.0b is the first Beta Release of ACRA 4. If you prefer a stable version, use ACRA 3.1.2. See [ACRA3HowTo].*
 
 ACRA allows your Android application to send Crash Reports to various destinations:
   * a Google Docs spreadsheet (default and original behavior)
