@@ -4,6 +4,7 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 TRUNK:
+  * Forced HttpClient SocketBufferSize to 8192 bytes as it appears that on some devices, the default size is set to a huge 2Mb.
   * Refactoring: extract constants from @ReportsCrashes. This was causing compilations issues with javac.
   * Issue 52: log substring was crashing when using http post with a response < 200 chars.
 
