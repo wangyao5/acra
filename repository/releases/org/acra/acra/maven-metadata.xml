@@ -3,10 +3,11 @@
   <groupId>org.acra</groupId>
   <artifactId>acra</artifactId>
   <versioning>
-    <release>4.0.0b</release>
+    <release>4.0.1b</release>
     <versions>
       <version>4.0.0b</version>
+      <version>4.0.1b</version>
     </versions>
-    <lastUpdated>20110508215807</lastUpdated>
+    <lastUpdated>20110522211126</lastUpdated>
   </versioning>
 </metadata>
