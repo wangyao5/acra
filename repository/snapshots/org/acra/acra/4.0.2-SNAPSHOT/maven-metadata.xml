@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.acra</groupId>
+  <artifactId>acra</artifactId>
+  <version>4.0.2-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20110523.215410</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20110523215410</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>4.0.2-20110523.215410-1</value>
+        <updated>20110523215410</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>4.0.2-20110523.215410-1</value>
+        <updated>20110523215410</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
