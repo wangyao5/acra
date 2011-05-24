@@ -31,6 +31,7 @@ Enabling user notification only requires you to add parameters to the @ReportsCr
 {{{
 @ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
                 mode = ReportingInteractionMode.TOAST,
+                forceCloseDialogAfterToast = false, // optional, default false
                 resToastText = R.string.crash_toast_text)
 public class MyApplication extends Application {
 ...
@@ -40,6 +41,8 @@ In your {{{strings.xml}}} :
 {{{
 <string name="crash_toast_text">Ooooops ! I crashed, but a report has been sent to my developer to help him fix the issue !</string>
 }}}
+
+The `forceCloseDialogAfterToast` option allows you to choose to display the Android native Froce Close Dialog. Default is false to avoid warning users twice about a single issue, but your opinion about this may differ so the choice is yours.
 
 == Status bar notification ==
 
