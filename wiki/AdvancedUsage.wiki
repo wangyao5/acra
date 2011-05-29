@@ -336,6 +336,12 @@ Your GoogleDoc spreadsheet has to be created with the same column. One easy way 
 
 Limiting your reports to what you really want and really use can help avoiding performance issues when collecting reports data. Only fields which are set in customReportContent are actually processed. 
 
+== Adding custom SharedPreferences names ==
+
+Your applications default SharedPreferences are automatically collected in the SHARED_PREFERENCES field.
+
+You can provide additional SharedPreferences names using `@ReportsCrashes(additionalSharedPreferences={"my.own.prefs","a.second.prefs"})`.
+
 = Letting your users control ACRA =
 
 Some ACRA behaviors can be configured by your application users through the use of {{{SharedPreferences}}} items:
