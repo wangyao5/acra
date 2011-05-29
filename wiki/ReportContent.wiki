@@ -542,6 +542,13 @@ isEncryptedFilesystemEnabled=false
 isExternalStorageRemovable=true
 }}}
 
+=== SHARED_PREFERENCES ===
+_^Since: 4.2 - Default: Yes^_
+
+  Collects your applications SharedPreferences settings. "empty" often means that the user did not change anything so all values are default.
+  
+  You can add your onw SharedPreferences names to be collected with `@ReportsCrashes(additionalSharedPreferences={"my.own.prefs","a.second.prefs"})`.
+
 === SETTINGS_SYSTEM ===
 _^Since: 4.0 - Default: Yes^_
 
