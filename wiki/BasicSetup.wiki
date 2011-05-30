@@ -1,10 +1,10 @@
-#summary How to install ACRA 4.0 in your Android application project.
+#summary How to install ACRA 4.x in your Android application project.
 #labels Phase-Deploy,Beta
 <wiki:toc max_depth="3" />
 
 = Introduction =
 
-*ACRA 4.1.0b is the first Beta Release of ACRA 4. If you prefer a stable version, use ACRA 3.1.2. See [ACRA3HowTo].*
+*ACRA 4.2.0b is the first Beta Release of ACRA 4. If you prefer a stable version, use ACRA 3.1.2. See [ACRA3HowTo].*
 
 *All ACRA bug reports should be filed in the [http://code.google.com/p/acra/issues/list Issues Tracker]. You can also post your questions or suggestions to the [http://groups.google.com/group/acra-discuss Discussion Group]. * 
 
@@ -26,9 +26,9 @@ If you have any question or comment regarding ACRA, post a message on the [http:
 = Setting-up your project =
 
 Step by step installation of the ACRA library in an existing application project, with the simplest settings:
-  * Get http://acra.googlecode.com/files/acra-4.1.0b.zip and open the archive 
+  * Get http://acra.googlecode.com/files/acra-4.2.0b.zip and open the archive 
   * Login to your Google Docs account
-  * Import the `CrashReports-template.csv` contained in the archive (acra-4.1.0b/CrashReport/doc), with conversion enabled
+  * Import the `CrashReports-template.csv` contained in the archive (acra-4.2.0b/CrashReport/doc), with conversion enabled
   * Open the imported document
   * Rename it as you like
   * In the menu, click on Forms / Create form
@@ -38,7 +38,7 @@ Step by step installation of the ACRA library in an existing application project
   * Copy the `formkey` value displayed in the link at the bottom of the form creation page
   * Open your Eclipse project
   * Create a `lib` folder
-  * Add the `acra-4.1.0b.jar` from the archive (acra-4.1.0b/build) in the `lib` folder
+  * Add the `acra-4.2.0b.jar` from the archive (acra-4.2.0b/build) in the `lib` folder
   * Right-click on the jar file / add to build path
   * Create a new class in your package root _If your app already contains an Application subclass, add ACRA to this class._
     * Give it a name like: `MyApplication`, make it extend `android.app.Application`
