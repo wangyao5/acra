@@ -4,6 +4,9 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
   * Issue 54
 
+TRUNK:
+  * Fixed: sending reports by mail with NOTIFICATION mode
+
 ACRA-4.2.0b:
   * New: Added a SHARED_PREFERENCES field containing K/V pairs of the application default shared preferences + sharedPreferences provided by developer with @ReportsCrashes(additionalSharedPreferences={"my.own.prefs","a.second.prefs"})
   * Fixed: do not send silent reports if acra.enabled or acra.disabled SharedProperties have been set to disable ACRA.
