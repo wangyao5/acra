@@ -3,10 +3,12 @@
   <ModulePrefs title="hello world example" /> 
   <Content type="html">
      <![CDATA[ 
+       <div id="plusonecontainer">
+         <g:plusone size="tall" href="http://acra.googlecode.com"></g:plusone>
+       </div>
        <script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
-       <g:plusone size="tall" href="http://acra.googlecode.com"></g:plusone>
        <script type="text/javascript">
-        gapi.plusone.go("content");
+        gapi.plusone.go("plusonecontainer");
        </script>
      ]]>
   </Content> 
