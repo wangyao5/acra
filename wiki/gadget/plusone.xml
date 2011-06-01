@@ -5,6 +5,9 @@
      <![CDATA[ 
        <script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
        <g:plusone size="tall" href="http://acra.googlecode.com"></g:plusone>
+       <script type="text/javascript">
+        gapi.plusone.go("content");
+       </script>
      ]]>
   </Content> 
 </Module>
