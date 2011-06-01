@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="hello world example" /> 
+  <Content type="html">
+     <![CDATA[ 
+       <script type="text/javascript" src="/gadgets/proxy?url=http://apis.google.com/js/plusone.js"></script>
+       <g:plusone size="tall" href="http://acra.googlecode.com"></g:plusone>
+     ]]>
+  </Content> 
+</Module>
