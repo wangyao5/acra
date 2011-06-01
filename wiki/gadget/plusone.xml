@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <Module>
-  <ModulePrefs title="hello world example" /> 
-  <Content type="html">
-     <![CDATA[
-     <head>
-       <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-      {"parsetags": "explicit"}
-    </script>
-    <script type="text/javascript">
-      function renderPlusone() {
-        gapi.plusone.render("plusone-div");
-      }
-    </script>
-    </head>
-    <body>
-    <a href="#" onClick="renderPlusone();">Render the +1 button</a>
-    <div id="plusone-div"></div>
-    </body>
-    
-     ]]>
-  </Content> 
+  <ModulePrefs title="Google +1" /> 
+  <Content type="url" href="http://acra.googlecode.com/svn/wiki/gadget/plusone.html" />
 </Module>
