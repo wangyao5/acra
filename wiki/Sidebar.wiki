@@ -1,7 +1,7 @@
   * ACRA 3.1 stable
     * [ACRA3HowTo Include ACRA in your application]
     * [ACRAProGuardHowTo Configure ProGuard for ACRA]
-  * ACRA 4.1 beta
+  * ACRA 4.X beta
     * [BasicSetup Include ACRA in your application]
     * [AdvancedUsage All features and options]
     * [ReportContent Details about report fields]
