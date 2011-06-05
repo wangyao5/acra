@@ -2,9 +2,8 @@
 
 TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
-  * Issue 54
 
-TRUNK:
+ACRA-4.2.0b:
   * Fixed: sending reports by mail with NOTIFICATION mode
 
 ACRA-4.2.0b:
