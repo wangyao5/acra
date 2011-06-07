@@ -32,6 +32,11 @@
         <value>4.2.2b-20110607.051835-1</value>
         <updated>20110607051835</updated>
       </snapshotVersion>
+      <snapshotVersion>
+        <extension>zip</extension>
+        <value>4.2.2b-20110607.051835-1</value>
+        <updated>20110607051835</updated>
+      </snapshotVersion>
     </snapshotVersions>
   </versioning>
 </metadata>
