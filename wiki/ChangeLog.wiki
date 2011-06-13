@@ -3,6 +3,10 @@
 TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
+TRUNK:
+  * clear report buffer content before sending a new one to avoid persisting previous report values
+  * Fixed: once one silent report sent with handleSilentException(), all reports were marked as silent.
+
 ACRA-4.2.1b:
   * Fixed: sending reports by mail with NOTIFICATION mode
 
