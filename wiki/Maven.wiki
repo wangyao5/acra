@@ -48,6 +48,6 @@ As well as the following dependency:
 <dependency>
     <groupId>org.acra</groupId>
     <artifactId>acra</artifactId>
-    <version>3.1.2-SNAPSHOT</version>
+    <version>X.Y.Z-SNAPSHOT</version>
 </dependency>
 }}}
