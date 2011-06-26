@@ -8,3 +8,4 @@
     * Configure ProGuard for ACRA <= TODO !!
     * [ChangeLog Latest changes]  
     * [Maven Use ACRA with Maven projects]
+  * [Contribs Contributed tools]
