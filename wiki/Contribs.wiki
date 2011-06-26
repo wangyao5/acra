@@ -1,0 +1,20 @@
+= Contributions =
+
+Here are contributions developed by ACRA users. If you want to submit your own work, you can introduce it to the [http://groups.google.com/group/acra-discuss acra-discuss group].
+
+= ReportSender implementations =
+
+With ACRA v4 you can create [http://code.google.com/p/acra/wiki/AdvancedUsage#Implementing_your_own_sender your own ReportSender] implementations.
+
+Here is a list of contributed ReportSenders:
+
+  * JSON Sender : [https://github.com/x2on/android-acra-json-sender sender] + [https://github.com/x2on/android-acra-server PHP server app] by [https://www.felixschulze.de/ Felix Schulze] / [http://www.x2on.de/ X2ON]
+  
+= Reports analysis tools =
+  
+Some people are working on tools to help you sort, filter, clean, analyze your reports:
+
+  * [http://zegoggl.es/2011/01/analysing-android-error-reports-using-the-google-visualisation-api.html Analysing Android error reports using the Google visualisation API] by [http://zegoggl.es/about.html Jan Berkel]
+  * [https://github.com/MegaDevs/ACRA_LogTracker LogTracker] : a Java desktop app for reports filtering by [http://www.megadevs.com/megadevs/ MegaDevs]
+  * [https://groups.google.com/d/msg/acra-discuss/6FxV1TuC0F4/Nb_lc9dU__cJ Code sample to filter/delete/colorize spreadsheet's entries] by mot12 on [http://groups.google.com/group/acra-discuss acra-discuss]
+ 
