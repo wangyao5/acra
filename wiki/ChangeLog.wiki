@@ -3,12 +3,15 @@
 TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
-TRUNK:
-  * clear report buffer content before sending a new one to avoid persisting previous report values
-  * Fixed: once one silent report sent with handleSilentException(), all reports were marked as silent.
+ACRA-4.2.2RC:
+  * Fixed: prevent persistent IS_SILENT
+  * Fixed: prevent some report duplicates
+  * Fixed: prevent persistent USER_COMMENT
+  * Fixed: prevent ACRA Crash if getCrashReportFileList() is called without initializing ACRA
+  * Fixed: handle 4xx and 5xx http response codes as errors => throw exception and keep report and retry later
 
 ACRA-4.2.1b:
-  * Fixed: sending reports by mail with NOTIFICATION mode
+  * Fixed: NOTIFICATION + mailTo was broken
 
 ACRA-4.2.0b:
   * New: Added a SHARED_PREFERENCES field containing K/V pairs of the application default shared preferences + sharedPreferences provided by developer with @ReportsCrashes(additionalSharedPreferences={"my.own.prefs","a.second.prefs"})
