@@ -17,4 +17,8 @@ Some people are working on tools to help you sort, filter, clean, analyze your r
   * [http://zegoggl.es/2011/01/analysing-android-error-reports-using-the-google-visualisation-api.html Analysing Android error reports using the Google visualisation API] by [http://zegoggl.es/about.html Jan Berkel]
   * [https://github.com/MegaDevs/ACRA_LogTracker LogTracker] : a Java desktop app for reports filtering by [http://www.megadevs.com/megadevs/ MegaDevs]
   * [https://groups.google.com/d/msg/acra-discuss/6FxV1TuC0F4/Nb_lc9dU__cJ Code sample to filter/delete/colorize spreadsheet's entries] by mot12 on [http://groups.google.com/group/acra-discuss acra-discuss]
+
+= Alternative backends =
+
+  * [https://github.com/hameno/ACRA-web-analytics] (Work in progress) by [http://twitter.com/gl4di4t0r Philip Schiffer], hosted on http://acra.heroku.com/
  
