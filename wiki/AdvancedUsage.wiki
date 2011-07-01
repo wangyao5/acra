@@ -1,5 +1,5 @@
 #summary Advanced Usage Guide
-#labels Phase-Deploy
+#labels Phase-Deploy, Featured
 <wiki:toc max_depth="3" />
 
 = THIS DOCUMENT IS A WORK IN PROGRESS FOR THE 4.0 RELEASE =

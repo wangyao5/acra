@@ -1,5 +1,5 @@
 #summary Description of the content of crash reports.
-#labels 
+#labels Featured
 
 = Report Content =
 
