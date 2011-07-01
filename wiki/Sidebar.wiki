@@ -9,5 +9,7 @@
   * [Contribs Contributed tools]
   * Archives
     * ACRA 3.X
-      * [ACRA3HowTo Include ACRA in your application]
+      * [ACRA3HowTo Include ACRA v3 in your application]
       * [ACRAProGuardHowTo Configure ProGuard for ACRA]
+    * ACRA 2.X
+      * [ACRAHowTo Include ACRA v2 in your application]
