@@ -1,5 +1,5 @@
 #summary How to install ACRA 4.x in your Android application project.
-#labels Phase-Deploy
+#labels Phase-Deploy, Featured
 <wiki:toc max_depth="3" />
 
 = Introduction =

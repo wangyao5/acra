@@ -1,6 +1,8 @@
 #summary How to install ACRA 3.1 in your Android application.
-#labels Phase-Deploy,Featured
+#labels Phase-Deploy,Deprecated
 <wiki:toc max_depth="2" />
+
+= This document is deprecated. It is related to ACRA v3.X which is not supported anymore. Please use [BasicSetup ACRA v4.X]. =
 
 = Preamble =
 
