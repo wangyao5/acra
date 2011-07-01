@@ -4,8 +4,9 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
   * Refactor ErrorReporter
 
+ACRA-4.2.3:
 ACRA-4.2.3RC:
-  * Code cleaning and better files handling => should fix most report duplicates issues.
+  * Code cleaning and better files handling => should fix most report duplicates issues. (William Ferguson)
 
 ACRA-4.2.2RC:
   * Fixed: prevent persistent IS_SILENT
