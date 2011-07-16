@@ -1,5 +1,5 @@
 #summary How to install ACRA 4.x in your Android application project.
-#labels Phase-Deploy, Featured
+#labels Phase-Deploy,Featured
 <wiki:toc max_depth="3" />
 
 = Introduction =
@@ -29,7 +29,7 @@ Step by step installation of the ACRA library in an existing application project
   * Import the `CrashReports-template.csv` contained in the archive (acra-4.2.3/CrashReport/doc), with conversion enabled
   * Open the imported document
   * Rename it as you like
-  * In the menu, click on Forms / Create form
+  * In the Google Docs menu, click on Tools / Form / Create a form
   * Add anything in the form description just to enable the *Save* button
     * If you are using a private Google Apps domain, make sure to *uncheck* the option "Require yourdomain.com sign-in to view this form."
   * Save the form
