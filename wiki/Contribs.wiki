@@ -21,4 +21,5 @@ Some people are working on tools to help you sort, filter, clean, analyze your r
 == Alternative backends ==
 
   * [https://github.com/hameno/ACRA-web-analytics] (Work in progress) by [http://twitter.com/gl4di4t0r Philip Schiffer], hosted on http://acra.heroku.com/
+  * [http://www.bugsense.com Bugsense], the most advanced backend, and it's free!
  
