@@ -26,6 +26,12 @@
         <value>4.3.0-20111101.153002-1</value>
         <updated>20111101153002</updated>
       </snapshotVersion>
+      <snapshotVersion>
+        <classifier>sources</classifier>
+        <extension>jar</extension>
+        <value>4.3.0-20111101.153002-1</value>
+        <updated>20111101153002</updated>
+      </snapshotVersion>
     </snapshotVersions>
   </versioning>
 </metadata>
