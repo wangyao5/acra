@@ -2,7 +2,15 @@
 
 TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
-  * Refactor ErrorReporter
+
+Trunk:
+  * new: full dynamic configuration
+  * modified: asynchronous wait for Toast display and sender thread termination. No more chance to cause ANR.
+  * modified: handleException and handleSilentException do not return the sender Thread anymore.
+  * New: direct DIALOG mode, thanks to Julia Segal.
+  * modified: lowered the default number of logcat lines to 100
+  * New: configuration of resources now possible via setters. This is to fix Issue 85 with ADT 14 from which we can't pass Android Library Projects resources ids to ACRA as they are not final anymore.
+  * Overall code cleaning and refactoring (William Ferguson)
 
 ACRA-4.2.3:
 ACRA-4.2.3RC:
