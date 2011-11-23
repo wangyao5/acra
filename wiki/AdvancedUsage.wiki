@@ -187,8 +187,8 @@ public class YourOwnSender implements ReportSender {
 
 Three {{{ReportSender}}} implementations are already available:
   * [http://acra.googlecode.com/svn/javadoc/4.2.3/org/acra/sender/GoogleFormSender.html GoogleFormSender]: (ACRA's default) send reports to a Google Form through HTTP POST requests with specific parameters naming.
-  * [http://acra.googlecode.com/svn/javadoc/4.2.3/org/acra/sender/HttpPostSender.java HttpPostSender]: send reports to an HTTP POST server-side component located at a configurable URI.
-  * [http://acra.googlecode.com/svn/javadoc/4.2.3/org/acra/sender/EmailIntentSender.java EmailIntentSender]: keeps only a selected set of fields and puts them in an Intent to be send by another application. 
+  * [http://acra.googlecode.com/svn/javadoc/4.2.3/org/acra/sender/HttpPostSender.html HttpPostSender]: send reports to an HTTP POST server-side component located at a configurable URI.
+  * [http://acra.googlecode.com/svn/javadoc/4.2.3/org/acra/sender/EmailIntentSender.html EmailIntentSender]: keeps only a selected set of fields and puts them in an Intent to be send by another application. 
 
 Once your sender created, you have to declare it to ACRA. This is done in your {{{Application}}} class, in the {{{onCreate()}}} method, right after the ACRA.init() call:
 
