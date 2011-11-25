@@ -266,7 +266,7 @@ In addition to the {{{main}}} default buffer, ACRA retrieves the 2 other alterna
   induce a latency right after your application crash. Include them only
   if you know how to analyze them and avoid collecting more than 100 lines.*_
 
-  *Note: RADIOLOG and EVENTSLOG fields will be removed from the default reported fields in future ACRA versions. You'll have to activate them if you need them.*
+  _*Note: RADIOLOG and EVENTSLOG fields will be removed from the default reported fields in future ACRA versions. You'll have to activate them if you need them.*_
 
 == Adding custom !DropBoxManager events to your reports ==
 
@@ -312,7 +312,7 @@ You can add your own dropbox tags using {{{@ReportsCrashes.additionalDropBoxTags
   you would better remove the DROPBOX field from the CrashReports-Template.csv before creating your spreadsheet, and copy the new content of your csv template in the {@ReportsCrashes. customReportContent} parameter.
   Increase the dropBoxCollectionMinutes only if you know what you are doing.*_
 
-  *Note: this field will be removed from the default reported fields in future ACRA versions. You'll have to activate it if you need it.*
+  _*Note: this field will be removed from the default reported fields in future ACRA versions. You'll have to activate it if you need it.*_
 
 == Adding the Device Unique ID to your reports ==
 
