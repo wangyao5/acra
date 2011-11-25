@@ -226,6 +226,7 @@ _^Since: 3.0 - Default: Yes^_
 
 === DUMPSYS_MEMINFO ===
 _^Since: 4.0 - Default: Yes (?)^_
+_*Requires DUMP permission for device running Android 4.0 (ICS) and later.*_
 
   Memory state details for your application process.
   
