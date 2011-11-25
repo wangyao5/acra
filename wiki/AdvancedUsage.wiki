@@ -257,7 +257,7 @@ Note for experts: even if the "-t XXX" argument is only available since android 
 
 In addition to the {{{main}}} default buffer, ACRA retrieves the 2 other alternative buffers {{{event}}} and {{{radio}}}. If these data are not of any use for you, you should consider deactivating their collection to enhance reporting time and memory management:
   * removing EVENTSLOG and RADIOLOG fields from the CrashReports-Template.csv file before creating your spreadsheet
-  * copy the content of your new csv template and paste it in the {@ReportsCrashes. customReportContent} parameter.
+  * copy the content of your new csv template and paste it in the {@ReportsCrashes.customReportContent} parameter.
 
   _*Note: System logs may contain private data logged by other applications like user email address, calendar events, contacts data...
   You should consider [#Enable/disable_system_logs adding a user preference item to let your user choose to include system logs or not].*_  
@@ -266,9 +266,19 @@ In addition to the {{{main}}} default buffer, ACRA retrieves the 2 other alterna
   induce a latency right after your application crash. Include them only
   if you know how to analyze them and avoid collecting more than 100 lines.*_
 
-== Adding !DropBoxManager events to your reports ==
+  *Note: RADIOLOG and EVENTSLOG fields will be removed from the default reported fields in future ACRA versions. You'll have to activate them if you need them.*
+
+== Adding custom !DropBoxManager events to your reports ==
 
 [http://developer.android.com/intl/fr/reference/android/os/DropBoxManager.html DropBoxManager] has been introduced in android API level 8 (2.2 - FroYo). This is a new logging system focused on persisting long chunks of text or data for debugging purposes. There is a [http://stackoverflow.com/questions/4434192/dropboxmanager-use-cases Q&A on StackOverflow] explaining the usage of this system.
+
+You need the READ_LOGS permission to collect these data, add it to your manifest with:
+{{{
+<manifest ...>
+    ...
+    <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+</manifest>
+}}}
 
 A list of !DropBox tags has been built by searching for {{{DropBoxManager}}} usage in android source code. All these system tagged events can be retrieved if you set {{{@ReportsCrashes.includeDropBoxSystemTags}}} to {{{true}}} on your application class:
   * system_app_anr
@@ -291,17 +301,18 @@ You can add your own dropbox tags using {{{@ReportsCrashes.additionalDropBoxTags
 {{{
 @ReportsCrashes { formKey="xxxxxxxxxxxx",
     ...
-    includeDropBox = true, // default is false + requires READ_LOGS permission
-    inlcudeFropBoxSystemTags = true, // default is false
+    inlcudeDropBoxSystemTags = true, // default is false
     additionalDropBoxTags = {"your_own_tag", "another_additional_tag"},
     dropboxCollectionMinutes = 10 // default is 5
     ...
 }}}
 
   _*Warning: collecting DropBox events might take quite some time and
-  induce a latency right after your application crash. Include them only
-  if you know how to analyze them and increase the dropBoxCollectionMinutes
-  only if you know what you are doing.*_
+  induce a latency right after your application crash. If you don't know how to analyze them,
+  you would better remove the DROPBOX field from the CrashReports-Template.csv before creating your spreadsheet, and copy the new content of your csv template in the {@ReportsCrashes. customReportContent} parameter.
+  Increase the dropBoxCollectionMinutes only if you know what you are doing.*_
+
+  *Note: this field will be removed from the default reported fields in future ACRA versions. You'll have to activate it if you need it.*
 
 == Adding the Device Unique ID to your reports ==
 
