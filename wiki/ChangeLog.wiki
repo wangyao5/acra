@@ -4,6 +4,7 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * modified: removed the DROPBOX, RADIOLOG and EVENTSLOG fields from default report templates. They should be activated only by devs who really need them.
   * new: full dynamic configuration
   * modified: asynchronous wait for Toast display and sender thread termination. No more chance to cause ANR.
   * modified: handleException and handleSilentException do not return the sender Thread anymore.
