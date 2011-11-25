@@ -1,5 +1,5 @@
 #summary Advanced Usage Guide
-#labels Phase-Deploy,Featured
+#labels Phase-Deploy, Featured
 <wiki:toc max_depth="3" />
 
 = Introduction =
@@ -254,8 +254,10 @@ then add this to you {@ReportsCrashes} config:
 As you can see, you just have to split your command line arguments to a String array on each white space.
 
 Note for experts: even if the "-t XXX" argument is only available since android 2.2, you can use it safely as ACRA emulates it for older devices.
-  
-In addition to the {{{main}}} default buffer, you can configure ACRA to retrieve the 2 other alternative buffers {{{event}}} and {{{radio}}}. This is done with 2 {{{@ReportsCrashes}}} configuration items {{{includeEventsLogcat}}} and {{{includeRadioLogcat}}} which take {{{boolean}}} values.
+
+In addition to the {{{main}}} default buffer, ACRA retrieves the 2 other alternative buffers {{{event}}} and {{{radio}}}. If these data are not of any use for you, you should consider deactivating their collection to enhance reporting time and memory management:
+  * removing EVENTSLOG and RADIOLOG fields from the CrashReports-Template.csv file before creating your spreadsheet
+  * copy the content of your new csv template and paste it in the {@ReportsCrashes. customReportContent} parameter.
 
   _*Note: System logs may contain private data logged by other applications like user email address, calendar events, contacts data...
   You should consider [#Enable/disable_system_logs adding a user preference item to let your user choose to include system logs or not].*_  
