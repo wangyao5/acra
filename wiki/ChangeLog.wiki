@@ -4,6 +4,8 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * modified: trying to clarify the logic of deleting/notifying reports on application start.
+  * fixed: direct DIALOG mode is working again. The dialog creation has to be the last thing to do before killing the app.
   * fixed: the async wait for toast and sender thread termination was... crap. It is now fixed but the direct DIALOG does not work anymore. Must be a timing issue, which lets me think that this might not be a future proof solution.
   * fixed Issue 84: all email reports got "null crash report" as a title... 
   * modified: removed the DROPBOX, RADIOLOG and EVENTSLOG fields from default report templates. They should be activated only by devs who really need them.
