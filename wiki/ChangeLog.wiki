@@ -4,6 +4,9 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * modified: reduced TOAST wait from 4s to 3s.
+  * fixed: stop calling ACRA when ACRA throws an exception but let the native exception handler do its job. Should fix Issue 72.
+  * fixed: don't call dumpsys meminfo after on OutOfMemroryError. It looks like it hangs the app. 
   * modified: trying to clarify the logic of deleting/notifying reports on application start.
   * fixed: direct DIALOG mode is working again. The dialog creation has to be the last thing to do before killing the app.
   * fixed: the async wait for toast and sender thread termination was... crap. It is now fixed but the direct DIALOG does not work anymore. Must be a timing issue, which lets me think that this might not be a future proof solution.
