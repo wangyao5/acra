@@ -4,6 +4,8 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * modified: handleException() method do not need to return the worker thread anymore
+  * fixed: issue 69
   * modified: reduced TOAST wait from 4s to 3s.
   * fixed: stop calling ACRA when ACRA throws an exception but let the native exception handler do its job. Should fix Issue 72.
   * fixed: don't call dumpsys meminfo after on OutOfMemroryError. It looks like it hangs the app. 
