@@ -4,6 +4,7 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * modified: Issue 66 - ReportsCrashes annotation is now @Inherited.
   * modified: handleException() method do not need to return the worker thread anymore
   * fixed: issue 69
   * modified: reduced TOAST wait from 4s to 3s.
