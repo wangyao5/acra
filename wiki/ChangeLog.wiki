@@ -4,6 +4,8 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * fixed: issue 60.
+  * added: logcatFilterByPid configuration item. When set to true, logcat field collects only lines related to the application process.
   * modified: Issue 66 - ReportsCrashes annotation is now @Inherited.
   * modified: handleException() method do not need to return the worker thread anymore
   * fixed: issue 69
