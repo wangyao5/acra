@@ -23,4 +23,6 @@ Some people are working on tools to help you sort, filter, clean, analyze your r
   * [https://github.com/hameno/ACRA-web-analytics] (Work in progress) by [http://twitter.com/gl4di4t0r Philip Schiffer], hosted on http://acra.heroku.com/
   * [http://www.bugsense.com Bugsense], the most advanced backend, and it's free!
   * [https://github.com/sghael/ACRA-Catcher] a Rails report catcher, developed by [http://www.getravid.com/ the Ravid team]
- 
+  * [http://www.vaudaux-ruth.com/android-log-collecting-with-acra-and-logentries LogEntries], log management service
+  * [http://support.hockeyapp.net/kb/client-integration-android/how-to-use-acra-with-hockeyapp Hockeyapp] OSX, iOS and Android beta distribution platform and crash reports collection.
+  * [http://www.zubhium.com Zubhium] , platform dedicated to Android applications beta distribution, crash analytics and users support.
