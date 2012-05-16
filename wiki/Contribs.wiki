@@ -25,3 +25,4 @@ Some people are working on tools to help you sort, filter, clean, analyze your r
   * [http://www.vaudaux-ruth.com/android-log-collecting-with-acra-and-logentries LogEntries], log management service
   * [http://support.hockeyapp.net/kb/client-integration-android/how-to-use-acra-with-hockeyapp Hockeyapp] OSX, iOS and Android beta distribution platform and crash reports collection.
   * [http://www.zubhium.com Zubhium] , platform dedicated to Android applications beta distribution, crash analytics and users support.
+  * https://github.com/BicouQ/crashreportsviewer/blob/master/README.md basic opensource PHP backend by Benoit Duffez
