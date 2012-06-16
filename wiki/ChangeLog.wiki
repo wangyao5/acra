@@ -4,6 +4,7 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * added: new ReportField.APPLICATION_LOGFILE including the latest ReportsCrashes.applicationLogFileLines lines from the file ReportsCrashes.applicationLogFile. Allows to collect application specific log file data.
   * added: issue 70 - option excludeMatchingSharedPreferencesKeys to exclude sensible data from collected SharedPreferences.
   * added: issue 80 - option sendReportsInDevMode can now be set to false to disable sending reports in development mode. Reports will be sent only by signed applications.
   * fixed: issue 60 - ACRA crashes in NOTIFICATION mode without user comments.
