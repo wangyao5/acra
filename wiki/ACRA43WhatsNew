@@ -1,0 +1,34 @@
+ACRA43WhatsNew
+
+Upgrade guide
+
+Experimental:
+  * Direct DIALOG mode, thanks to Julia Segal. In this new ReportingInteractionMode, we should be able to display the crash dialog immediately after the application crash. The feature is experimental because its implementation is based on adding an activity (the crash dialog) immediately before killing the crashed app. The Android framework seems to keep this new activity in the application stack when restarting it, which is not the case if there is a slight delay between the addition of the dialog activity and the application restart...
+
+Major Changes:
+  * Overall code cleaning and refactoring thans to William Ferguson.
+  * Sockets can now be configured with two distinct timeouts with two different default values which have been adjusted to limit report duplicates: 
+    * connectionTimeout  : default value of 3000ms
+    * socketTimeout : default value of 5000ms
+  * ACRA is now fully configurable at runtime. Since ADT 14, we can't pass Android Library Projects resources ids to ACRA as they are not final anymore. So, you can use ACRA.getConfig.setXXXXXX(...) to set and/or modify any of ACRAs configuration items. The feature was also requested to allow some settings to be modified at runtime depending on user choices or operating contexts.
+  * Removed the DROPBOX, RADIOLOG and EVENTSLOG fields from default report templates. They should be activated only by devs who really need them.
+  * Added a logcatFilterByPid configuration item. When set to true, logcat field collects only lines related to the application process.
+  * Issue 80 - option sendReportsInDevMode can now be set to false to disable sending reports in development mode. Reports will be sent only by signed applications.
+  * Custom log file collection. If your application manages its own log file (not using the default androir logger), you can get its content in ACRA reports using a new field ReportField.APPLICATION_LOGFILE which will include the latest ReportsCrashes.applicationLogFileLines lines from the file ReportsCrashes.applicationLogFile.
+  * Issue 70 - option excludeMatchingSharedPreferencesKeys to exclude sensible data from collected SharedPreferences. For example, use excludeMatchingSharedPreferencesKeys = { "password" } if your app sets a "password" field in its SharedPreferences to store your users passwords. The content of this setting is an array of regular expressions.
+
+Minor Changes:
+  * ErrorReporter.getInstance() is deprecated, must be replaced by ACRA.getErrorReporter()
+  * Reports are now sent asynchronously to prevent ANRs.
+  * The default number of logcat lines has been lowered to 100 to limit the size of reports.
+  * handleException and handleSilentException do not return the sender Thread anymore. There was limited use to this in a public API.
+  * fixed Issue 84: all email reports got "null crash report" as a title... 
+  * Don't call dumpsys meminfo after an OutOfMemroryError. It looks like it hangs the app. 
+  * Stop calling ACRA when ACRA itself throws an exception, let the native exception handler do its job. Should fix Issue 72.
+  * Reduced TOAST wait from 4s to 3s.
+  * Fixes in enabling/disabling ACRA through SharedPreferences
+  * Issue 66 - ReportsCrashes annotation is now @Inherited to allow subclassing a global pre-configured Application and inherit its ACRA configuration.
+  * Issue 60 - ACRA crashes in NOTIFICATION mode if resDialogCommentPrompt is not set.
+  
+    
+  
