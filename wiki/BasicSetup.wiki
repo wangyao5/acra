@@ -34,6 +34,7 @@ Step by step installation of the ACRA library in an existing application project
     * If you are using a private Google Apps domain, make sure to *uncheck* the option "Require yourdomain.com sign-in to view this form."
   * Save the form
   * Copy the `formkey` value displayed in the link at the bottom of the form creation page
+http://acra.googlecode.com/svn/wiki/files/captures/formkey.png
   * Open your Eclipse project
   * Create a `libs` folder
   * Add the `acra-4.2.3.jar` from the archive (acra-4.2.3/build) in the `libs` folder
