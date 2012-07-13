@@ -12,4 +12,4 @@
       * [ACRA3HowTo Include ACRA v3 in your application]
       * [ACRAProGuardHowTo Configure ProGuard for ACRA]
     * ACRA 2.X
-      * [ACRAHowTo Include ACRA v2 in your application]
+      * [archives/ACRAHowTo Include ACRA v2 in your application]
