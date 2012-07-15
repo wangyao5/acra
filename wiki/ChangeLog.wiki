@@ -4,6 +4,7 @@ TODO:
   * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
 
 Trunk:
+  * modified: Refactored Conffiguration collection class, was not in the collectors package.
   * added back an handleException(Throwable e) without the endApplication boolean to enhance backward API compatibility.
   * added: new ReportField.APPLICATION_LOGFILE including the latest ReportsCrashes.applicationLogFileLines lines from the file ReportsCrashes.applicationLogFile. Allows to collect application specific log file data.
   * added: issue 70 - option excludeMatchingSharedPreferencesKeys to exclude sensible data from collected SharedPreferences.
