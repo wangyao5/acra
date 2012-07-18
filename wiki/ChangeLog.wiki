@@ -1,10 +1,13 @@
 #summary Track project changes
 
 TODO:
-  * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)  
+  * Remove optional fields from the default template (eventlog, radiolog, dropbox, deviceid... others ?)
+  * Test MediaCodecListCollector and ThreadCollector  
 
 Trunk:
-  * modified: Refactored Conffiguration collection class, was not in the collectors package.
+  * added: MediaCodecListCollector to retrieve the list of supported codecs and capabilities for the device. Field name: MEDIA_CODEC_LIST. (Since API Level 16 - Jelly Beans)
+  * added: ThreadCollector to retrieve the broken thread Id and Name. Field name: THREAD_DETAILS
+  * modified: Refactored Configuration collection class, was not in the collectors package.
   * added back an handleException(Throwable e) without the endApplication boolean to enhance backward API compatibility.
   * added: new ReportField.APPLICATION_LOGFILE including the latest ReportsCrashes.applicationLogFileLines lines from the file ReportsCrashes.applicationLogFile. Allows to collect application specific log file data.
   * added: issue 70 - option excludeMatchingSharedPreferencesKeys to exclude sensible data from collected SharedPreferences.
