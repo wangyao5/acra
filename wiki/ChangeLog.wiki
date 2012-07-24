@@ -5,6 +5,7 @@ TODO:
   * Test MediaCodecListCollector and ThreadCollector  
 
 Trunk:
+  * modified: issue 111 - ACRAConfiguration is not a static fields container anymore. Each instance holds its own set of values, this allow to define various configuration instances and switch between one or the other with a single object reference switch (ACRA.setConfig()))
   * added: MediaCodecListCollector to retrieve the list of supported codecs and capabilities for the device. Field name: MEDIA_CODEC_LIST. (Since API Level 16 - Jelly Beans)
   * added: ThreadCollector to retrieve the broken thread Id and Name. Field name: THREAD_DETAILS
   * modified: Refactored Configuration collection class, was not in the collectors package.
