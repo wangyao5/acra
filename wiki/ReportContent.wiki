@@ -662,3 +662,21 @@ WIFI_ON=0
 WIFI_SAVED_STATE=0
 WIFI_WATCHDOG_WATCH_LIST=GoogleGuest
 }}}
+
+=== APPLICATION_LOG ===
+_^Since: 4.3 - Default: No^_
+
+  Content of your own application log file. To be configured with
+  @ReportsCrashes(applicationLogFile = "applog.log") to define the path/name of
+  the log file and @ReportsCrashes.applicationLogFileLines(150) to set
+  the number of latest lines you want to be retrieved (default is 100).
+  
+=== MEDIA_CODEC_LIST ===
+_^Since: 4.3 - Default: No^_
+  
+  Since Android API Level 16 (Android 4.1 - Jelly Beans), retrieve the list of supported Media codecs and their capabilities (color format, profile and level).
+
+=== THREAD_DETAILS ===
+_^Since: 4.3 - Default: No^_
+  
+  Retrieves details of the failing thread (id, name, group name).
