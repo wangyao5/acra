@@ -1,9 +1,6 @@
 #summary Track project changes
 
-TODO:
-  * Test MediaCodecListCollector and ThreadCollector  
-
-Trunk:
+ACRA-4.3.0b1:
   * modified: MediaCodecListCollector now displays codec profiles and levels names instead of abstract int values.
   * added: issue 135 - 'deleteOldUnsentReportsOnApplicationStart' annotation to control whether to delete old reports (defaults to true).
   * modified: removed DEVICE_ID from the default fields. INSTALLATION_ID should be enough and is not a sensible private data.
