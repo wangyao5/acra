@@ -676,7 +676,103 @@ _^Since: 4.3 - Default: No^_
   
   Since Android API Level 16 (Android 4.1 - Jelly Beans), retrieve the list of supported Media codecs and their capabilities (color format, profile and level).
 
+Sample collected from Android 4.1 emulator:
+
+{{{
+0: OMX.google.mp3.decoder
+isEncoder: false
+Supported types: [audio/mpeg]
+1: OMX.google.amrnb.decoder
+isEncoder: false
+Supported types: [audio/3gpp]
+2: OMX.google.amrwb.decoder
+isEncoder: false
+Supported types: [audio/amr-wb]
+3: OMX.google.aac.decoder
+isEncoder: false
+Supported types: [audio/mp4a-latm]
+4: OMX.google.g711.alaw.decoder
+isEncoder: false
+Supported types: [audio/g711-alaw]
+5: OMX.google.g711.mlaw.decoder
+isEncoder: false
+Supported types: [audio/g711-mlaw]
+6: OMX.google.vorbis.decoder
+isEncoder: false
+Supported types: [audio/vorbis]
+7: OMX.google.mpeg4.decoder
+isEncoder: false
+Supported types: [video/mp4v-es]
+video/mp4v-es color formats:COLOR_FormatYUV420Planar
+video/mp4v-es profile levels:MPEG4ProfileSimple-MPEG4Level0,MPEG4ProfileSimple-MPEG4Level0b,MPEG4ProfileSimple-MPEG4Level1,MPEG4ProfileSimple-MPEG4Level2,MPEG4ProfileSimple-MPEG4Level3
+8: OMX.google.h263.decoder
+isEncoder: false
+Supported types: [video/3gpp]
+video/3gpp color formats:COLOR_FormatYUV420Planar
+video/3gpp profile levels:H263ProfileBaseline-H263Level10,H263ProfileBaseline-H263Level20,H263ProfileBaseline-H263Level30,H263ProfileBaseline-H263Level45,H263ProfileISWV2-H263Level10,H263ProfileISWV2-H263Level20,H263ProfileISWV2-H263Level30,H263ProfileISWV2-H263Level45
+9: OMX.google.h264.decoder
+isEncoder: false
+Supported types: [video/avc]
+video/avc color formats:COLOR_FormatYUV420Planar
+video/avc profile levels:1AVCProfileBaseline-AVCLevel1,1AVCProfileBaseline-AVCLevel1b,1AVCProfileBaseline-AVCLevel11,1AVCProfileBaseline-AVCLevel12,1AVCProfileBaseline-AVCLevel13,1AVCProfileBaseline-AVCLevel2,1AVCProfileBaseline-AVCLevel21,1AVCProfileBaseline-AVCLevel22,1AVCProfileBaseline-AVCLevel3,1AVCProfileBaseline-AVCLevel31,1AVCProfileBaseline-AVCLevel32,1AVCProfileBaseline-AVCLevel4,1AVCProfileBaseline-AVCLevel41,1AVCProfileBaseline-AVCLevel42,1AVCProfileBaseline-AVCLevel5,1AVCProfileBaseline-AVCLevel51
+10: OMX.google.vpx.decoder
+isEncoder: false
+Supported types: [video/x-vnd.on2.vp8]
+video/x-vnd.on2.vp8 color formats:COLOR_FormatYUV420Planar
+11: OMX.google.aac.encoder
+isEncoder: true
+Supported types: [audio/mp4a-latm]
+12: OMX.google.amrnb.encoder
+isEncoder: true
+Supported types: [audio/3gpp]
+13: OMX.google.amrwb.encoder
+isEncoder: true
+Supported types: [audio/amr-wb]
+14: OMX.google.h263.encoder
+isEncoder: true
+Supported types: [video/3gpp]
+video/3gpp color formats:COLOR_FormatYUV420Planar,COLOR_FormatYUV420SemiPlanar
+video/3gpp profile levels:H263ProfileBaseline-H263Level45
+15: OMX.google.h264.encoder
+isEncoder: true
+Supported types: [video/avc]
+video/avc color formats:COLOR_FormatYUV420Planar,COLOR_FormatYUV420SemiPlanar
+video/avc profile levels:1AVCProfileBaseline-AVCLevel1,1AVCProfileBaseline-AVCLevel1b,1AVCProfileBaseline-AVCLevel11,1AVCProfileBaseline-AVCLevel12,1AVCProfileBaseline-AVCLevel13,1AVCProfileBaseline-AVCLevel2
+16: OMX.google.mpeg4.encoder
+isEncoder: true
+Supported types: [video/mp4v-es]
+video/mp4v-es color formats:COLOR_FormatYUV420Planar,COLOR_FormatYUV420SemiPlanar
+video/mp4v-es profile levels:MPEG4ProfileCore-MPEG4Level2
+17: OMX.google.flac.encoder
+isEncoder: true
+Supported types: [audio/flac]
+18: AACEncoder
+isEncoder: true
+Supported types: [audio/mp4a-latm]
+19: OMX.google.raw.decoder
+isEncoder: false
+Supported types: [audio/raw]
+}}}
+
 === THREAD_DETAILS ===
 _^Since: 4.3 - Default: No^_
   
   Retrieves details of the failing thread (id, name, group name).
+
+Here's what is provided when the main thread crashes:
+  
+{{{
+id=1
+name=main
+priority=5
+groupName=main
+}}}
+
+And here is when a secondary thread which has been given a name (DoSomeBackgroundStuff) crashes:
+
+{{{
+id=91
+name=DoSomeBackgroundStuff
+priority=5
+groupName=main
+}}}
