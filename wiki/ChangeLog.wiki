@@ -1,5 +1,8 @@
 #summary Track project changes
 
+ACRA-4.3.0b2:
+  * fixed: issue 137 - with JellyBean, we now send only logcat traces related to our app. But this does not require the READ_LOGS permission 
+
 ACRA-4.3.0b1:
   * modified: MediaCodecListCollector now displays codec profiles and levels names instead of abstract int values.
   * added: issue 135 - 'deleteOldUnsentReportsOnApplicationStart' annotation to control whether to delete old reports (defaults to true).
