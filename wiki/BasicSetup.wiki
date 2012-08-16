@@ -90,7 +90,7 @@ ACRA is designed to work with the simplest possible setup. But there are lots of
     * *SILENT (default)*: with the basic setup, ACRA sends reports silently, without warning your users, and lets the system display the native Force Close dialog (which may include Android Market Send Report button on android 2.1+ devices... if your app has been downloaded from the market).
     * *[AdvancedUsage#Toast_notification TOAST]*: displays a [http://developer.android.com/intl/fr/reference/android/widget/Toast.html Toast] with the text of your choice when the app crashes but doesn't allow your user to prevent reports from being sent (but you can setup a SharedPreference item).
     * *[AdvancedUsage#Status_bar_notification NOTIFICATION]*: displays a Toast when the app crashes, then a notification in the status bar asking your user to send a report. When the notification is selected, a Dialog asks for authorization + optional user comment.
-    * _TODO_ *[AdvancedUsage#dialog DIALOG]*: displays a Toast when the app crashes, then displays a Dialog on application restart asking for authorization + optional user comment.
+    * _BETA_ *[AdvancedUsage#dialog DIALOG]*: displays a Toast when the app crashes, then displays a Dialog on application restart asking for authorization + optional user comment.
   * *[AdvancedUsage#Reports_destination Reports destination]*:
     * *GoogleDocs Form (default)*: the most used (and default) destination for crash reports with ACRA is a GoogleDocs Form. The data is stored in a GoogleDocs spreadsheet. This allows you to setup crash reporting without having to care about implementing a server-side script and find good quality (cheap) hosting. You use Google's infrastructure, for free.
     * *[AdvancedUsage#Sending_reports_to_your_own_self-hosted_script Custom server script]*: if you want to have better control over the reports, you can implement your own server-side script to handle reports and host it somewhere else. Then you can configure ACRA to send reports to this script.
@@ -108,4 +108,4 @@ ACRA is designed to work with the simplest possible setup. But there are lots of
     * [AdvancedUsage#Enable/disable_including_DeviceID  Enable/disable sending device unique id]
     * [AdvancedUsage#Set_an_email_address_to_be_added_to_reports Add an e-mail address to allow the developer to contact the user]
     * [AdvancedUsage#Enable/disable_auto_accept_reports Always accept sending reports] (for NOTIFICATION mode)
-  * _TODO_ *[AdvancedUsage#DynamicConfiguration Dynamic Configuration]*     
+  * _BETA_ *[AdvancedUsage#DynamicConfiguration Dynamic Configuration]*     
