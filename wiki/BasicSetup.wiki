@@ -108,4 +108,4 @@ ACRA is designed to work with the simplest possible setup. But there are lots of
     * [AdvancedUsage#Enable/disable_including_DeviceID  Enable/disable sending device unique id]
     * [AdvancedUsage#Set_an_email_address_to_be_added_to_reports Add an e-mail address to allow the developer to contact the user]
     * [AdvancedUsage#Enable/disable_auto_accept_reports Always accept sending reports] (for NOTIFICATION mode)
-  * _BETA_ *[AdvancedUsage#DynamicConfiguration Dynamic Configuration]*     
+  * _BETA_ *[AdvancedUsage#Dynamic_Configuration Dynamic Configuration]*     
