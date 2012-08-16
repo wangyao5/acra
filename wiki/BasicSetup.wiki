@@ -8,15 +8,16 @@
 
 ACRA allows your Android application to send Crash Reports to various destinations:
   * a Google Docs spreadsheet (default and original behavior)
-  * an email (new in 4.0)
-  * your own server-side HTTP POST script (parameter names changed in 4.0)
-  * any other possible destination by implementing your own report sender (new in 4.0)
+  * an email
+  * your own server-side HTTP POST script
+  * any other possible destination by implementing your own report sender
 
-When a crash occurs, you can choose and configure 3 different ways of interacting with the user:
+When a crash occurs, you can choose and configure 4 different ways of interacting with the user:
   * Silent (default): ACRA actions are not visible. The crash report is sent and then the default android crash system does its job (Force Close dialog)
   * Toast: When the crash occurs, ACRA displays a [http://developer.android.com/intl/fr/guide/topics/ui/notifiers/toasts.html toast] and simultaneously sends the report.
   * Notification: An optional toast is displayed on application crash, but the report is not sent immediately. A status bar notification is published warning the user that he should send a report. When selected, the notification displays a dialog asking for the authorization to send the report, with an optional user comment.
-   
+  * Dialog: *since 4.3.0b1*, experimental, allows to display a crash dialog without the need of a status bar notification. 
+
 This tutorial will guide you through installing ACRA in your application project.
 
 If you have any question or comment regarding ACRA, post a message on the [http://groups.google.com/group/acra-discuss Discussion Group].
@@ -24,9 +25,9 @@ If you have any question or comment regarding ACRA, post a message on the [http:
 = Setting-up your project =
 
 Step by step installation of the ACRA library in an existing application project, with the simplest settings:
-  * Get http://acra.googlecode.com/files/acra-4.2.3.zip and open the archive 
+  * Get http://acra.googlecode.com/files/acra-4.2.3.zip (stable) or http://acra.googlecode.com/files/acra-4.3.0b2.zip (beta) and open the archive 
   * Login to your Google Docs account
-  * Import the `CrashReports-template.csv` contained in the archive (acra-4.2.3/CrashReport/doc), with conversion enabled
+  * Import the `CrashReports-template.csv` contained in the archive (acra-4.X.Y/CrashReport/doc), with conversion enabled
   * Open the imported document
   * Rename it as you like
   * In the Google Docs menu, click on Tools / Form / Create a form
@@ -37,8 +38,8 @@ Step by step installation of the ACRA library in an existing application project
 http://acra.googlecode.com/svn/wiki/files/captures/formkey.png
   * Open your Eclipse project
   * Create a `libs` folder
-  * Add the `acra-4.2.3.jar` from the archive (acra-4.2.3/build) in the `libs` folder
-  * Right-click on the jar file / add to build path
+  * Add the `acra-4.X.Y.jar` from the archive (acra-4.X.Y/build) in the `libs` folder
+  * Right-click on the jar file / add to build path (should be done automatically if your Eclipse and ADT are up to date)
   * Create a new class in your package root _If your app already contains an Application subclass, add ACRA to this class._
     * Give it a name like: `MyApplication`, make it extend `android.app.Application`
     * Above the declaration of the `MyApplication` class, add the `@ReportsCrashes` annotation with your Google Docs `formKey` as a parameter 
@@ -89,6 +90,7 @@ ACRA is designed to work with the simplest possible setup. But there are lots of
     * *SILENT (default)*: with the basic setup, ACRA sends reports silently, without warning your users, and lets the system display the native Force Close dialog (which may include Android Market Send Report button on android 2.1+ devices... if your app has been downloaded from the market).
     * *[AdvancedUsage#Toast_notification TOAST]*: displays a [http://developer.android.com/intl/fr/reference/android/widget/Toast.html Toast] with the text of your choice when the app crashes but doesn't allow your user to prevent reports from being sent (but you can setup a SharedPreference item).
     * *[AdvancedUsage#Status_bar_notification NOTIFICATION]*: displays a Toast when the app crashes, then a notification in the status bar asking your user to send a report. When the notification is selected, a Dialog asks for authorization + optional user comment.
+    * _TODO_ *[AdvancedUsage#dialog DIALOG]*: displays a Toast when the app crashes, then displays a Dialog on application restart asking for authorization + optional user comment.
   * *[AdvancedUsage#Reports_destination Reports destination]*:
     * *GoogleDocs Form (default)*: the most used (and default) destination for crash reports with ACRA is a GoogleDocs Form. The data is stored in a GoogleDocs spreadsheet. This allows you to setup crash reporting without having to care about implementing a server-side script and find good quality (cheap) hosting. You use Google's infrastructure, for free.
     * *[AdvancedUsage#Sending_reports_to_your_own_self-hosted_script Custom server script]*: if you want to have better control over the reports, you can implement your own server-side script to handle reports and host it somewhere else. Then you can configure ACRA to send reports to this script.
@@ -106,4 +108,4 @@ ACRA is designed to work with the simplest possible setup. But there are lots of
     * [AdvancedUsage#Enable/disable_including_DeviceID  Enable/disable sending device unique id]
     * [AdvancedUsage#Set_an_email_address_to_be_added_to_reports Add an e-mail address to allow the developer to contact the user]
     * [AdvancedUsage#Enable/disable_auto_accept_reports Always accept sending reports] (for NOTIFICATION mode)
-    
+  * _TODO_ *[AdvancedUsage#DynamicConfiguration Dynamic Configuration]*     
