@@ -1,4 +1,12 @@
 #summary Track project changes
+Trunk:
+  * Various changes due to discussion on Issue 111:
+    * Creation of a setDefaultReportSenders() method on ErrorReporter. This is the method which is called by ACRA.init() to instanciate the relevant default ReportSenders depending on the provision of mailTo, formUri and formKey parameters.
+      The method should now be called whenever you wish to change the configuration by switching from one of these 3 parameter to the others.
+    * HTTPPostSender and GoogleFormSender do not take their formURI/formKey as a constructor parameter anymore. They get the value from ACRA.getConfig() instead. If their parameters are changed programmatically, they don't need to be reinstanciated.
+    * Addition of a warning message if ACRA.getConfig() is called before ACRA.init(). ACRA.getNewDefaultConfig() should be used instead.
+    * ACRA.getNewDefaultConfig() now requires an Application as a parameter. This allows to create a new ACRAConfiguration instance with @ReportsCrashes defined values BEFORE calling ACRA.init()
+  * added: new configuration item googleFormUrlFormat to allow, if Google Docs/Drive services evolve, to modify the Form URL structure without releasing a new ACRA version in emergency.
 
 ACRA-4.3.0b2:
   * fixed: issue 137 - with JellyBean, we now send only logcat traces related to our app. But this does not require the READ_LOGS permission 
