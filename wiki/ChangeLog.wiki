@@ -1,5 +1,6 @@
 #summary Track project changes
 Trunk:
+  * After new discussion around Issue 111, GoogleFormSender and HttpPostSender get their former constructors back in addition to the new constructor without formKey/formUri. So, if the sender is initialized without formUri/formKey provided, it will always look at ACRA.getConfig() to get its destination so it can be changed dynamically. If the formKey/formUri is provided, then it is set once and never changed.
   * Various changes due to discussion on Issue 111:
     * Creation of a setDefaultReportSenders() method on ErrorReporter. This is the method which is called by ACRA.init() to instanciate the relevant default ReportSenders depending on the provision of mailTo, formUri and formKey parameters.
       The method should now be called whenever you wish to change the configuration by switching from one of these 3 parameter to the others.
