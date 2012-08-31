@@ -518,5 +518,5 @@ Every @ReportsCrashes parameter can also be set on runtime. This was needed sinc
 
 The method ACRA.getConfig() returns an ACRAConfiguration object which provides a setter for each @ReportsCrashes configuration item.
 
-You can even use ACRA.getNewDefaultConfig() to create a new configuration object initialized with default values + values set in your annotation parameters, modify some values, keep the object in memory for later use, and set it to ACRA.setConfig(ACRAConfiguration) when needed.
+You can even use ACRA.getNewDefaultConfig(Application) to create a new configuration object initialized with default values + values set in your annotation parameters, modify some values, keep the object in memory for later use, and set it to ACRA.setConfig(ACRAConfiguration) when needed.
 
