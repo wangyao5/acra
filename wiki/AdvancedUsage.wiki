@@ -96,6 +96,9 @@ In your {{{AndroidManifest.xml}}}
 }}}
 
 == Dialog ==
+*Since 4.3.0b1*
+
+The DIALOG mode is introduced in ACRA 4.3 as an experimental feature, aiming at replacing the NOTIFICATION mode as it is more user friendly. Please let us know if you have any issue with it.
 
 {{{
 @ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
