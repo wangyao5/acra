@@ -402,10 +402,11 @@ You can provide additional SharedPreferences names using `@ReportsCrashes(additi
 == Exclude SharedPreferences keys ==
 *Since 4.3.0b1*
 
-If your SharedPreferences contain private data that you don't want to be transmitted in reports, you can define exclusion rules using Regular Expressions provided in the excludeMatchingSharedPreferencesKeys configuration item.
+If your SharedPreferences contain private data that you don't want to be transmitted in reports, you can define exclusion rules using Regular Expressions provided in the `excludeMatchingSharedPreferencesKeys` configuration item.
 
 Every key matching any of these regular expressions will be excluded from reports. 
 
+{{{@ReportsCrashes(excludeMatchingSharedPreferencesKeys={"^user.private","password"})}}}
 = Letting your users control ACRA =
 
 Some ACRA behaviors can be configured by your application users through the use of {{{SharedPreferences}}} items:
