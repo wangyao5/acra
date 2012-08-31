@@ -397,7 +397,11 @@ Limiting your reports to what you really want and really use can help avoiding p
 
 Your applications default SharedPreferences are automatically collected in the SHARED_PREFERENCES field.
 
-You can provide additional SharedPreferences names using `@ReportsCrashes(additionalSharedPreferences={"my.own.prefs","a.second.prefs"})`.
+You can provide additional SharedPreferences names using 
+
+{{{
+@ReportsCrashes(additionalSharedPreferences={"my.own.prefs","a.second.prefs"})
+}}}
 
 == Exclude SharedPreferences keys ==
 *Since 4.3.0b1*
