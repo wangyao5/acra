@@ -306,7 +306,7 @@ Note for experts: even if the "-t XXX" argument is only available since android 
 
 In addition to the {{{main}}} default buffer, ACRA retrieves the 2 other alternative buffers {{{event}}} and {{{radio}}}. If these data are not of any use for you, you should consider deactivating their collection to enhance reporting time and memory management:
   * removing EVENTSLOG and RADIOLOG fields from the CrashReports-Template.csv file before creating your spreadsheet
-  * copy the content of your new csv template and paste it in the {@ReportsCrashes.customReportContent} parameter.
+  * copy the content of your new csv template and paste it in the {{{@ReportsCrashes.customReportContent}}} parameter.
 
   _*Note: System logs may contain private data logged by other applications like user email address, calendar events, contacts data...
   You should consider [#Enable/disable_system_logs adding a user preference item to let your user choose to include system logs or not].*_  
@@ -324,10 +324,10 @@ In addition to the {{{main}}} default buffer, ACRA retrieves the 2 other alterna
 
 If you chose to log your debug traces to an independent file, ACRA can get the latest lines from this file and send them in your reports.
 
-Include the field {APPLICATION_LOG} in your {customReportContent} and configure it with:
+Include the field {{{APPLICATION_LOG}}} in your {{{customReportContent}}} and configure it with:
 
-  * {@ReportsCrashes(applicationLogFile = "applog.log")} to define the path/name of the log file
-  * {@ReportsCrashes(applicationLogFileLines = 150)} to set the number of latest lines you want to be retrieved (default is 100).
+  * {{{@ReportsCrashes(applicationLogFile = "applog.log")}}} to define the path/name of the log file
+  * {{{@ReportsCrashes(applicationLogFileLines = 150)}}} to set the number of latest lines you want to be retrieved (default is 100).
 
 == Adding custom !DropBoxManager events to your reports ==
 
