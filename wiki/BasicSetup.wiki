@@ -25,7 +25,7 @@ If you have any question or comment regarding ACRA, post a message on the [http:
 = Setting-up your project =
 
 Step by step installation of the ACRA library in an existing application project, with the simplest settings:
-  * Get http://acra.googlecode.com/files/acra-4.2.3.zip (stable) or http://acra.googlecode.com/files/acra-4.3.0b2.zip (beta) and open the archive 
+  * Get http://acra.googlecode.com/files/acra-4.2.3.zip (stable) or http://acra.googlecode.com/files/acra-4.3.0RC.zip (beta-Release Candidate) and open the archive 
   * Login to your Google Docs account
   * Import the `CrashReports-template.csv` contained in the archive (acra-4.X.Y/CrashReport/doc), with conversion enabled
   * Open the imported document
