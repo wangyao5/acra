@@ -1,7 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>org.acra</groupId>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+	<groupId>ch.acra</groupId>
 	<artifactId>acra</artifactId>
 	<version>4.2.3</version>
 
@@ -11,7 +15,7 @@
         Publishes a report of an Android application crash to Google docs (or some other end point).
     </description>
 
-	<url>http://code.google.com/p/acra/</url>
+	<url>http://acra.ch</url>
 	<inceptionYear>2010</inceptionYear>
 
 	<licenses>
@@ -27,13 +31,6 @@
 		<developer>
 			<id>kevin.gaudin</id>
 			<name>Kevin Gaudin</name>
-			<roles>
-				<role>developer</role>
-			</roles>
-		</developer>
-		<developer>
-			<id>emmanuel.astier</id>
-			<name>Emmanuel Astier</name>
 			<roles>
 				<role>developer</role>
 			</roles>
@@ -87,6 +84,19 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -149,11 +159,11 @@
 	<distributionManagement>
 		<repository>
 			<id>release-repo</id>
-			<url>svn:https://acra.googlecode.com/svn/repository/releases</url>
+			<url>svn:https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshot-repo</id>
-			<url>svn:https://acra.googlecode.com/svn/repository/snapshots</url>
+			<url>svn:https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -163,4 +173,6 @@
 		<url>https://acra.googlecode.com/svn/tags/acra-4.2.3</url>
 	</scm>
 
+ 
+ 
 </project>
