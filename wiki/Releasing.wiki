@@ -36,7 +36,7 @@ _This procedure is merely a [http://code.google.com/p/maven-googlecode-plugin/wi
 
 To create a new release, simply enter the following commands, after replacing `<release-ver>` (e.g. *3.1.1*) and `<next-dev-ver>` (e.g *3.2*) with the good values.
 {{{
-mvn release:prepare --batch-mode -DdevelopmentVersion=<next-dev-ver>-SNAPSHOT -DreleaseVersion=<release-ver> -Dtag=acra-<release-ver>
+mvn release:prepare -DdevelopmentVersion=<next-dev-ver>-SNAPSHOT -DreleaseVersion=<release-ver> -Dtag=acra-<release-ver>
 # To cancel the release after prepare, you may use "mvn release:rollback".
 mvn release:perform
 svn checkout https://acra.googlecode.com/svn/javadoc
@@ -50,9 +50,8 @@ And that's all!
 
 = After releasing =
 
-  * The release should be available in the *releases* Maven [http://acra.googlecode.com/svn/repository/releases/org/acra/acra/ repository].
+  * Go to https://oss.sonatype.org/index.html, login, close the Staging repository containing the version to be released, then select it and Release it.
   * The Javadoc should be available on [http://acra.googlecode.com/svn/javadoc the svn].
-  * Update the version numbers (snapshot + release) in the [Maven] wiki page
   * Don't forget to *update* the various wiki pages.
 
 = Deploying a snapshot =
@@ -64,4 +63,3 @@ To do so, enter the following command :
 mvn clean deploy
 }}}
 
-The snapshot should be available in the in the *snapshots* Maven [http://acra.googlecode.com/svn/repository/snapshots/org/acra/acra/ repository].
