@@ -2,52 +2,14 @@
 
 = Maven =
 
-If you use Maven in your Android project, you need to add the ACRA repository and the ACRA dependency to your pom.xml. 
+ACRA is now available through Maven Central with groupId {{{ch.acra}}} and artifactId {{{acra}}}.
 
-== Releases ==
-
-_There is no Maven stable release of ACRA yet. Please use the SNAPSHOT dependency._
-
-You will need the following repository in your Maven project:
-
-{{{
-<repositories>
-    <repository>
-        <id>acra-releases</id>
-        <url>http://acra.googlecode.com/svn/repository/releases</url>
-    </repository>
-</repositories>
-}}}
-
-As well as the following dependency:
+The dependency in your pom.xml should look like:
 
 {{{
 <dependency>
-    <groupId>org.acra</groupId>
+    <groupId>ch.acra</groupId>
     <artifactId>acra</artifactId>
-    <version>X.X.X</version>
-</dependency>
-}}}
-
-== Snapshots ==
-
-You will need the following repository in your Maven project:
-
-{{{
-<repositories>
-    <repository>
-        <id>acra-snapshots</id>
-        <url>http://acra.googlecode.com/svn/repository/snapshots</url>
-    </repository>
-</repositories>
-}}}
-
-As well as the following dependency:
-
-{{{
-<dependency>
-    <groupId>org.acra</groupId>
-    <artifactId>acra</artifactId>
-    <version>X.Y.Z-SNAPSHOT</version>
+    <version>X.Y.Z</version>
 </dependency>
 }}}
