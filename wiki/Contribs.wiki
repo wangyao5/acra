@@ -26,3 +26,32 @@ Some people are working on tools to help you sort, filter, clean, analyze your r
   * [http://support.hockeyapp.net/kb/client-integration-android/how-to-use-acra-with-hockeyapp Hockeyapp] OSX, iOS and Android beta distribution platform and crash reports collection.
   * [http://www.zubhium.com Zubhium] , platform dedicated to Android applications beta distribution, crash analytics and users support.
   * https://github.com/BicouQ/crashreportsviewer/blob/master/README.md basic opensource PHP backend by Benoit Duffez
+
+== Scripting GDocs spreadsheet ==
+
+This is an area where lots of contribution could be made but unfortunately there are few people writing google apps scripts.
+
+=== Delete oldest rows automatically ===
+by Ronen
+
+As google spreadsheets are limited to 400K cells, it's a good idea to
+have a script that cleans it automatically. If you reach the limits
+your sheet may not open anymore!
+This script can be triggered periodically automatically.
+Simply go to Tools->Script Editor and paste the following script. Then
+go to Resources->Current script's triggers and set your time-driven
+trigger.
+From what I've read, you won't be able to keep more than ~11K rows
+without reaching the limits.
+BE CAREFUL AND CHANGE THE SCRIPT FOR YOUR NEEDS AS IT WILL DELETE ROWS
+FROM YOUR SPREADSHEET!
+
+{{{
+function acraCleanup() {
+  var rowsToKeep = 5000; //CHANGE TO YOUR DESIRED NUMBER OF ROWS TO
+KEEP.
+  var rows = SpreadsheetApp.getActiveSheet().getLastRow();
+  var numToDelete = rows - rowsToKeep  -1;
+  SpreadsheetApp.getActiveSheet().deleteRows(2, numToDelete);
+}
+}}}
