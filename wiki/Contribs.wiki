@@ -52,6 +52,6 @@ function acraCleanup() {
 KEEP.
   var rows = SpreadsheetApp.getActiveSheet().getLastRow();
   var numToDelete = rows - rowsToKeep  -1;
-  SpreadsheetApp.getActiveSheet().deleteRows(2, numToDelete);
+  if (numToDelete > 0) SpreadsheetApp.getActiveSheet().deleteRows(2, numToDelete);
 }
 }}}
