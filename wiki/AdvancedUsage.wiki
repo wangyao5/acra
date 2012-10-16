@@ -1,5 +1,14 @@
 #summary Advanced Usage Guide
 #labels Phase-Deploy,Featured
+
+= ACRA has moved to GitHub =
+*The project home page is now http://acra.ch
+Wiki, source code, issue tracker and everything else is now based at http://github.com/ACRA/acra.*
+
+*_The following documentation is deprecated and kept here to prevent the internets from melting._*
+
+------
+
 <wiki:toc max_depth="3" />
 
 = Introduction =
@@ -550,4 +559,3 @@ Every @ReportsCrashes parameter can also be set on runtime. This was needed sinc
 The method ACRA.getConfig() returns an ACRAConfiguration object which provides a setter for each @ReportsCrashes configuration item.
 
 You can even use ACRA.getNewDefaultConfig(Application) to create a new configuration object initialized with default values + values set in your annotation parameters, modify some values, keep the object in memory for later use, and set it to ACRA.setConfig(ACRAConfiguration) when needed.
-
