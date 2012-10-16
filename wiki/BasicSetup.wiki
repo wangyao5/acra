@@ -1,5 +1,13 @@
 #summary How to install ACRA 4.x in your Android application project.
 #labels Phase-Deploy,Featured
+= ACRA has moved to GitHub =
+The project home page is now http://acra.ch
+Wiki, source code, issue tracker and everything else is now based on http://github.com/ACRA/acra.
+
+The following documentation is deprecated and kept here to prevent the internets from melting.
+
+------
+
 <wiki:toc max_depth="3" />
 
 = Introduction =
