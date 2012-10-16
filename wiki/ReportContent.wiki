@@ -1,6 +1,14 @@
 #summary Description of the content of crash reports.
 #labels Featured
 
+= ACRA has moved to GitHub =
+*The project home page is now http://acra.ch
+Wiki, source code, issue tracker and everything else is now based at http://github.com/ACRA/acra.*
+
+*_The following documentation is deprecated and kept here to prevent the internets from melting._*
+
+------
+
 = Report Content =
 
 Here is a description of all fields contained in ACRA's reports. Most of them are always filled, some might require extra configuration or system permissions.
