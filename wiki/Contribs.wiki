@@ -1,3 +1,13 @@
+
+= ACRA has moved to GitHub =
+*The project home page is now http://acra.ch
+Wiki, source code, issue tracker and everything else is now based at http://github.com/ACRA/acra. *
+
+*_The following documentation is deprecated and kept here to prevent the internets from melting._*
+
+------
+
+
 = Contributions =
 
 Here are contributions developed by ACRA users. If you want to submit your own work, you can introduce it to the [http://groups.google.com/group/acra-discuss acra-discuss group].
