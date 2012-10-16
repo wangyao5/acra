@@ -1,4 +1,16 @@
 #summary Track project changes
+
+
+= ACRA has moved to GitHub =
+*The project home page is now http://acra.ch
+Wiki, source code, issue tracker and everything else is now based at http://github.com/ACRA/acra. *
+
+*_The following documentation is deprecated and kept here to prevent the internets from melting._*
+
+------
+
+
+
 ACRA-4.3.0RC:
   * Removed a few unnecessary Log.d traces.
   * Changed old spreadsheet.google.com default form post URL for the newer one docs.google.com/spreadsheet
