@@ -2,13 +2,7 @@
     * [BasicSetup Include ACRA in your application]
     * [AdvancedUsage All features and options]
     * [ReportContent Details about report fields]
-    * [ACRAProGuardHowTo Configure ProGuard for ACRA] <= might need an update
+    * [ACRAProGuardHowTo Configure ProGuard for ACRA]
     * [ChangeLog Latest changes]  
     * [Maven Use ACRA with Maven projects]
   * [Contribs Contributed tools]
-  * Archives
-    * ACRA 3.X
-      * [ACRA3HowTo Include ACRA v3 in your application]
-      * [ACRAProGuardHowTo Configure ProGuard for ACRA]
-    * ACRA 2.X
-      * [ACRAHowTo Include ACRA v2 in your application]
