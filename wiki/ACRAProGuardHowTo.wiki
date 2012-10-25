@@ -5,4 +5,4 @@
 
 [http://github.com/ACRA/acra/wiki Wiki], [http://github.com/ACRA/acra/ source code], [http://github.com/ACRA/acra/issues issue tracker] and everything else are now based at http://github.com/ACRA/acra. *
 
-This document is now [http://github.com/ACRA/acra/wiki/ACRAProGuardHowTo available here].
+This document is now [http://github.com/ACRA/acra/wiki/Proguard available here].
